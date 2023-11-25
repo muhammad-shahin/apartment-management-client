@@ -4,6 +4,9 @@
     "bannerSubTitle": "Discover the perfect home for you",
     "bannerVideo": "https://www.youtube.com/watch?v=LjTqLuBATtU",
     "bannerType": "video",
+    "city": "Gulshan, Dhaka",
+    "address": "27 Gulshan Avenue",
+    "monthlyRent": 8000,
     "id": 54550
   },
   {
@@ -11,6 +14,9 @@
     "bannerSubTitle": "Experience the heart of the city",
     "bannerImage": "https://i.ibb.co/Ss3SW02/building.jpg",
     "bannerType": "image",
+    "city": "Chittagong",
+    "address": "15 Agrabad C/A",
+    "monthlyRent": 6500,
     "id": 54551
   },
   {
@@ -18,6 +24,9 @@
     "bannerSubTitle": "Experience comfort and style",
     "bannerImage": "https://i.ibb.co/jyK6PL1/master-bedroom.jpg",
     "bannerType": "image",
+    "city": "Sylhet",
+    "address": "22 Mirabazar",
+    "monthlyRent": 7000,
     "id": 54545
   },
   {
@@ -25,6 +34,9 @@
     "bannerSubTitle": "Perfect for your visitors",
     "bannerImage": "https://i.ibb.co/jL2bJzL/guest-room.jpg",
     "bannerType": "image",
+    "city": "Gazipur, Dhaka",
+    "address": "8 Boalia",
+    "monthlyRent": 5500,
     "id": 54546
   },
   {
@@ -32,6 +44,9 @@
     "bannerSubTitle": "Relax in our luxurious bath",
     "bannerImage": "https://i.ibb.co/FYNHtSP/large-bathroom.jpg",
     "bannerType": "image",
+    "city": "Gazipur, Dhaka",
+    "address": "10 Boyra Main Road",
+    "monthlyRent": 7500,
     "id": 54547
   },
   {
@@ -39,6 +54,9 @@
     "bannerSubTitle": "Cook and dine in style",
     "bannerImage": "https://i.ibb.co/fCx85v9/big-kirchen.jpg",
     "bannerType": "image",
+    "city": "Gazipur, Dhaka",
+    "address": "5 Sadar Road",
+    "monthlyRent": 6000,
     "id": 54548
   },
   {
@@ -46,6 +64,9 @@
     "bannerSubTitle": "Enjoy meals with a view",
     "bannerImage": "https://i.ibb.co/9wTBKvZ/dinning-space.jpg",
     "bannerType": "image",
+    "city": "Gulshan, Dhaka",
+    "address": "12 Dhanmondi",
+    "monthlyRent": 9000,
     "id": 54549
   }
 ]

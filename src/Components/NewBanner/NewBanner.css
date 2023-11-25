@@ -2,8 +2,28 @@
   @apply absolute bottom-[0] left-[50%] translate-x-[-50%] translate-y-[-50%];
 }
 .slider-buttons-wrapper {
-  @apply rounded-full bg-gray-100 backdrop-blur-[20px] lg:px-4 px-2 lg:py-2 py-1 bg-opacity-[0.2] flex justify-center items-center gap-2;
+  @apply rounded-full bg-primary-300 backdrop-blur-[20px] lg:px-4 px-2 lg:py-2 py-1 bg-opacity-[0.2] flex justify-center items-center gap-2 flex-wrap w-[90vw] md:w-auto;
 }
 .slider-buttons-outer {
   @apply lg:w-[50px] lg:h-[50px] w-[30px] h-[30px] rounded-full font-medium flex justify-center items-center leading-none text-[22px] opacity-[0.8] overflow-hidden cursor-pointer border-[3px]  duration-200 hover:translate-y-[-6px];
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.arrow-bounce {
+  animation: bounce 2s ease-in-out 3;
 }

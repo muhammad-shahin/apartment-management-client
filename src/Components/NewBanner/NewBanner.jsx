@@ -1,6 +1,8 @@
 import PrimaryButton from '../../Shared/PrimaryButton';
 import './NewBanner.css';
 import { TfiKey } from 'react-icons/tfi';
+import { CiLocationArrow1, CiDollar } from 'react-icons/ci';
+import { IoIosArrowDown } from 'react-icons/io';
 import apartVid from '../../assets/video/banner-video.mp4';
 import bannerData from '../../assets/data/newBannerData.json';
 import { useState } from 'react';
@@ -16,7 +18,7 @@ const NewBanner = () => {
     } else {
       setCurrentSlide(currentSlide + 1);
     }
-  }, 10000);
+  }, 30000);
   return (
     <div className='absolute top-0 left-0 w-full max-h-screen bg-primary-500 z-[-100]'>
       {/* <AdsSlider /> */}
@@ -34,7 +36,8 @@ const NewBanner = () => {
               {banner.bannerType === 'image' ? (
                 <img
                   src={banner.bannerImage}
-                  className='object-cover h-full w-full'
+                  className='object-cover lg:h-full h-screen w-full'
+                  loading='lazy'
                 />
               ) : (
                 <video
@@ -52,10 +55,40 @@ const NewBanner = () => {
                 <p className='text-white-50 text-[0.9rem] lg:text-[1rem] text-center font-QuickSand font-thin uppercase'>
                   {banner.bannerSubTitle}
                 </p>
-                <p className='text-white-50 text-[2.5rem] lg:text-[6rem] text-center pb-4 mt-[-20px]'>
+                <p className='text-white-50 text-[2.5rem] lg:text-[6rem] text-center pb-4 md:mt-[-20px]'>
                   {banner.bannerTitle}
                 </p>
                 <PrimaryButton text='Discover More' />
+                <div className='md:flex justify-between items-center w-full xl:px-[5%] px-[2%] xl:translate-y-[150px] lg:translate-y-[80px] hidden'>
+                  {/* left side */}
+                  <div className='text-justify space-y-2 font-QuickSand font-medium uppercase'>
+                    <div className='flex justify-center items-center gap-3'>
+                      <CiLocationArrow1 className='text-[48px] text-white-50' />
+                      <div>
+                        <p className='text-white-50 text-lg lg:text-3xl'>
+                          {banner.city}, BD
+                        </p>
+                        <p className='text-white-50 text-lg lg:text-2xl'>
+                          {banner.address}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* right side */}
+                  <div className='text-justify space-y-2 font-QuickSand font-medium uppercase'>
+                    <div className='flex justify-center items-center gap-3'>
+                      <CiDollar className='text-[48px] text-white-50' />
+                      <div>
+                        <p className='text-white-50 text-lg lg:text-3xl'>
+                          Monthly RENT
+                        </p>
+                        <p className='text-white-50 text-lg lg:text-2xl'>
+                          ${banner.monthlyRent}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
@@ -79,6 +112,7 @@ const NewBanner = () => {
                 <img
                   src={banner.bannerImage}
                   className='object-cover h-full w-full'
+                  loading='lazy'
                 />
               ) : (
                 <video
@@ -91,6 +125,10 @@ const NewBanner = () => {
               )}
             </div>
           ))}
+        </div>
+        {/* arrow down button */}
+        <div className='absolute top-[-120px] left-[50%] translate-x-[-50%] arrow-bounce bg-primary-200 bg-opacity-75 rounded-full cursor-pointer'>
+          <IoIosArrowDown className='lg:text-[58px] text-[48px] text-white-50' />
         </div>
       </div>
     </div>
