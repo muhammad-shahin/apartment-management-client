@@ -1,6 +1,5 @@
 import PrimaryButton from '../../Shared/PrimaryButton';
 import './NewBanner.css';
-import { TfiKey } from 'react-icons/tfi';
 import { BiKey } from 'react-icons/bi';
 import { CiLocationArrow1, CiDollar } from 'react-icons/ci';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -22,7 +21,7 @@ const NewBanner = () => {
     }
   }, 30000);
   return (
-    <div className='absolute top-0 left-0 w-full max-h-screen bg-primary-500 z-[-100]'>
+    <div className='absolute top-0 left-0 w-full max-h-screen bg-primary-500 z-[100]'>
       {/* <AdsSlider /> */}
       <div className='overflow-hidden'>
         <div

@@ -1,0 +1,6 @@
+.nav-next {
+  @apply text-primary-500 text-[48px] opacity-90 hover:opacity-100 duration-300;
+}
+.nav-prev {
+  @apply text-primary-500 text-[48px] opacity-90 hover:opacity-100 duration-300;
+}

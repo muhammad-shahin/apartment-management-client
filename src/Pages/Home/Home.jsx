@@ -1,5 +1,4 @@
-import Banner from '../../Components/Banner/Banner';
-import Heading from '../../Components/Heading/Heading';
+import AboutBuilding from '../../Components/AboutBuilding/AboutBuilding';
 import NewBanner from '../../Components/NewBanner/NewBanner';
 import PageTitle from '../../Components/PageTitle/PageTitle';
 
@@ -7,10 +6,16 @@ const Home = () => {
   PageTitle('Home - Apartment Management Web Application');
 
   return (
-    <div>
-      {/* <Banner /> */}
-      <NewBanner />
-    </div>
+    <section>
+      <div className='min-h-[100vh]'>
+        <NewBanner />
+      </div>
+
+      {/* about building section */}
+      <div className='py-10'>
+        <AboutBuilding />
+      </div>
+    </section>
   );
 };
 

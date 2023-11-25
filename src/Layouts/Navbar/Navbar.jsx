@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Fade as Hamburger } from 'hamburger-react';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './Navbar.css';
 import UserProfile from '../../Components/UserProfile/UserProfile';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -13,10 +13,28 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const navigate = useNavigate();
   const [headerHover, setHeaderHover] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const isScrollPast = scrollY >= 0.5 * window.innerHeight;
+
+      setIsSticky(isScrollPast);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <header
-      className=' hover:bg-white-50 dark:hover:bg-transparent-50 duration-300'
+      className={`hover:bg-white-50 dark:hover:bg-transparent-50 duration-300 z-[150] ${
+        isSticky ? 'fixed bg-primary-500 w-full' : 'relative'
+      }`}
       onMouseEnter={() => setHeaderHover(true)}
       onMouseLeave={() => setHeaderHover(false)}
     >
