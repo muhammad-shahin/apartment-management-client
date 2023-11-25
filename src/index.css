@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'DreamAvenue';
+  src: url('./assets/Font/Dream-Avenue.ttf') format('truetype');
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* overlay effect */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* custom slider */
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+}
+
+.slider-content {
+  overflow: hidden;
+  width: 100%; /* Adjust the width as needed */
+}
+
+.slide {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  width: auto;
+}
+
+.slide-item {
+  width: 100%;
+  min-width: 100%;
+  flex: 0 0 auto;
+}
+
+/* title side bar */
+.title-bar::after {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  height: 2px;
+  margin-left: 10px;
+}
+.title-bar::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  height: 2px;
+  margin-right: 10px;
+}
+
+/* card image transition */
+.card-image {
+  transition: all 1.5s ease; /* Adjust the duration for the desired smoothness */
+}
+
+.zoom-in {
+  transform: scale(1.1); /* Zoom in effect */
+}
+
+.zoom-out {
+  transform: scale(1); /* Zoom out effect */
+}
+/* card button appear & disappear style */
+.appearStyle {
+  opacity: 1;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-in-out, transform 0.5s ease;
+}
+
+.appearStyle.appeared {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.disappearStyle {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.disappearStyle.disappeared {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+/* dark mode light mode */
+:root {
+  --body_background: white;
+  --body_color: black;
+  --link_color: navy;
+}
+
+[data-theme='dark'] {
+  --body_background: #282c34;
+  --body_color: white;
+  --link_color: blue;
+}
