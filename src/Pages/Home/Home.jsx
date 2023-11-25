@@ -1,4 +1,6 @@
+import Banner from '../../Components/Banner/Banner';
 import Heading from '../../Components/Heading/Heading';
+import NewBanner from '../../Components/NewBanner/NewBanner';
 import PageTitle from '../../Components/PageTitle/PageTitle';
 
 const Home = () => {
@@ -6,7 +8,8 @@ const Home = () => {
 
   return (
     <div>
-      <Heading title='Welcome Home' />
+      {/* <Banner /> */}
+      <NewBanner />
     </div>
   );
 };

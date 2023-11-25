@@ -1,0 +1,51 @@
+[
+  {
+    "bannerTitle": "Modern Apartment Living",
+    "bannerSubTitle": "Discover the perfect home for you",
+    "bannerVideo": "https://www.youtube.com/watch?v=LjTqLuBATtU",
+    "bannerType": "video",
+    "id": 54550
+  },
+  {
+    "bannerTitle": "Urban Living Spaces",
+    "bannerSubTitle": "Experience the heart of the city",
+    "bannerImage": "https://i.ibb.co/Ss3SW02/building.jpg",
+    "bannerType": "image",
+    "id": 54551
+  },
+  {
+    "bannerTitle": "Luxury Master Bedroom",
+    "bannerSubTitle": "Experience comfort and style",
+    "bannerImage": "https://i.ibb.co/jyK6PL1/master-bedroom.jpg",
+    "bannerType": "image",
+    "id": 54545
+  },
+  {
+    "bannerTitle": "Cozy Guest Room",
+    "bannerSubTitle": "Perfect for your visitors",
+    "bannerImage": "https://i.ibb.co/jL2bJzL/guest-room.jpg",
+    "bannerType": "image",
+    "id": 54546
+  },
+  {
+    "bannerTitle": "Spacious Bathroom",
+    "bannerSubTitle": "Relax in our luxurious bath",
+    "bannerImage": "https://i.ibb.co/FYNHtSP/large-bathroom.jpg",
+    "bannerType": "image",
+    "id": 54547
+  },
+  {
+    "bannerTitle": "Modern Kitchen",
+    "bannerSubTitle": "Cook and dine in style",
+    "bannerImage": "https://i.ibb.co/fCx85v9/big-kirchen.jpg",
+    "bannerType": "image",
+    "id": 54548
+  },
+  {
+    "bannerTitle": "Elegant Dining Space",
+    "bannerSubTitle": "Enjoy meals with a view",
+    "bannerImage": "https://i.ibb.co/9wTBKvZ/dinning-space.jpg",
+    "bannerType": "image",
+    "id": 54549
+  }
+]

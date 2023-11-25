@@ -5,7 +5,6 @@ import { useContext, useState } from 'react';
 import './Navbar.css';
 import UserProfile from '../../Components/UserProfile/UserProfile';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { VscAccount } from 'react-icons/vsc';
 import DarkTheme from '../../Components/DarkTheme/DarkTheme';
 
@@ -13,14 +12,20 @@ const Navbar = () => {
   const { user, showProfile, setShowProfile } = useContext(AuthContext);
   const [isOpen, setOpen] = useState(false);
   const navigate = useNavigate();
-  const [cartData] = JSON.parse(localStorage.getItem('cartData'));
+  const [headerHover, setHeaderHover] = useState(false);
 
   return (
-    <header className=''>
-      <nav className='py-3 container mx-auto flex justify-between items-center w-[90%] xl:w-auto relative text-black-50 dark:text-white-50'>
+    <header
+      className=' hover:bg-white-50 dark:hover:bg-transparent-50 duration-300'
+      onMouseEnter={() => setHeaderHover(true)}
+      onMouseLeave={() => setHeaderHover(false)}
+    >
+      <nav className='py-3 container mx-auto flex justify-between items-center w-[90%] xl:w-auto relative text-black-50'>
         {/* text logo */}
         <div
-          className='text-center cursor-pointer'
+          className={`text-center cursor-pointer ${
+            headerHover ? 'text-black-50' : 'text-white-50'
+          }`}
           onClick={() => {
             navigate('/');
           }}
@@ -36,10 +41,14 @@ const Navbar = () => {
         <ul
           className={` lg:static fixed top-[75px] ${
             isOpen ? 'right-0' : 'right-[-100%]'
-          } lg:h-auto h-screen lg:w-auto w-[50%] flex lg:flex-row flex-col  lg:opacity-[0.9] backdrop-blur-[25px] lg:px-5 py-2 justify-start lg:justify-center items-center lg:gap-10 gap-8 duration-700 z-[100] lg:rounded-full lg:pt-2 pt-10 font-QuickSand  font-bold text-[16px] lg:bg-transparent-50 bg-primary-100 bg-opacity-30`}
+          } lg:h-auto h-screen lg:w-auto w-[50%] flex lg:flex-row flex-col  lg:opacity-[0.9] backdrop-blur-[25px] lg:px-5 py-2 justify-start lg:justify-center items-center lg:gap-10 gap-8 duration-300 z-[100] lg:rounded-full lg:pt-2 pt-10 font-QuickSand  font-bold text-[16px]  lg:bg-opacity-40 bg-primary-100 bg-opacity-30 dark:text-white-50 ${
+            headerHover
+              ? 'text-black-50 lg:bg-transparent-50'
+              : 'text-white-50 lg:bg-primary-100'
+          }`}
         >
           <li
-            className='text-black-50 dark:text-white-50 hover:scale-[1.1] duration-500'
+            className=' hover:scale-[1.1] duration-500'
             onClick={() => {
               setOpen(false);
             }}
@@ -47,7 +56,7 @@ const Navbar = () => {
             <NavLink to='/'>Home</NavLink>
           </li>
           <li
-            className='text-black-50 dark:text-white-50 hover:scale-[1.1] duration-500'
+            className=' hover:scale-[1.1] duration-500'
             onClick={() => {
               setOpen(false);
             }}
@@ -55,7 +64,7 @@ const Navbar = () => {
             <NavLink to='/myCart'>Apartment</NavLink>
           </li>
           <li
-            className='text-black-50 dark:text-white-50 hover:scale-[1.1] duration-500'
+            className=' hover:scale-[1.1] duration-500'
             onClick={() => {
               setOpen(false);
             }}
@@ -63,7 +72,7 @@ const Navbar = () => {
             <NavLink to='/brand/adidas'>The Building</NavLink>
           </li>
           <li
-            className='text-black-50 dark:text-white-50 hover:scale-[1.1] duration-500'
+            className=' hover:scale-[1.1] duration-500'
             onClick={() => {
               setOpen(false);
             }}
@@ -73,7 +82,7 @@ const Navbar = () => {
 
           {user ? (
             <li
-              className='text-black-50 dark:text-white-50 hover:scale-[1.1] duration-500'
+              className=' hover:scale-[1.1] duration-500'
               onClick={() => {
                 setOpen(false);
               }}
@@ -82,7 +91,7 @@ const Navbar = () => {
             </li>
           ) : (
             <li
-              className='text-black-50 dark:text-white-50 hover:scale-[1.1] duration-500'
+              className=' hover:scale-[1.1] duration-500'
               onClick={() => {
                 setOpen(false);
               }}
@@ -118,7 +127,11 @@ const Navbar = () => {
         >
           {user && user.photoURL !== null && (
             <div className='flex justify-center items-center lg:gap-3'>
-              <p className='font-bold text-lg uppercase hidden lg:block'>
+              <p
+                className={`font-bold text-lg uppercase hidden lg:block ${
+                  headerHover ? 'text-black-50' : 'text-white-50'
+                }`}
+              >
                 {user?.displayName.split(' ')[0]}
               </p>
               <img
@@ -154,7 +167,8 @@ const Navbar = () => {
           />
         </div>
       </nav>
-      <hr className='text-primary-500' />
+      {/* horizontal row */}
+      {/* <hr className='text-primary-500' /> */}
     </header>
   );
 };

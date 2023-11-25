@@ -1,0 +1,43 @@
+[
+  {
+    "_id": "65321a85d3fb3d125c851e7f",
+    "title": "Discover the Latest Adidas Hoodies",
+    "brandName": "Adidas",
+    "productName": "Adidas Hoodies Collection",
+    "startingPrice": "From $100",
+    "brandLogo": "https://i.ibb.co/XSccpC8/Adidas-logo.png",
+    "advertisementImage": "https://i.ibb.co/wCNKX54/banner-adidas-hoddie.jpg",
+    "adsDescription": "Endless energy return meets everything you do. Get yourself going as Ultraboost 1.0 provides the latest update to Ultraboost DNA footwear."
+  },
+  {
+    "_id": "65321b0cd3fb3d125c851e80",
+    "title": "Adidas Shorts & Jacket Collections",
+    "brandName": "Adidas",
+    "productName": "Short & Jacket Set",
+    "startingPrice": "From $150",
+    "brandLogo": "https://i.ibb.co/XSccpC8/Adidas-logo.png",
+    "advertisementImage": "https://images.pexels.com/photos/3753118/pexels-photo-3753118.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "adsDescription": "Endless energy return meets everything you do. Get yourself going as Ultraboost 1.0 provides the latest update to Ultraboost DNA footwear."
+  },
+  {
+    "_id": "65321ba9d3fb3d125c851e81",
+    "title": "New Adidas Women Shoes Collections",
+    "brandName": "Adidas",
+    "productName": "Women Sport Shoes",
+    "startingPrice": "From $350",
+    "brandLogo": "https://i.ibb.co/XSccpC8/Adidas-logo.png",
+    "advertisementImage": "https://mir-s3-cdn-cf.behance.net/project_modules/hd/84589835172167.56ec20e07a472.png",
+    "adsDescription": "Endless energy return meets everything you do. Get yourself going as Ultraboost 1.0 provides the latest update to Ultraboost DNA footwear."
+  },
+  {
+    "_id": "65323e76273842d82866995f",
+    "title": "All In or Nothing - FIFA World Cup",
+    "brandName": "Adidas",
+    "addAdvertisement": "",
+    "productName": "Sports Shoe Collection",
+    "startingPrice": "From $350",
+    "brandLogo": "https://i.ibb.co/XSccpC8/Adidas-logo.png",
+    "adsDescription": "All In or Nothing - FIFA World Cup\" is not just a campaign title; it's a rallying cry for football enthusiasts around the world. With unwavering passion and determination, we bring you the ultimate soccer experience. Embrace the thrill of the FIFA World Cup and choose to go 'All In' with adidas, where every moment on the pitch is a chance to seize glory.",
+    "advertisementImage": "https://i.pinimg.com/originals/04/b1/66/04b166b298bb1f4eee3505c0eb60ff18.jpg"
+  }
+]

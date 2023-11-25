@@ -3,5 +3,6 @@ nav a.active {
   border-radius: 80px;
   padding: 4px 20px;
   position: relative;
-  color: #926a3c;
+  color: #fff;
+  background-color: #926a3c;
 }
