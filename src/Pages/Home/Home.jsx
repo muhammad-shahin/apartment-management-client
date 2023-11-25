@@ -1,3 +1,4 @@
+import Heading from '../../Components/Heading/Heading';
 import PageTitle from '../../Components/PageTitle/PageTitle';
 
 const Home = () => {
@@ -5,7 +6,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1 className='text-5xl'>Hello Home</h1>
+      <Heading title='Welcome Home' />
     </div>
   );
 };

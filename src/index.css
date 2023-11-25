@@ -1,18 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@font-face {
-  font-family: 'DreamAvenue';
-  src: url('./assets/Font/Dream-Avenue.ttf') format('truetype');
-}
-
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Cormorant', serif;
 }
 
 /* overlay effect */
@@ -70,18 +64,6 @@ body {
   margin-right: 10px;
 }
 
-/* card image transition */
-.card-image {
-  transition: all 1.5s ease; /* Adjust the duration for the desired smoothness */
-}
-
-.zoom-in {
-  transform: scale(1.1); /* Zoom in effect */
-}
-
-.zoom-out {
-  transform: scale(1); /* Zoom out effect */
-}
 /* card button appear & disappear style */
 .appearStyle {
   opacity: 1;
@@ -104,17 +86,4 @@ body {
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
-}
-
-/* dark mode light mode */
-:root {
-  --body_background: white;
-  --body_color: black;
-  --link_color: navy;
-}
-
-[data-theme='dark'] {
-  --body_background: #282c34;
-  --body_color: white;
-  --link_color: blue;
 }

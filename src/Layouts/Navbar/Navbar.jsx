@@ -25,27 +25,21 @@ const Navbar = () => {
             navigate('/');
           }}
         >
-          <p
-            className='lg:text-[58px] text-[38px] leading-none uppercase'
-            style={{ fontFamily: 'DreamAvenue' }}
-          >
+          <p className='xl:text-[58px] sm:text-[38px] xsm:text-[28px] leading-none uppercase'>
             Linden
           </p>
-          <p
-            className='lg:text-[18px] text-[12px] leading-none uppercase'
-            style={{ fontFamily: 'Quicksand, sans-serif' }}
-          >
+          <p className='xl:text-[18px] text-[12px] leading-none uppercase md:block hidden font-QuickSand'>
             apartment management
           </p>
         </div>
         {/* nav items */}
         <ul
-          className={` xl:static fixed top-[75px] ${
+          className={` lg:static fixed top-[75px] ${
             isOpen ? 'right-0' : 'right-[-100%]'
-          } xl:h-auto h-screen xl:w-auto w-[50%] flex xl:flex-row flex-col  xl:opacity-[0.7] backdrop-blur-[25px] xl:px-5 py-2 justify-start xl:justify-center items-center xl:gap-10 gap-8 duration-700 z-[100] xl:rounded-full xl:pt-2 pt-10`}
+          } lg:h-auto h-screen lg:w-auto w-[50%] flex lg:flex-row flex-col  lg:opacity-[0.7] backdrop-blur-[25px] lg:px-5 py-2 justify-start lg:justify-center items-center lg:gap-10 gap-8 duration-700 z-[100] lg:rounded-full lg:pt-2 pt-10 font-QuickSand  font-bold text-[16px] lg:bg-transparent-50 bg-primary-100 bg-opacity-30`}
         >
           <li
-            className='text-black dark:text-black font-medium text-[16px] hover:scale-[1.1] duration-500'
+            className='text-black dark:text-black hover:scale-[1.1] duration-500'
             onClick={() => {
               setOpen(false);
             }}
@@ -53,42 +47,42 @@ const Navbar = () => {
             <NavLink to='/'>Home</NavLink>
           </li>
           <li
-            className='text-black dark:text-black font-medium text-[16px] hover:scale-[1.1] duration-500'
+            className='text-black dark:text-black hover:scale-[1.1] duration-500'
             onClick={() => {
               setOpen(false);
             }}
           >
-            <NavLink to='/myCart'>My Cart</NavLink>
+            <NavLink to='/myCart'>Apartment</NavLink>
           </li>
           <li
-            className='text-black dark:text-black font-medium text-[16px] hover:scale-[1.1] duration-500'
+            className='text-black dark:text-black hover:scale-[1.1] duration-500'
             onClick={() => {
               setOpen(false);
             }}
           >
-            <NavLink to='/brand/adidas'>Shop</NavLink>
+            <NavLink to='/brand/adidas'>The Building</NavLink>
           </li>
           <li
-            className='text-black dark:text-black font-medium text-[16px] hover:scale-[1.1] duration-500'
+            className='text-black dark:text-black hover:scale-[1.1] duration-500'
             onClick={() => {
               setOpen(false);
             }}
           >
-            <NavLink to='/admin'>Add Product</NavLink>
+            <NavLink to='/admin'>Gallery</NavLink>
           </li>
-          <li
-            className='text-black dark:text-black font-medium text-[16px] hover:scale-[1.1] duration-500'
-            onClick={() => {
-              setOpen(false);
-            }}
-          >
-            <NavLink to='/checkout'>Checkout</NavLink>
-          </li>
+
           {user ? (
-            ''
+            <li
+              className='text-black dark:text-black hover:scale-[1.1] duration-500'
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              <NavLink to='/dashboard'>Dashboard</NavLink>
+            </li>
           ) : (
             <li
-              className='text-black dark:text-black font-medium text-[16px] hover:scale-[1.1] duration-500'
+              className='text-black dark:text-black hover:scale-[1.1] duration-500'
               onClick={() => {
                 setOpen(false);
               }}
@@ -146,9 +140,9 @@ const Navbar = () => {
         </div>
 
         {/* hamburger menu */}
-        <div className='xl:hidden'>
+        <div className='lg:hidden'>
           <Hamburger
-            color='#000'
+            color='#926a3c'
             toggled={isOpen}
             toggle={setOpen}
           />

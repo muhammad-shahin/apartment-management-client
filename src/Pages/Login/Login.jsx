@@ -6,7 +6,6 @@ import Modal from '../../Services/Utility/Modal';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Form from '../../Components/Form/Form';
 import loginAnim from '../../assets/Animation/loginAnimation.json';
-import useAxios from '../../Hooks/useAxios';
 import PageTitle from '../../Components/PageTitle/PageTitle';
 import CreateToken from '../../api/CreateToken';
 
@@ -15,13 +14,7 @@ const Login = () => {
 
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  // const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
   const [showModal, setShowModal] = useState(false);
-
-  // show password regular expression error
-  // const handlePasswordChange = (e) => {
-  //   setPasswordErrorMessage(passwordErrorChecker(e));
-  // };
 
   // handle sign up
   const handleLogin = (e) => {
