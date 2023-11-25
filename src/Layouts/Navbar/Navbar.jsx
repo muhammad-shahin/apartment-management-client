@@ -26,23 +26,23 @@ const Navbar = () => {
           }}
         >
           <p
-            className='lg:text-[58px] text-[38px] leading-none font- '
+            className='lg:text-[58px] text-[38px] leading-none uppercase'
             style={{ fontFamily: 'DreamAvenue' }}
           >
-            F&A
+            Linden
           </p>
           <p
-            className='lg:text-[18px] text-[12px] leading-none font- '
+            className='lg:text-[18px] text-[12px] leading-none uppercase'
             style={{ fontFamily: 'Quicksand, sans-serif' }}
           >
-            FASHION & APPAREL
+            apartment management
           </p>
         </div>
         {/* nav items */}
         <ul
           className={` xl:static fixed top-[75px] ${
             isOpen ? 'right-0' : 'right-[-100%]'
-          } xl:h-auto h-screen xl:w-auto w-[50%] flex xl:flex-row flex-col bg-gray-200 dark:bg-blue-500 xl:opacity-[0.7] backdrop-blur-[25px] xl:px-5 py-2 justify-start xl:justify-center items-center xl:gap-10 gap-8 duration-700 z-[100] xl:rounded-full xl:pt-2 pt-10`}
+          } xl:h-auto h-screen xl:w-auto w-[50%] flex xl:flex-row flex-col  xl:opacity-[0.7] backdrop-blur-[25px] xl:px-5 py-2 justify-start xl:justify-center items-center xl:gap-10 gap-8 duration-700 z-[100] xl:rounded-full xl:pt-2 pt-10`}
         >
           <li
             className='text-black dark:text-black font-medium text-[16px] hover:scale-[1.1] duration-500'
@@ -154,7 +154,7 @@ const Navbar = () => {
           />
         </div>
       </nav>
-      <hr className='text-primaryColor' />
+      <hr className='text-primary-500' />
     </header>
   );
 };
