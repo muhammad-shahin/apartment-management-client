@@ -1,6 +1,7 @@
 import PrimaryButton from '../../Shared/PrimaryButton';
 import './NewBanner.css';
 import { TfiKey } from 'react-icons/tfi';
+import { BiKey } from 'react-icons/bi';
 import { CiLocationArrow1, CiDollar } from 'react-icons/ci';
 import { IoIosArrowDown } from 'react-icons/io';
 import apartVid from '../../assets/video/banner-video.mp4';
@@ -9,6 +10,7 @@ import { useState } from 'react';
 
 const NewBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
   };
@@ -28,7 +30,7 @@ const NewBanner = () => {
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {/* all slide */}
-          {bannerData?.map((banner) => (
+          {bannerData?.map((banner, index) => (
             <div
               key={banner.id}
               className='min-w-full  max-h-screen relative'
@@ -51,15 +53,38 @@ const NewBanner = () => {
               <div className='overlay opacity-60'></div>
 
               <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-center'>
-                <TfiKey className='text-[58px] text-white-50 rotate-[45deg] opacity-75' />
-                <p className='text-white-50 text-[0.9rem] lg:text-[1rem] text-center font-QuickSand font-thin uppercase'>
+                <BiKey
+                  className={`text-[58px] text-white-50  opacity-75 ${
+                    index === currentSlide && 'fade-down'
+                  }`}
+                />
+                {/* AnimatePresence for enter and exit animations */}
+
+                <p
+                  className={`text-white-50 text-[0.9rem] lg:text-[1rem] text-center font-QuickSand font-thin uppercase ${
+                    index === currentSlide && 'fade-up'
+                  }`}
+                  style={{ animationDuration: '0.5s' }}
+                >
                   {banner.bannerSubTitle}
                 </p>
-                <p className='text-white-50 text-[2.5rem] lg:text-[6rem] text-center pb-4 md:mt-[-20px]'>
+                <p
+                  className={`text-white-50 text-[2.5rem] lg:text-[6rem] text-center pb-4 md:mt-[-20px] ${
+                    index === currentSlide && 'fade-up'
+                  }`}
+                  style={{ animationDuration: '0.7s' }}
+                >
                   {banner.bannerTitle}
                 </p>
-                <PrimaryButton text='Discover More' />
-                <div className='md:flex justify-between items-center w-full xl:px-[5%] px-[2%] xl:translate-y-[150px] lg:translate-y-[80px] hidden'>
+                <div
+                  className={`${index === currentSlide && 'fade-up'}`}
+                  style={{ animationDuration: '0.9s' }}
+                >
+                  <PrimaryButton text='Discover More' />
+                </div>
+                <div
+                  className={`md:flex justify-between items-center w-full xl:px-[5%] px-[2%] xl:translate-y-[150px] lg:translate-y-[80px] hidden`}
+                >
                   {/* left side */}
                   <div className='text-justify space-y-2 font-QuickSand font-medium uppercase'>
                     <div className='flex justify-center items-center gap-3'>
@@ -127,8 +152,11 @@ const NewBanner = () => {
           ))}
         </div>
         {/* arrow down button */}
-        <div className='absolute top-[-120px] left-[50%] translate-x-[-50%] arrow-bounce bg-primary-200 bg-opacity-75 rounded-full cursor-pointer'>
-          <IoIosArrowDown className='lg:text-[58px] text-[48px] text-white-50' />
+        <div
+          className='absolute top-[-110px] left-[50%] translate-x-[-50%] arrow-bounce bg-primary-200 bg-opacity-75 rounded-full cursor-pointer hover:bg-primary-500 duration-300'
+          title='See More'
+        >
+          <IoIosArrowDown className='lg:text-[48px] text-[38px] text-white-50' />
         </div>
       </div>
     </div>
