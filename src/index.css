@@ -20,68 +20,37 @@ body {
   background-color: rgba(0, 0, 0, 1);
 }
 
-/* custom slider */
-.slider {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
+
+/* CSS Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.slider-content {
-  overflow: hidden;
+/* Apply the animation to an element */
+.fade-up {
+  animation: fadeUp 0.7s ease-out;
 }
 
-.slide {
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-  width: auto;
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    opacity: 0.75;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    opacity: 0.75;
+  }
 }
 
-.slide-item {
-  min-width: 100%;
-  flex: 0 0 auto;
-}
-
-/* title side bar */
-.title-bar::after {
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-  width: 60px;
-  height: 2px;
-  margin-left: 10px;
-}
-.title-bar::before {
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-  width: 60px;
-  height: 2px;
-  margin-right: 10px;
-}
-
-/* card button appear & disappear style */
-.appearStyle {
-  opacity: 1;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease-in-out, transform 0.5s ease;
-}
-
-.appearStyle.appeared {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.disappearStyle {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.disappearStyle.disappeared {
-  opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none;
+.fade-down {
+  animation: fadeDown 0.5s ease;
 }

@@ -12,7 +12,7 @@ const Home = () => {
       </div>
 
       {/* about building section */}
-      <div className='py-10'>
+      <div className='py-10 container mx-auto px-[5%] lg:px-0'>
         <AboutBuilding />
       </div>
     </section>

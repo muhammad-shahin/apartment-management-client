@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <header
       className={`hover:bg-white-50 dark:hover:bg-transparent-50 duration-300 z-[150] ${
-        isSticky ? 'fixed bg-primary-500 w-full' : 'relative'
+        isSticky ? 'fixed bg-primary-500 w-full bg-opacity-85' : 'relative'
       }`}
       onMouseEnter={() => setHeaderHover(true)}
       onMouseLeave={() => setHeaderHover(false)}
@@ -48,7 +48,7 @@ const Navbar = () => {
             navigate('/');
           }}
         >
-          <p className='xl:text-[58px] sm:text-[38px] xsm:text-[28px] leading-none uppercase'>
+          <p className='xl:text-[58px] sm:text-[38px] xsm:text-[22px] leading-none uppercase'>
             Linden
           </p>
           <p className='xl:text-[18px] text-[12px] leading-none uppercase md:block hidden font-QuickSand'>
@@ -57,9 +57,11 @@ const Navbar = () => {
         </div>
         {/* nav items */}
         <ul
-          className={` lg:static fixed top-[75px] ${
-            isOpen ? 'right-0' : 'right-[-100%]'
-          } lg:h-auto h-screen lg:w-auto w-[50%] flex lg:flex-row flex-col  lg:opacity-[0.9] backdrop-blur-[25px] lg:px-5 py-2 justify-start lg:justify-center items-center lg:gap-10 gap-8 duration-300 z-[100] lg:rounded-full lg:pt-2 pt-10 font-QuickSand  font-bold text-[16px]  lg:bg-opacity-40 bg-primary-100 bg-opacity-30 dark:text-white-50 ${
+          className={` lg:static fixed top-[72px] ${
+            isOpen
+              ? 'right-0'
+              : 'right-[-100%] scale-0 lg:scale-[1] origin-right'
+          } lg:h-auto h-screen lg:w-auto w-[100%] flex lg:flex-row flex-col  lg:opacity-[0.9] backdrop-blur-[25px] lg:px-5 py-2 justify-start lg:justify-center items-center lg:gap-10 gap-8 duration-300 z-[100] lg:rounded-full lg:pt-2 pt-10 font-QuickSand  font-bold text-[16px]  lg:bg-opacity-40 bg-primary-100 bg-opacity-30 dark:text-white-50 ${
             headerHover
               ? 'text-black-50 lg:bg-transparent-50'
               : 'text-white-50 lg:bg-primary-100'
@@ -182,6 +184,7 @@ const Navbar = () => {
             color='#926a3c'
             toggled={isOpen}
             toggle={setOpen}
+            size={30}
           />
         </div>
       </nav>

@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 const Heading = ({ title, subTitle, titleColor }) => {
   return (
     <div
-      className='py-10 pb-20 text-black-50 dark:text-white-50 leading-none space-y-2'
-      data-aos='fade-up'
-      data-aos-easing='linear'
-      data-aos-duration='400'
-    >
+      className='py-10 lg:pb-20 text-black-50 dark:text-white-50 leading-none space-y-2 fade-down'>
       <h1
-        className={`lg:text-[3.5rem] md:text-[3rem] text-[20px] uppercase text-center font-medium   dark:text-white-50 ${
+        className={`lg:text-[3.5rem] md:text-[3rem] text-[2rem] uppercase text-center font-medium   dark:text-white-50 ${
           titleColor
             ? 'text-blue-400 before:bg-blue-400 after:bg-blue-400'
             : ' text-black-50'

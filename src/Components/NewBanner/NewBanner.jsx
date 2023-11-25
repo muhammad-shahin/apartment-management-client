@@ -60,7 +60,7 @@ const NewBanner = () => {
                 {/* AnimatePresence for enter and exit animations */}
 
                 <p
-                  className={`text-white-50 text-[0.9rem] lg:text-[1rem] text-center font-QuickSand font-thin uppercase ${
+                  className={`text-white-50 text-[0.9rem] md:text-[0.9rem] lg:text-[1rem] text-center font-QuickSand font-thin uppercase ${
                     index === currentSlide && 'fade-up'
                   }`}
                   style={{ animationDuration: '0.5s' }}
@@ -68,7 +68,7 @@ const NewBanner = () => {
                   {banner.bannerSubTitle}
                 </p>
                 <p
-                  className={`text-white-50 text-[2.5rem] lg:text-[6rem] text-center pb-4 md:mt-[-20px] ${
+                  className={`text-white-50 sm:text-[1.5rem] md:text-[2.5rem] lg:text-[6rem] text-center pb-4 md:mt-[-20px] ${
                     index === currentSlide && 'fade-up'
                   }`}
                   style={{ animationDuration: '0.7s' }}

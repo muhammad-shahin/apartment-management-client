@@ -1,6 +1,29 @@
 .nav-next {
-  @apply text-primary-500 text-[48px] opacity-90 hover:opacity-100 duration-300;
+  @apply text-primary-500 md:text-[48px] text-[28px] opacity-90 hover:opacity-100 duration-300;
 }
 .nav-prev {
-  @apply text-primary-500 text-[48px] opacity-90 hover:opacity-100 duration-300;
+  @apply text-primary-500 md:text-[48px] text-[28px] opacity-90 hover:opacity-100 duration-300;
+}
+
+/* Fade left animation */
+.fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-left.fade-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-right.fade-in {
+  opacity: 1;
+  transform: translateX(0);
 }

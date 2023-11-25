@@ -16,29 +16,27 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import './AboutBuilding.css';
+import { useEffect } from 'react';
 
 const AboutBuilding = () => {
   return (
-    <div className='container mx-auto'>
+    <div className=''>
       <Heading
         title='About Building'
         subTitle='the art of living'
       />
-      <div className='flex justify-between items-center'>
+      <div className='flex xl:justify-between justify-center items-center lg:flex-row flex-col flex-wrap lg:gap-4 gap-8'>
         {/* left side content */}
         <div
-          className='space-y-4'
-          data-aos='fade-right'
-          data-aos-easing='linear'
-          data-aos-duration='500'
+          className='space-y-4 fade-up'
+          style={{ animationDuration: '0.7s' }}
         >
           <h3
-            className={` text-[2.5rem] lg:text-[5rem] text-justify pb-4 md:mt-[-20px] max-w-[520px] leading-none dark:text-white-50 fade-up`}
-            style={{ animationDuration: '0.7s' }}
+            className={` text-[2.5rem] xl:text-[5rem] xl:text-justify text-center pb-4 xl:max-w-[520px] leading-none dark:text-white-50`}
           >
             The Concept of Luxury
           </h3>
-          <p className='max-w-[520px] font-QuickSand text-gray-600 dark:text-gray-300 md:text-xl text-lg'>
+          <p className='xl:max-w-[520px] font-QuickSand text-gray-600 dark:text-gray-300 xl:text-xl text-lg xl:text-justify text-center '>
             Group One is excited to present this exeptional property in the
             prestegious location of London City. Designed by Lucy De Vito and
             built in the 2020 to a very high standard, this spectacular
@@ -47,12 +45,7 @@ const AboutBuilding = () => {
           </p>
         </div>
         {/* right side */}
-        <div
-          className='lg:max-w-[700px] relative'
-          data-aos='fade-left'
-          data-aos-easing='linear'
-          data-aos-duration='500'
-        >
+        <div className='lg:max-w-[700px] w-full relative -left opacity-[1]'>
           <Swiper
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
