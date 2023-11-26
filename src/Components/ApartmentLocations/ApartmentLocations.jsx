@@ -62,7 +62,7 @@ const ApartmentLocations = () => {
         title='Our Locations'
         subTitle='Find Us in This Locations'
       />
-      <div className='flex xl:justify-between justify-center items-start lg:flex-row flex-col flex-wrap lg:gap-4 gap-8 '>
+      <div className='flex xl:justify-between justify-center items-start lg:flex-row flex-col flex- lg:gap-4 gap-8 '>
         {/* left side content */}
         <div
           className='space-y-4 fade-up'
@@ -73,43 +73,43 @@ const ApartmentLocations = () => {
             Gulshan Avenue, Dhaka
           </p>
           <h3
-            className={` text-[2.5rem] xl:text-[4rem] xl:text-justify text-center pb-4 xl:max-w-[620px] leading-none dark:text-white-50`}
+            className={`text-2xl md:text-[2.5rem] xl:text-[3.5rem] xl:text-justify text-center pb-4 xl:max-w-[620px] leading-none dark:text-white-50`}
           >
-            <span className='spacing'>10/2 South Auchpara</span> Gulshan Avenue,
+            <span className='lg:spacing'>10/2 South Auchpara</span> Gulshan Avenue,
             Dhaka
           </h3>
           {/* location details */}
-          <div className='space-y-6'>
-            <p className='lg:text-left text-center desc flex lg:justify-start justify-center items-center gap-3'>
+          <div className='lg:space-y-6 space-y-2'>
+            <p className='lg:text-left desc flex justify-start  items-center gap-3'>
               <MdOutlineDone className='text-gray-600 text-[24px]' />
               Central Location
             </p>
-            <p className='lg:text-left text-center desc flex lg:justify-start justify-center items-center gap-3'>
+            <p className='lg:text-left desc flex justify-start  items-center gap-3'>
               <MdOutlineDone className='text-gray-600 text-[24px]' />
               All is at Your Doorstep
             </p>
-            <p className='lg:text-left text-center desc flex lg:justify-start justify-center items-center gap-3'>
+            <p className='lg:text-left desc flex justify-start  items-center gap-3'>
               <MdOutlineDone className='text-gray-600 text-[24px]' />
               Shopping Center — 5 min Walk
             </p>
-            <p className='lg:text-left text-center desc flex lg:justify-start justify-center items-center gap-3'>
+            <p className='lg:text-left desc flex justify-start  items-center gap-3'>
               <MdOutlineDone className='text-gray-600 text-[24px]' />
               Station and Overground — 5 min Walk
             </p>
-            <p className='lg:text-left text-center desc flex lg:justify-start justify-center items-center gap-3'>
+            <p className='lg:text-left desc flex justify-start  items-center gap-3'>
               <MdOutlineDone className='text-gray-600 text-[24px]' />
               Good Schools in the Neighborhood
             </p>
             {/* Add more details as needed */}
-            <p className='lg:text-left text-center desc flex lg:justify-start justify-center items-center gap-3'>
+            <p className='lg:text-left desc flex justify-start  items-center gap-3'>
               <MdOutlineDone className='text-gray-600 text-[24px]' />
               Nearby Parks and Recreation
             </p>
-            <p className='lg:text-left text-center desc flex lg:justify-start justify-center items-center gap-3'>
+            <p className='lg:text-left desc flex justify-start  items-center gap-3'>
               <MdOutlineDone className='text-gray-600 text-[24px]' />
               Restaurants and Cafes Nearby
             </p>
-            <p className='lg:text-left text-center desc flex lg:justify-start justify-center items-center gap-3'>
+            <p className='lg:text-left desc flex justify-start  items-center gap-3'>
               <MdOutlineDone className='text-gray-600 text-[24px]' />
               Medical Facilities in Proximity
             </p>
@@ -117,7 +117,7 @@ const ApartmentLocations = () => {
         </div>
         {/* right side map */}
         <div
-          className='lg:max-w-[700px] w-full'
+          className='lg:max-w-[700px] w-full lg:h-[750px] h-[350px]'
           style={{ animationDuration: '0.7s' }}
           ref={rightDivRef}
         >
@@ -131,8 +131,8 @@ const ApartmentLocations = () => {
                 zoom: 12,
               }}
               style={{
-                width: 700,
-                height: 700,
+                width: '100%',
+                height: '100%',
                 borderRadius: 12,
                 overflow: 'hidden',
                 border: '2px solid #aa8448',
