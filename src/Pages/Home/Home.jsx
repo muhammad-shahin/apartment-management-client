@@ -1,6 +1,7 @@
 import AboutBuilding from '../../Components/AboutBuilding/AboutBuilding';
 import ApartmentFeatures from '../../Components/ApartmentFeatures/ApartmentFeatures';
 import ApartmentLocations from '../../Components/ApartmentLocations/ApartmentLocations';
+import Coupon from '../../Components/Coupon/Coupon';
 import FloorPlan from '../../Components/FloorPlan/FloorPlan';
 import NewBanner from '../../Components/NewBanner/NewBanner';
 import PageTitle from '../../Components/PageTitle/PageTitle';
@@ -11,6 +12,10 @@ const Home = () => {
 
   return (
     <section>
+      {/* collect coupon section */}
+      <div className='fixed lg:bottom-[30px] lg:right-[30px] bottom-[10px] right-[10px] z-[200]'>
+        <Coupon />
+      </div>
       <div className='min-h-[100vh]'>
         <NewBanner />
       </div>
@@ -34,7 +39,6 @@ const Home = () => {
       <div className='py-10 bg-primary-100 bg-opacity-75 backdrop-blur-lg'>
         <ApartmentLocations />
       </div>
-
       <Footer />
     </section>
   );

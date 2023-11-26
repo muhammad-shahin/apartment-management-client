@@ -62,10 +62,10 @@ const ApartmentLocations = () => {
         title='Our Locations'
         subTitle='Find Us in This Locations'
       />
-      <div className='flex xl:justify-between justify-center items-start lg:flex-row flex-col flex- lg:gap-4 gap-8 '>
+      <div className='flex xl:justify-between justify-center items-start lg:flex-row flex-col flex- lg:gap-4 gap-8'>
         {/* left side content */}
         <div
-          className='space-y-4 fade-up'
+          className='space-y-8 fade-up'
           style={{ animationDuration: '0.7s' }}
           ref={leftDivRef}
         >
