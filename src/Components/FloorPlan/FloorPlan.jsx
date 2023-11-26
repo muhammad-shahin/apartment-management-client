@@ -1,8 +1,8 @@
-import Heading from '../Heading';
-import square from '../../../assets/icons/square.svg';
-import bedroom from '../../../assets/icons/bedroom.svg';
-import bathroom from '../../../assets/icons/bathroom.svg';
-import SecondaryButton from '../../../Shared/SecondaryButton';
+import Heading from '../Heading/Heading';
+import square from '../../assets/icons/square.svg';
+import bedroom from '../../assets/icons/bedroom.svg';
+import bathroom from '../../assets/icons/bathroom.svg';
+import SecondaryButton from '../../Shared/SecondaryButton';
 import { FaCloudDownloadAlt } from 'react-icons/fa';
 
 const FloorPlan = () => {

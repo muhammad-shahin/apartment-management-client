@@ -1,9 +1,10 @@
 import AboutBuilding from '../../Components/AboutBuilding/AboutBuilding';
 import ApartmentFeatures from '../../Components/ApartmentFeatures/ApartmentFeatures';
 import ApartmentLocations from '../../Components/ApartmentLocations/ApartmentLocations';
-import FloorPlan from '../../Components/Heading/FloorPlan/FloorPlan';
+import FloorPlan from '../../Components/FloorPlan/FloorPlan';
 import NewBanner from '../../Components/NewBanner/NewBanner';
 import PageTitle from '../../Components/PageTitle/PageTitle';
+import Footer from '../../Layouts/Footer/Footer';
 
 const Home = () => {
   PageTitle('Home - Apartment Management Web Application');
@@ -33,6 +34,8 @@ const Home = () => {
       <div className='py-10 bg-primary-100 bg-opacity-75 backdrop-blur-lg'>
         <ApartmentLocations />
       </div>
+
+      <Footer />
     </section>
   );
 };

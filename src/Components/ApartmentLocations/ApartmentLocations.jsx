@@ -75,8 +75,8 @@ const ApartmentLocations = () => {
           <h3
             className={`text-2xl md:text-[2.5rem] xl:text-[3.5rem] xl:text-justify text-center pb-4 xl:max-w-[620px] leading-none dark:text-white-50`}
           >
-            <span className='lg:spacing'>10/2 South Auchpara</span> Gulshan Avenue,
-            Dhaka
+            <span className='lg:spacing'>10/2 South Auchpara</span> Gulshan
+            Avenue, Dhaka
           </h3>
           {/* location details */}
           <div className='lg:space-y-6 space-y-2'>
@@ -133,10 +133,9 @@ const ApartmentLocations = () => {
               style={{
                 width: '100%',
                 height: '100%',
-                borderRadius: 12,
                 overflow: 'hidden',
                 border: '2px solid #aa8448',
-                boxShadow: '5px 5px 10px #aa8448 ',
+                boxShadow: '5px 5px 5px #aa8448 ',
               }}
               mapStyle='mapbox://styles/mapbox/streets-v11'
             >
