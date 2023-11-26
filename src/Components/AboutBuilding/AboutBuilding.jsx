@@ -67,8 +67,6 @@ const AboutBuilding = () => {
               enabled: true,
             }}
             pagination={{ clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
             className='w-full'
             cssMode={true}
             autoplay={{ delay: 3000 }}
