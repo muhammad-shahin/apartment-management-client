@@ -24,21 +24,21 @@ const FloorPlan = () => {
           <h3 className='xl:max-w-[720px] text-center title xl:text-left'>
             Explore Our Thoughtfully Designed Floor Plans
           </h3>
-          <p className='xl:max-w-[720px] text-center desc xl:text-left'>
+          <p className='xl:max-w-[720px] text-center desc lg:text-left'>
             This spacious triple aspect home is spread across 864 sq ft of
             living space and features a master bedroom suite with a walk through
             wardrobe. Additionally, this residence provides our owners with
             private garden.
           </p>
           {/* icons with features */}
-          <div className='space-y-6'>
+          <div className='space-y-6 w-fit mx-auto lg:mx-0'>
             <div className='flex justify-start items-center gap-3'>
               <img
                 src={square}
                 loading='lazy'
                 className='w-[32px]'
               />
-              <p className='xl:max-w-[720px] text-center desc xl:text-left'>
+              <p className='xl:max-w-[720px] text-center desc lg:text-left'>
                 Build surface: 864 sq. ft
               </p>
             </div>
@@ -48,7 +48,7 @@ const FloorPlan = () => {
                 loading='lazy'
                 className='w-[32px]'
               />
-              <p className='xl:max-w-[720px] text-center desc xl:text-left'>
+              <p className='xl:max-w-[720px] text-center desc lg:text-left'>
                 Bedrooms: ×3
               </p>
             </div>
@@ -58,7 +58,7 @@ const FloorPlan = () => {
                 loading='lazy'
                 className='w-[32px]'
               />
-              <p className='xl:max-w-[720px] text-center desc xl:text-left'>
+              <p className='xl:max-w-[720px] text-center desc lg:text-left'>
                 Bathrooms: ×2
               </p>
             </div>
@@ -69,7 +69,7 @@ const FloorPlan = () => {
             download='floor-plan.svg'
             target='_blank'
             rel='noreferrer'
-            className='block'
+            className='block w-fit mx-auto lg:mx-0'
           >
             <SecondaryButton
               text={'Download Plan'}

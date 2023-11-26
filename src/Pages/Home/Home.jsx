@@ -1,4 +1,5 @@
 import AboutBuilding from '../../Components/AboutBuilding/AboutBuilding';
+import ApartmentFeatures from '../../Components/ApartmentFeatures/ApartmentFeatures';
 import FloorPlan from '../../Components/Heading/FloorPlan/FloorPlan';
 import NewBanner from '../../Components/NewBanner/NewBanner';
 import PageTitle from '../../Components/PageTitle/PageTitle';
@@ -20,6 +21,11 @@ const Home = () => {
       {/* floor plan section */}
       <div className='py-10 bg-primary-100 bg-opacity-75 backdrop-blur-lg'>
         <FloorPlan />
+      </div>
+
+      {/* Apartment Features section */}
+      <div className='py-10 container mx-auto px-[5%] lg:px-0'>
+        <ApartmentFeatures />
       </div>
     </section>
   );
