@@ -16,9 +16,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import './AboutBuilding.css';
-import { useEffect } from 'react';
+import { useRef } from 'react';
+import useScroll from '../../Hooks/useScroll';
 
 const AboutBuilding = () => {
+  const leftDivRef = useRef(null);
+  useScroll(leftDivRef, 'fade-up');
+  const rightDivRef = useRef(null);
+  useScroll(rightDivRef, 'fade-down');
   return (
     <div className=''>
       <Heading
@@ -30,6 +35,7 @@ const AboutBuilding = () => {
         <div
           className='space-y-4 fade-up'
           style={{ animationDuration: '0.7s' }}
+          ref={leftDivRef}
         >
           <h3
             className={` text-[2.5rem] xl:text-[5rem] xl:text-justify text-center pb-4 xl:max-w-[520px] leading-none dark:text-white-50`}
@@ -45,7 +51,11 @@ const AboutBuilding = () => {
           </p>
         </div>
         {/* right side */}
-        <div className='lg:max-w-[700px] w-full relative -left opacity-[1]'>
+        <div
+          className='lg:max-w-[700px] w-full relative fade-down'
+          style={{ animationDuration: '0.7s' }}
+          ref={rightDivRef}
+        >
           <Swiper
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
