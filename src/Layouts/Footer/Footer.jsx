@@ -27,10 +27,35 @@ const Footer = () => {
 
           {/* social icons */}
           <div className='flex lg:justify-start justify-center items-center gap-4'>
-            <FaFacebookF className='text-white-50 text-[28px] opacity-75 hover:opacity-100 duration-300 cursor-pointer' />
-            <FaInstagram className='text-white-50 text-[32px] opacity-75 hover:opacity-100 duration-300 cursor-pointer' />
-            <FaLinkedin className='text-white-50 text-[32px] opacity-75 hover:opacity-100 duration-300 cursor-pointer' />
-            <FaYoutube className='text-white-50 text-[32px] opacity-75 hover:opacity-100 duration-300 cursor-pointer' />
+            <a
+              href='https://www.facebook.com/ShahinMuhammad2/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <FaFacebookF className='text-white-50 text-[28px] opacity-75 hover:opacity-100 duration-300 cursor-pointer' />
+            </a>
+
+            <a
+              href='https://www.instagram.com/muhammad_shahin_2.0/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <FaInstagram className='text-white-50 text-[32px] opacity-75 hover:opacity-100 duration-300 cursor-pointer' />
+            </a>
+            <a
+              href='https://www.linkedin.com/in/shahin-muhammad/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <FaLinkedin className='text-white-50 text-[32px] opacity-75 hover:opacity-100 duration-300 cursor-pointer' />
+            </a>
+            <a
+              href='https://www.youtube.com/channel/UCphWLPgu-Ep4EFfE5SPvVaQ'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <FaYoutube className='text-white-50 text-[32px] opacity-75 hover:opacity-100 duration-300 cursor-pointer' />
+            </a>
           </div>
         </div>
 
