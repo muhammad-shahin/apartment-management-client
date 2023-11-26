@@ -62,3 +62,7 @@ body {
 .desc {
   @apply font-QuickSand text-gray-600 dark:text-gray-300 xl:text-xl text-lg;
 }
+
+.spacing {
+  word-spacing: -10px;
+}
