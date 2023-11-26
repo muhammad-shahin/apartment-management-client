@@ -54,3 +54,11 @@ body {
 .fade-down {
   animation: fadeDown 0.5s ease;
 }
+
+/* global header and description style */
+.title {
+  @apply text-[2.5rem] xl:text-[5rem] pb-4 leading-none dark:text-white-50;
+}
+.desc {
+  @apply font-QuickSand text-gray-600 dark:text-gray-300 xl:text-xl text-lg;
+}
