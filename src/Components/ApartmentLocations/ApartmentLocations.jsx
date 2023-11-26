@@ -152,7 +152,7 @@ const ApartmentLocations = () => {
                       size={30}
                       color='red'
                     />
-                    <p className=' font-medium uppercase lg:text-xl bg-primary-500 px-2 py-1 rounded-full text-white-50 font-QuickSand'>
+                    <p className=' font-medium uppercase lg:text-xl bg-primary-500 px-3 py-1 rounded-full text-white-50'>
                       {marker.title}
                     </p>
                   </div>

@@ -38,7 +38,8 @@ const Home = () => {
       {/* collect coupon section */}
       <div
         className='fixed lg:bottom-[30px] lg:right-[30px] bottom-[10px] right-[10px] z-[200]'
-        onMouseEnter={() => setOpenCoupon(true)}
+        onMouseEnter={() => setOpenCoupon(!openCoupon)}
+        onClick={() => setOpenCoupon(!openCoupon)}
       >
         <Coupon />
       </div>
