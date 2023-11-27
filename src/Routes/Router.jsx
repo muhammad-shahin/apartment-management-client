@@ -1,6 +1,7 @@
 import Root from '../Layouts/Root/Root';
 import Apartments from '../Pages/Apartments/Apartments';
 import Dashboard from '../Pages/Dashboard/Dashboard';
+import Profile from '../Pages/Dashboard/Profile/Profile';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
@@ -31,6 +32,12 @@ const routes = [
       {
         path: '/dashboard',
         element: <Dashboard />,
+        children: [
+          {
+            path: '/dashboard/profile',
+            element: <Profile />,
+          },
+        ],
       },
     ],
   },
