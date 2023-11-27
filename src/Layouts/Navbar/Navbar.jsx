@@ -14,12 +14,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [headerHover, setHeaderHover] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const isScrollPast = scrollY >= 0.5 * window.innerHeight;
-
       setIsSticky(isScrollPast);
     };
 
@@ -29,12 +27,15 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
   return (
     <header
       className={`hover:bg-white-50 dark:hover:bg-transparent-50 duration-300 z-[150] ${
+        window.location.pathname === '/'
+          ? 'bg-transparent-50'
+          : 'bg-primary-500 bg-opacity-85'
+      } ${
         isSticky ? 'fixed bg-primary-500 w-full bg-opacity-85' : 'relative'
-      }`}
+      } `}
       onMouseEnter={() => setHeaderHover(true)}
       onMouseLeave={() => setHeaderHover(false)}
     >
@@ -81,7 +82,7 @@ const Navbar = () => {
               setOpen(false);
             }}
           >
-            <NavLink to='/myCart'>Apartment</NavLink>
+            <NavLink to='/apartments'>Apartments</NavLink>
           </li>
           <li
             className=' hover:scale-[1.1] duration-500'

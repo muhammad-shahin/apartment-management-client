@@ -27,8 +27,8 @@ const CustomModal = ({
       ref={customModal}
       className='sticky top-0 left-0 w-full h-full bg-transparent-50 font-bold'
     >
-      <div className='w-full h-full flex justify-center items-center'>
-        <div className='w-fit bg-white-50 rounded-lg'>
+      <div className='w-full h-full flex justify-center items-center '>
+        <div className='w-fit bg-white-50 '>
           {customIcon ? (
             <div className='w-fit mx-auto pt-6 pb-2'>{customIcon}</div>
           ) : (
@@ -46,7 +46,7 @@ const CustomModal = ({
             onClick={() => {
               setCustomModalStatus(false);
             }}
-            className='text-center bg-primary-500 text-white-50 text-xl w-full py-2 hover:bg-red-500 transition-all rounded-b-lg'
+            className='text-center bg-primary-500 text-white-50 text-xl w-full py-2 hover:bg-red-500 transition-all'
           >
             Close
           </button>
