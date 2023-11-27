@@ -188,7 +188,9 @@ const Navbar = () => {
         </div>
       </nav>
       {/* horizontal row */}
-      {/* <hr className='text-primary-500' /> */}
+      {window.location.pathname !== '/' && (
+        <div className='xl:h-[3px] h-[2px] w-full bg-primary-800'> </div>
+      )}
     </header>
   );
 };

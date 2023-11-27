@@ -37,6 +37,10 @@ const routes = [
             path: '/dashboard/profile',
             element: <Profile />,
           },
+          {
+            path: '/dashboard/my-agreements',
+            element: <Profile />,
+          },
         ],
       },
     ],

@@ -9,8 +9,8 @@ const SideBar = () => {
   return (
     <div className={`relative`}>
       <div
-        className={`fixed bg-primary-500 h-screen bg-opacity-95 backdrop-blur-lg duration-300 ${
-          collapseSidebar ? 'lg:w-[320px] w-0' : 'lg:w-[50px] w-[300px]'
+        className={`absolute bg-primary-500 h-screen bg-opacity-95 backdrop-blur-lg duration-300 ${
+          collapseSidebar ? 'lg:w-[320px] w-0' : 'lg:w-[50px] w-[270px]'
         } z-[100]`}
         onMouseEnter={() => setCollapseSidebar(true)}
         onMouseLeave={() => setCollapseSidebar(false)}
@@ -19,11 +19,11 @@ const SideBar = () => {
         <div className='py-4'>
           <div
             className={`text-white-50 lg:text-[1.5rem] text-sm ${
-              collapseSidebar ? 'lg:block' : 'lg:hidden block'
+              collapseSidebar ? 'lg:block hidden' : 'lg:hidden block'
             }`}
           >
             <hr />
-            <p className='uppercase py-3 text-center'>Manage Dashboard</p>
+            <p className='uppercase py-3 text-center '>Manage Dashboard</p>
             <hr />
           </div>
 
@@ -42,7 +42,7 @@ const SideBar = () => {
                     {data.icon}
                     <p
                       className={`${
-                        collapseSidebar ? 'lg:block' : 'lg:hidden block'
+                        collapseSidebar ? 'lg:block hidden' : 'lg:hidden block'
                       }`}
                     >
                       {data.name === 'My Profile' && role === 'admin'
