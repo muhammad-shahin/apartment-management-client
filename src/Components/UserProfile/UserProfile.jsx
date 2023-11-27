@@ -1,16 +1,16 @@
 import './UserProfile.css';
 import { NavLink } from 'react-router-dom';
 import { RiDashboardFill } from 'react-icons/ri';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { RxDashboard } from 'react-icons/rx';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const UserProfile = () => {
-  const { user, logoutUser, showProfile } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
 
   return (
     <div
-      className={`rounded bg-primary-200 backdrop-blur-[25px] bg-opacity-[0.69] p-5 text-center relative z-50 lg:min-w-[320px]`}
+      className={`rounded bg-primary-400 backdrop-blur-[25px] bg-opacity-[0.69] p-5 text-center relative z-50 lg:min-w-[320px]`}
     >
       <img
         src={
@@ -48,15 +48,15 @@ const UserProfile = () => {
         </NavLink>
         <NavLink
           className=' font-bold text-[18px] flex justify-center items-center gap-3'
-          to='/cart'
+          to='/dashboard'
         >
-          <AiOutlineShoppingCart />
-          View Cart
+          <RxDashboard />
+          Dashboard
         </NavLink>
       </div>
       <hr className='w-full h-[2px] bg-gray-300 mt-3' />
       <button
-        className='px-5 py-2 bg-primary-500 rounded-full font-bold text-white-50 hover:scale-[0.9] hover:bg-red-500 duration-300 my-4'
+        className='px-5 py-2 bg-primary-500 rounded-full font-bold text-white-50 hover:scale-[0.9] hover:bg-red-500 duration-300 my-4 uppercase'
         onClick={() => {
           logoutUser();
         }}
