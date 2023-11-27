@@ -37,7 +37,9 @@ const UserProfile = () => {
         {user?.emailVerified ? 'Verified' : 'Not Verified'}
       </p>
       <h4 className=' font-bold text-[18px]'>{user?.displayName}</h4>
-      <p className='text-[18px] font-semibold  mt-2'>{user?.email}</p>
+      <p className='text-[18px] font-semibold  mt-2'>
+        {user?.email ? user?.email : 'anonymous@gmail.com'}
+      </p>
       <hr className='w-full h-[2px] bg-gray-300 mt-3' />
 
       {/* Pages */}

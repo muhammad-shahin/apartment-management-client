@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
   const secureAxios = useAxios();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [updatedCartCount, setUpdatedCartCount] = useState(0);
+  const [isSticky, setIsSticky] = useState(false);
   const googleProvider = new GoogleAuthProvider();
 
   // email & password sign up
@@ -96,8 +96,8 @@ const AuthProvider = ({ children }) => {
     setShowProfile,
     loading,
     setLoading,
-    updatedCartCount,
-    setUpdatedCartCount,
+    isSticky,
+    setIsSticky,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

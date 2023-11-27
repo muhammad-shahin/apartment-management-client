@@ -8,9 +8,10 @@ const Profile = () => {
   const recentReqTableHeadData = [
     '#',
     'Request Date',
-    'Block Name',
     'Block No',
     'Apartment No',
+    'Rent',
+    'Action',
   ];
   const { user } = useContext(AuthContext);
   return (
@@ -60,7 +61,7 @@ const Profile = () => {
         <p className='text-xl lg:text-4xl text-center uppercase text-primary-700'>
           Recent renting request
         </p>
-        <DashboardTable />
+        <DashboardTable tableHead={recentReqTableHeadData} />
       </div>
     </div>
   );

@@ -9,15 +9,16 @@ import { VscAccount } from 'react-icons/vsc';
 import DarkTheme from '../../Components/DarkTheme/DarkTheme';
 
 const Navbar = () => {
-  const { user, showProfile, setShowProfile } = useContext(AuthContext);
+  const { user, showProfile, setShowProfile, setIsSticky, isSticky } =
+    useContext(AuthContext);
   const [isOpen, setOpen] = useState(false);
   const navigate = useNavigate();
   const [headerHover, setHeaderHover] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
+  // const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const isScrollPast = scrollY >= 0.5 * window.innerHeight;
+      const isScrollPast = scrollY >= 0.4 * window.innerHeight;
       setIsSticky(isScrollPast);
     };
 

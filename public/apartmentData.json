@@ -1,0 +1,82 @@
+[
+  {
+    "requestDate": "21 Oct, 2023",
+    "blockName": "A",
+    "blockNo": "4A",
+    "ApartmentNo": "102-B",
+    "status": "Approved",
+    "rent": 4800
+  },
+  {
+    "requestDate": "18 Sep, 2023",
+    "blockName": "C",
+    "blockNo": "7C",
+    "ApartmentNo": "205-C",
+    "status": "Rejected",
+    "rent": 6200
+  },
+  {
+    "requestDate": "02 Nov, 2023",
+    "blockName": "B",
+    "blockNo": "9B",
+    "ApartmentNo": "301-A",
+    "status": "Pending",
+    "rent": 5500
+  },
+  {
+    "requestDate": "07 Dec, 2023",
+    "blockName": "D",
+    "blockNo": "13D",
+    "ApartmentNo": "504-B",
+    "status": "Approved",
+    "rent": 5100
+  },
+  {
+    "requestDate": "14 Jan, 2024",
+    "blockName": "A",
+    "blockNo": "2A",
+    "ApartmentNo": "105-C",
+    "status": "Pending",
+    "rent": 5900
+  },
+  {
+    "requestDate": "30 Nov, 2023",
+    "blockName": "C",
+    "blockNo": "5C",
+    "ApartmentNo": "202-A",
+    "status": "Rejected",
+    "rent": 4800
+  },
+  {
+    "requestDate": "10 Feb, 2024",
+    "blockName": "B",
+    "blockNo": "8B",
+    "ApartmentNo": "401-C",
+    "status": "Pending",
+    "rent": 5300
+  },
+  {
+    "requestDate": "25 Dec, 2023",
+    "blockName": "D",
+    "blockNo": "12D",
+    "ApartmentNo": "602-A",
+    "status": "Approved",
+    "rent": 5900
+  },
+  {
+    "requestDate": "05 Mar, 2024",
+    "blockName": "A",
+    "blockNo": "3A",
+    "ApartmentNo": "203-B",
+    "status": "Pending",
+    "rent": 5100
+  },
+  {
+    "requestDate": "15 Feb, 2024",
+    "blockName": "C",
+    "blockNo": "6C",
+    "ApartmentNo": "307-C",
+    "status": "Rejected",
+    "rent": 5500
+  }
+]

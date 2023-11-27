@@ -1,36 +1,45 @@
 import PropTypes from 'prop-types';
 import SecondaryButton from './SecondaryButton';
+import apartmentData from '../../public/apartmentData.json';
 
-const DashboardTable = ({ tableHead }) => {
+const DashboardTable = ({ children, tableHead }) => {
   return (
     <div className='py-6'>
       <table className='w-full border'>
         <thead>
-          <tr className='bg-primary-700 text-white-50 text-2xl lg:text-3xl'>
-            <th className='border border-gray-700 p-2'>#</th>
-            <th className='border border-gray-700 p-2'>Product Name</th>
-            <th className='border border-gray-700 p-2'>Brand Name</th>
-            <th className='border border-gray-700 p-2'>Category</th>
-            <th className='border border-gray-700 p-2'>Action</th>
+          <tr className='bg-primary-500 text-white-50 text-2xl lg:text-3xl'>
+            {tableHead.map((rowName, index) => (
+              <th
+                key={rowName + index}
+                className='border border-gray-700 p-2'
+              >
+                {rowName}
+              </th>
+            ))}
           </tr>
         </thead>
 
         <tbody className='text-center font-QuickSand'>
-          <tr className='border border-primary-700'>
-            <td className='border border-primary-700 p-2'>{'index + 1'}</td>
-            <td className='border border-primary-700 p-2'>
-              {'product.productName'}
-            </td>
-            <td className='border border-primary-700 p-2'>
-              {'product.brandName'}
-            </td>
-            <td className='border border-primary-700 p-2'>
-              {'product.productType'}
-            </td>
-            <td className='border border-primary-700 p-2'>
-              <SecondaryButton text='Action' />
-            </td>
-          </tr>
+          {apartmentData.map((requested, index) => (
+            <tr
+              key={requested.blockNo + index}
+              className='border border-primary-700'
+            >
+              <td className='border border-primary-700 p-2'>{index + 1}</td>
+              <td className='border border-primary-700 p-2'>
+                {requested.requestDate}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.blockNo}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.status}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                <SecondaryButton text='Action' />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
@@ -39,6 +48,7 @@ const DashboardTable = ({ tableHead }) => {
 
 DashboardTable.propTypes = {
   tableHead: PropTypes.array,
+  children: PropTypes.node,
 };
 
 export default DashboardTable;

@@ -1,15 +1,44 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import sidebarData from '../../assets/data/sidebarData';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const SideBar = () => {
   const [collapseSidebar, setCollapseSidebar] = useState(true);
+  const { setIsSticky, isSticky } = useContext(AuthContext);
   const role = 'user';
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Update the scroll position when the user scrolls
+      const currentPosition = window.scrollY;
+      setScrollPosition(currentPosition);
+      console.log(currentPosition);
+    };
+
+    // Attach the scroll event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className={`relative`}>
+    <div
+      className={`relative ${
+        isSticky === false && scrollPosition === 0
+          ? 'top-[0]'
+          : isSticky
+          ? 'top-[103px]'
+          : 'top-[-103px]'
+      } duration-300`}
+    >
       <div
-        className={`absolute bg-primary-500 h-screen bg-opacity-95 backdrop-blur-lg duration-300 ${
+        className={`fixed bg-primary-500 h-screen bg-opacity-95 backdrop-blur-lg duration-300 ${
           collapseSidebar ? 'lg:w-[320px] w-0' : 'lg:w-[50px] w-[270px]'
         } z-[100]`}
         onMouseEnter={() => setCollapseSidebar(true)}
