@@ -8,7 +8,7 @@ import bathroom from '../../assets/icons/bathroom.svg';
 import SecondaryButton from '../../Shared/SecondaryButton';
 const ApartmentCard = ({ cardData }) => {
   return (
-    <div className='p-4 border border-primary-500 rounded-lg'>
+    <div className='p-4 border border-primary-500 rounded-lg dark:bg-primary-500 dark:text-white-50'>
       <div>
         <img
           src='https://newhome.qodeinteractive.com/wp-content/uploads/2023/03/main-home-property-460x300.jpg'
@@ -19,7 +19,7 @@ const ApartmentCard = ({ cardData }) => {
 
       {/* location */}
       <div className='flex lg:justify-start justify-center items-center gap-1 pt-2 pb-1'>
-        <CiLocationOn className='text-gray-400 lg:text-[22px]' />
+        <CiLocationOn className='text-gray-400 dark:text-black-50 lg:text-[22px]' />
         <p className='font-QuickSand font-medium text-sm lg:text-lg'>
           Apartment - Gulshan Ave
         </p>
@@ -37,19 +37,19 @@ const ApartmentCard = ({ cardData }) => {
       {/* block name, apartment no, floor no */}
       <div className='flex lg:justify-between justify-center items-center flex-wrap py-4 lg:gap-0 gap-2'>
         <div className='flex justify-start items-center gap-1 pt-2 pb-1 uppercase'>
-          <MdApartment className='text-gray-400 text-[18px]' />
+          <MdApartment className='text-gray-400 dark:text-black-50 text-[18px]' />
           <p className='font-QuickSand font-medium text-sm lg:text-base'>
             Block Name - C
           </p>
         </div>
         <div className='flex justify-start items-center gap-1 pt-2 pb-1 uppercase'>
-          <MdFollowTheSigns className='text-gray-400 text-[18px]' />
+          <MdFollowTheSigns className='text-gray-400 dark:text-black-50 text-[18px]' />
           <p className='font-QuickSand font-medium text-sm lg:text-base'>
             BLOCK No - 13c
           </p>
         </div>
         <div className='flex justify-start items-center gap-1 pt-2 pb-1 uppercase'>
-          <AiOutlineApartment className='text-gray-400 text-[18px]' />
+          <AiOutlineApartment className='text-gray-400 dark:text-black-50 text-[18px]' />
           <p className='font-QuickSand font-medium text-sm lg:text-base'>
             Apt. no - 125A
           </p>

@@ -134,8 +134,8 @@ const ApartmentLocations = () => {
                 width: '100%',
                 height: '100%',
                 overflow: 'hidden',
-                border: '2px solid #aa8448',
-                boxShadow: '5px 5px 5px #aa8448 ',
+                border: '2px solid #6d89c4',
+                boxShadow: '5px 5px 5px #6d89c4 ',
               }}
               mapStyle='mapbox://styles/mapbox/streets-v11'
             >
