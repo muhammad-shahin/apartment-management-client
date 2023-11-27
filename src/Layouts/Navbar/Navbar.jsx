@@ -145,7 +145,7 @@ const Navbar = () => {
             setShowProfile(!showProfile);
           }}
         >
-          {user && user.photoURL !== null && (
+          {user && (
             <div className='flex justify-center items-center lg:gap-3'>
               <p
                 className={`font-bold text-lg uppercase hidden lg:block ${
@@ -155,7 +155,11 @@ const Navbar = () => {
                 {user?.displayName.split(' ')[0]}
               </p>
               <img
-                src={user.photoURL}
+                src={
+                  user?.photoURL
+                    ? user.photoURL
+                    : 'https://wallpapers-clan.com/wp-content/uploads/2022/12/anonymous-pfp-1.jpg'
+                }
                 className='w-[48px] h-[48px] object-cover rounded-full cursor-pointer'
                 loading='lazy'
               />

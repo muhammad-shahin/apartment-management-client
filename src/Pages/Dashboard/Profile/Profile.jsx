@@ -11,6 +11,7 @@ const Profile = () => {
     'Block No',
     'Apartment No',
     'Rent',
+    'Status',
     'Action',
   ];
   const { user } = useContext(AuthContext);
@@ -30,7 +31,11 @@ const Profile = () => {
       {/* profile details */}
       <div className='w-fit mx-auto relative text-center'>
         <img
-          src={user?.photoURL}
+          src={
+            user?.photoURL
+              ? user.photoURL
+              : 'https://wallpapers-clan.com/wp-content/uploads/2022/12/anonymous-pfp-1.jpg'
+          }
           className='lg:w-[150px] lg:h-[150px] w-[100px] h-[100px] object-cover rounded-full cursor-pointer absolute top-[-80px] lg:translate-x-[80px] translate-x-[55px]'
           loading='lazy'
         />

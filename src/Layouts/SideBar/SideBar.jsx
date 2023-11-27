@@ -6,22 +6,17 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const SideBar = () => {
   const [collapseSidebar, setCollapseSidebar] = useState(true);
-  const { setIsSticky, isSticky } = useContext(AuthContext);
+  const { isSticky } = useContext(AuthContext);
   const role = 'user';
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update the scroll position when the user scrolls
       const currentPosition = window.scrollY;
       setScrollPosition(currentPosition);
       console.log(currentPosition);
     };
-
-    // Attach the scroll event listener when the component mounts
     window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };

@@ -4,8 +4,8 @@ import apartmentData from '../../public/apartmentData.json';
 
 const DashboardTable = ({ children, tableHead }) => {
   return (
-    <div className='py-6'>
-      <table className='w-full border'>
+    <div className='py-6 overflow-auto'>
+      <table className='w-fit mx-auto min-w-[60vw]'>
         <thead>
           <tr className='bg-primary-500 text-white-50 text-2xl lg:text-3xl'>
             {tableHead.map((rowName, index) => (
@@ -33,10 +33,16 @@ const DashboardTable = ({ children, tableHead }) => {
                 {requested.blockNo}
               </td>
               <td className='border border-primary-700 p-2'>
+                {requested.ApartmentNo}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.rent}
+              </td>
+              <td className='border border-primary-700 p-2'>
                 {requested.status}
               </td>
               <td className='border border-primary-700 p-2'>
-                <SecondaryButton text='Action' />
+                {requested.status}
               </td>
             </tr>
           ))}

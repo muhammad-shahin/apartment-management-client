@@ -13,19 +13,15 @@ const UserProfile = () => {
     <div
       className={`rounded bg-primary-200 backdrop-blur-[25px] bg-opacity-[0.69] p-5 text-center relative z-50 lg:min-w-[320px]`}
     >
-      {user?.photoURL !== null ? (
-        <img
-          src={user?.photoURL}
-          className='rounded-full w-[64px] object-cover mx-auto'
-          loading='lazy'
-        />
-      ) : (
-        <VscAccount
-          className={`text-[64px] text-sky-500 cursor-pointer rounded-full text-center mx-auto ${
-            showProfile && 'bg-blue-500 text-white-50'
-          }`}
-        />
-      )}
+      <img
+        src={
+          user?.photoURL
+            ? user.photoURL
+            : 'https://wallpapers-clan.com/wp-content/uploads/2022/12/anonymous-pfp-1.jpg'
+        }
+        className='rounded-full w-[64px] object-cover mx-auto'
+        loading='lazy'
+      />
       <p className='font-bold text-[14px] mt-2'>Profile Status</p>
       <p
         className={`${
