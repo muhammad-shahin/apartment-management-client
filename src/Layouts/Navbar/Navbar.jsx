@@ -18,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const isScrollPast = scrollY >= 0.4 * window.innerHeight;
+      const isScrollPast = scrollY >= 0.5 * window.innerHeight;
       setIsSticky(isScrollPast);
     };
 
@@ -185,7 +185,7 @@ const Navbar = () => {
         {/* hamburger menu */}
         <div className='lg:hidden'>
           <Hamburger
-            color='#926a3c'
+            color='#5a72b6'
             toggled={isOpen}
             toggle={setOpen}
             size={30}

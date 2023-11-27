@@ -4,7 +4,6 @@ import { RiDashboardFill } from 'react-icons/ri';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-import { VscAccount } from 'react-icons/vsc';
 
 const UserProfile = () => {
   const { user, logoutUser, showProfile } = useContext(AuthContext);

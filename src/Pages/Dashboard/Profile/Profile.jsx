@@ -16,7 +16,8 @@ const Profile = () => {
   ];
   const { user } = useContext(AuthContext);
   return (
-    <div className='bg-primary-50 lg:min-h-[88vh] min-h-[100vh] leading-none'>
+    <div className='bg-primary-50 lg:min-h-[88vh] min-h-[100vh] leading-none px-[5%] lg:px-0 w-full mx-auto'>
+      {/* cover image */}
       <div className='h-[180px] w-full overflow-hidden'>
         <div className='relative w-full h-full'>
           <img

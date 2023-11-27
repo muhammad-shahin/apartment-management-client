@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import SecondaryButton from './SecondaryButton';
 import apartmentData from '../../public/apartmentData.json';
+import TableActionButtons from './TableActionButtons';
 
 const DashboardTable = ({ children, tableHead }) => {
   return (
     <div className='py-6 overflow-auto'>
-      <table className='w-fit mx-auto min-w-[60vw]'>
+      <table className='w-full mx-auto min-w-[60vw]'>
         <thead>
           <tr className='bg-primary-500 text-white-50 text-2xl lg:text-3xl'>
             {tableHead.map((rowName, index) => (
@@ -42,10 +42,45 @@ const DashboardTable = ({ children, tableHead }) => {
                 {requested.status}
               </td>
               <td className='border border-primary-700 p-2'>
-                {requested.status}
+                <TableActionButtons
+                  add='Approve'
+                  update='Update'
+                  remove='Remove'
+                />
               </td>
             </tr>
           ))}
+          {apartmentData.map((requested, index) => (
+            <tr
+              key={requested.blockNo + index}
+              className='border border-primary-700'
+            >
+              <td className='border border-primary-700 p-2'>{index + 1}</td>
+              <td className='border border-primary-700 p-2'>
+                {requested.requestDate}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.blockNo}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.ApartmentNo}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.rent}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.status}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                <TableActionButtons
+                  add='Approve'
+                  update='Update'
+                  remove='Remove'
+                />
+              </td>
+            </tr>
+          ))}
+          {children}
         </tbody>
       </table>
     </div>
