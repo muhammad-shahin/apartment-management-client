@@ -31,7 +31,7 @@ const Navbar = () => {
     <header
       className={`hover:bg-white-50 dark:hover:bg-transparent-50 duration-300 z-[150] ${
         window.location.pathname === '/'
-          ? 'bg-transparent-50'
+          ? ''
           : 'bg-primary-500 bg-opacity-85'
       } ${
         isSticky ? 'fixed bg-primary-500 w-full bg-opacity-85' : 'relative'

@@ -1,5 +1,6 @@
 import Root from '../Layouts/Root/Root';
 import Apartments from '../Pages/Apartments/Apartments';
+import Dashboard from '../Pages/Dashboard/Dashboard';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
@@ -26,6 +27,10 @@ const routes = [
       {
         path: '/apartments',
         element: <Apartments />,
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard />,
       },
     ],
   },
