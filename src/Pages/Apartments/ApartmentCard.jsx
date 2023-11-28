@@ -76,33 +76,33 @@ const ApartmentCard = ({ cardData }) => {
           {rent}$
         </p>
         <div className='flex lg:justify-between justify-center items-center gap-4'>
-          <div className='flex justify-start items-center gap-1'>
+          <div className='flex justify-center items-center gap-1'>
             <img
               src={square}
               loading='lazy'
               className='w-[24px]'
             />
-            <p className='font-QuickSand font-medium text-sm lg:text-lg'>
+            <p className='font-QuickSand font-medium text-sm lg:text-xl'>
               {size}m<sup>2</sup>
             </p>
           </div>
-          <div className='flex justify-start items-center gap-1'>
+          <div className='flex justify-center items-center gap-1'>
             <img
               src={bedroom}
               loading='lazy'
               className='w-[24px]'
             />
-            <p className='font-QuickSand font-medium text-sm lg:text-lg'>
+            <p className='font-QuickSand font-medium text-sm lg:text-xl'>
               {totalBedroom}
             </p>
           </div>
-          <div className='flex justify-start items-center gap-1'>
+          <div className='flex justify-center items-center gap-1'>
             <img
               src={bathroom}
               loading='lazy'
               className='w-[24px]'
             />
-            <p className='font-QuickSand font-medium text-sm lg:text-lg'>
+            <p className='font-QuickSand font-medium text-sm lg:text-xl'>
               {totalBathroom}
             </p>
           </div>
