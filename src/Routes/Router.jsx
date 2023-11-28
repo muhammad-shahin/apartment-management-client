@@ -39,6 +39,10 @@ const routes = [
             element: <Profile />,
           },
           {
+            path: '/dashboard/profile',
+            element: <Profile />,
+          },
+          {
             path: '/dashboard/announcements',
             element: <Announcements />,
           },

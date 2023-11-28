@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import PageTitle from '../../Components/PageTitle/PageTitle';
 import ApartmentCard from './ApartmentCard';
 import useAxios from '../../Hooks/useAxios';
@@ -9,14 +9,19 @@ import Lottie from 'lottie-react';
 import Swal from 'sweetalert2';
 import Heading from '../../Components/Heading/Heading';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import publicAxios from '../../api/publicAxios';
 
 const Apartments = () => {
   PageTitle('All Apartments - Apartment Management Web Application');
   const secureAxios = useAxios();
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   let totalApartment = 0;
   const {
-    data: apartmentsData,
+    data: apartmentsData = [],
     isLoading,
     isPending,
     isError,
@@ -25,7 +30,7 @@ const Apartments = () => {
   } = useQuery({
     queryKey: ['getApartments', currentPage],
     queryFn: async () => {
-      const res = await secureAxios.get(`/apartments?page=${currentPage}`);
+      const res = await publicAxios.get(`/apartments?page=${currentPage}`);
       return res.data;
     },
   });
@@ -94,8 +99,58 @@ const Apartments = () => {
     }
   };
 
+  // handle agreement button click
+  const userObjectId = localStorage.getItem('registeredUser');
+  const handleApartmentAgreement = (apartmentObjectId) => {
+    if (user && userObjectId) {
+      const newAgreement = {
+        user: userObjectId,
+        apartment: apartmentObjectId,
+        bookingDate: new Date().toLocaleDateString('en-US', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        }),
+        acceptedDate: 'Pending',
+        bookingStatus: 'Pending',
+      };
+      secureAxios.post('/booked-apartments', newAgreement).then((res) => {
+        if (res?.data?.success) {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Agreement Request Send Successfully',
+            text: 'Agreement Request Send Successfully. View your agreement request status navigate to dashboard.',
+            showConfirmButton: true,
+            confirmButtonText: 'Go Dashboard',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate('/dashboard/profile');
+            }
+          });
+        } else {
+          Swal.fire({
+            title:
+              'Failed To Send Agreement Request! Please Try Again Later :)',
+            confirmButtonText: 'OKAY',
+            icon: 'error',
+          });
+        }
+      });
+    } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'You Have to Login To Send Agreement Request',
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      navigate('/login ');
+    }
+  };
+
   return (
-    <div className='container mx-auto py-20 lg:px-0 px-[5%]'>
+    <div className='container mx-auto pb-10 lg:px-0 px-[5%]'>
       <Heading
         title='All Apartment List'
         className='text-primary-700'
@@ -105,6 +160,7 @@ const Apartments = () => {
           <ApartmentCard
             key={apartment._id}
             cardData={apartment}
+            handleAgreement={handleApartmentAgreement}
           />
         ))}
       </div>

@@ -45,6 +45,7 @@ const AuthProvider = ({ children }) => {
             console.log('Logout success response: ', res.data);
             localStorage.removeItem('access-token');
             localStorage.removeItem('userData');
+            localStorage.removeItem('registeredUser');
           })
           .catch((error) => {
             console.log('Logout error response : ', error.response);

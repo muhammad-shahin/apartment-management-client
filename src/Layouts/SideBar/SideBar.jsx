@@ -15,7 +15,6 @@ const SideBar = () => {
     const handleScroll = () => {
       const currentPosition = window.scrollY;
       setScrollPosition(currentPosition);
-      console.log(currentPosition);
     };
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -67,6 +66,7 @@ const SideBar = () => {
                         ? 'bg-primary-50 text-primary-500'
                         : 'text-white-50'
                     }`}
+                    onClick={() => setCurrentSelected(index)}
                   >
                     {data.icon}
                     <p

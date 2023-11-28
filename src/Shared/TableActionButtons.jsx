@@ -23,7 +23,7 @@ const TableActionButtons = ({
           <MdDone className='text-[22px] text-white' />
         </button>
       )}
-      {remove && (
+      {update && (
         <button
           className='bg-blue-400 rounded-full p-2 hover:bg-primary-600 hover:text-white-50 duration-300'
           onClick={handleUpdate}
@@ -32,7 +32,7 @@ const TableActionButtons = ({
           <RxUpdate className='text-[22px] text-white' />
         </button>
       )}
-      {update && (
+      {remove && (
         <button
           className='bg-blue-400 rounded-full p-2 hover:bg-primary-600 hover:text-white-50 duration-300'
           onClick={handleRemove}

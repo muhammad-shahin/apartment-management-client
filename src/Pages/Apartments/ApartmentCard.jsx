@@ -6,7 +6,7 @@ import square from '../../assets/icons/square.svg';
 import bedroom from '../../assets/icons/bedroom.svg';
 import bathroom from '../../assets/icons/bathroom.svg';
 import SecondaryButton from '../../Shared/SecondaryButton';
-const ApartmentCard = ({ cardData }) => {
+const ApartmentCard = ({ cardData, handleAgreement }) => {
   const {
     apartmentImages,
     location,
@@ -19,7 +19,9 @@ const ApartmentCard = ({ cardData }) => {
     totalBedroom,
     totalBathroom,
     details,
+    _id,
   } = cardData;
+
   return (
     <div className='p-4 border border-primary-500 rounded-lg dark:bg-primary-500 dark:text-white-50'>
       <div>
@@ -114,6 +116,7 @@ const ApartmentCard = ({ cardData }) => {
         <SecondaryButton
           text='Agreement'
           className='rounded-full lg:py-[6px]'
+          handleClick={() => handleAgreement(_id)}
         />
         <SecondaryButton
           text='View Details'
@@ -126,6 +129,7 @@ const ApartmentCard = ({ cardData }) => {
 
 ApartmentCard.propTypes = {
   cardData: PropTypes.object,
+  handleAgreement: PropTypes.func,
 };
 
 export default ApartmentCard;

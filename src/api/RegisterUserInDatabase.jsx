@@ -4,6 +4,7 @@ const RegisterUserInDatabase = (userData) => {
   publicAxios
     .post('/users', userData)
     .then((res) => {
+      localStorage.setItem('registeredUser', res?.data?.insertedId);
       console.log('Register user in Database success :', res.data);
     })
     .catch((error) => {

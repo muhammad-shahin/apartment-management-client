@@ -2,9 +2,18 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import DashboardTable from '../../../Shared/DashboardTable';
 import PageTitle from '../../../Components/PageTitle/PageTitle';
+import useAxios from '../../../Hooks/useAxios';
+import Lottie from 'lottie-react';
+import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
+import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
+import TableActionButtons from '../../../Shared/TableActionButtons';
 
 const Profile = () => {
   PageTitle('Profile | Linden Apartment Management ');
+  const secureAxios = useAxios();
+  const { user } = useContext(AuthContext);
+  const userObjectId = localStorage.getItem('registeredUser');
   const recentReqTableHeadData = [
     '#',
     'Request Date',
@@ -14,7 +23,51 @@ const Profile = () => {
     'Status',
     'Action',
   ];
-  const { user } = useContext(AuthContext);
+
+  // get requested apartment data
+  const {
+    data: requestedApartmentsData = [],
+    isLoading,
+    isPending,
+    isError,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ['getRequestedApartments'],
+    queryFn: async () => {
+      const res = await secureAxios.get(`/booked-apartments/${userObjectId}`);
+      return res.data;
+    },
+  });
+
+  // handle error
+  if (isError) {
+    console.log('Failed to Load your requested apartment data : ', error);
+    Swal.fire({
+      title: 'Failed To Fetch Data! Please Try Again :)',
+      confirmButtonText: 'Try Again',
+      icon: 'error',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        refetch();
+      }
+    });
+  }
+
+  // handle loading
+  if (isLoading || isPending) {
+    return (
+      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4'>
+        <h1 className='lg:text-5xl text-2xl text-center gradient-text py-3'>
+          Loading Please Wait
+        </h1>
+        <Lottie
+          loop
+          animationData={loadingAnimation}
+        />
+      </div>
+    );
+  }
   return (
     <div className='bg-primary-50 lg:min-h-[88vh] min-h-[100vh] leading-none px-[5%] lg:px-0 w-full mx-auto'>
       {/* cover image */}
@@ -67,7 +120,34 @@ const Profile = () => {
         <p className='text-xl lg:text-4xl text-center uppercase text-primary-700'>
           Recent renting request
         </p>
-        <DashboardTable tableHead={recentReqTableHeadData} />
+        <DashboardTable tableHead={recentReqTableHeadData}>
+          {requestedApartmentsData.map((requested, index) => (
+            <tr
+              key={requested?.apartment?.blockName + index}
+              className='border border-primary-700'
+            >
+              <td className='border border-primary-700 p-2'>{index + 1}</td>
+              <td className='border border-primary-700 p-2'>
+                {requested.bookingDate}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.apartment.blockName}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.apartment.apartmentNo}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.apartment.rent}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                {requested.bookingStatus}
+              </td>
+              <td className='border border-primary-700 p-2'>
+                <TableActionButtons remove='Remove' />
+              </td>
+            </tr>
+          ))}
+        </DashboardTable>
       </div>
     </div>
   );
