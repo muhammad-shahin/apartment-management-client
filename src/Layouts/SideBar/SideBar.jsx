@@ -9,6 +9,7 @@ const SideBar = () => {
   const { isSticky } = useContext(AuthContext);
   const role = 'user';
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [currentSelected, setCurrentSelected] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +35,7 @@ const SideBar = () => {
     >
       <div
         className={`fixed bg-primary-500 h-screen bg-opacity-95 backdrop-blur-lg duration-300 ${
-          collapseSidebar ? 'lg:w-[320px] w-0' : 'lg:w-[50px] w-[270px]'
+          collapseSidebar ? 'lg:w-[320px] w-0' : 'lg:w-[60px] w-[270px]'
         } z-[100]`}
         onMouseEnter={() => setCollapseSidebar(true)}
         onMouseLeave={() => setCollapseSidebar(false)}
@@ -61,7 +62,11 @@ const SideBar = () => {
                   <div
                     className={`duration-300 ${
                       collapseSidebar ? 'px-5' : 'pl-2'
-                    } py-2 hover:bg-primary-50 hover:text-primary-500 rounded flex justify-start items-center gap-3 text-white-50 lg:text-[1.5rem] text-sm cursor-pointer w-[90%] mx-auto mt-6`}
+                    } py-2 hover:bg-primary-50 hover:text-primary-500 rounded flex justify-start items-center gap-3  lg:text-[1.5rem] text-sm cursor-pointer w-[90%] mx-auto mt-6 ${
+                      currentSelected === index
+                        ? 'bg-primary-50 text-primary-500'
+                        : 'text-white-50'
+                    }`}
                   >
                     {data.icon}
                     <p

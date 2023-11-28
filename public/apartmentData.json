@@ -1,82 +1,162 @@
 [
   {
-    "requestDate": "21 Oct, 2023",
+    "apartmentImages": [
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/129494/pexels-photo-129494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    ],
+    "location": "Gulshan Ave",
+    "apartmentName": "South Sun House House",
     "blockName": "A",
-    "blockNo": "4A",
-    "ApartmentNo": "102-B",
-    "status": "Approved",
-    "rent": 4800
+    "floorNo": "4A",
+    "apartmentNo": "102-B",
+    "rent": 4800,
+    "size": 150,
+    "totalBedroom": 2,
+    "totalBathroom": 1,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
   },
   {
-    "requestDate": "18 Sep, 2023",
-    "blockName": "C",
-    "blockNo": "7C",
-    "ApartmentNo": "205-C",
-    "status": "Rejected",
-    "rent": 6200
-  },
-  {
-    "requestDate": "02 Nov, 2023",
+    "apartmentImages": [
+      "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    ],
+    "location": "Banani",
+    "apartmentName": "Green Valley Residency House",
     "blockName": "B",
-    "blockNo": "9B",
-    "ApartmentNo": "301-A",
-    "status": "Pending",
-    "rent": 5500
+    "floorNo": "3B",
+    "apartmentNo": "201-A",
+    "rent": 5500,
+    "size": 180,
+    "totalBedroom": 3,
+    "totalBathroom": 2,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
   },
   {
-    "requestDate": "07 Dec, 2023",
-    "blockName": "D",
-    "blockNo": "13D",
-    "ApartmentNo": "504-B",
-    "status": "Approved",
-    "rent": 5100
-  },
-  {
-    "requestDate": "14 Jan, 2024",
-    "blockName": "A",
-    "blockNo": "2A",
-    "ApartmentNo": "105-C",
-    "status": "Pending",
-    "rent": 5900
-  },
-  {
-    "requestDate": "30 Nov, 2023",
+    "apartmentImages": [
+      "https://images.pexels.com/photos/813692/pexels-photo-813692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    ],
+    "location": "Dhanmondi",
+    "apartmentName": "Lake View Apartments House",
     "blockName": "C",
-    "blockNo": "5C",
-    "ApartmentNo": "202-A",
-    "status": "Rejected",
-    "rent": 4800
+    "floorNo": "2C",
+    "apartmentNo": "301-C",
+    "rent": 6000,
+    "size": 200,
+    "totalBedroom": 4,
+    "totalBathroom": 3,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
   },
   {
-    "requestDate": "10 Feb, 2024",
-    "blockName": "B",
-    "blockNo": "8B",
-    "ApartmentNo": "401-C",
-    "status": "Pending",
-    "rent": 5300
-  },
-  {
-    "requestDate": "25 Dec, 2023",
+    "apartmentImages": [
+      "https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    ],
+    "location": "Mirpur",
+    "apartmentName": "Hillside Residency House",
     "blockName": "D",
-    "blockNo": "12D",
-    "ApartmentNo": "602-A",
-    "status": "Approved",
-    "rent": 5900
+    "floorNo": "1D",
+    "apartmentNo": "401-D",
+    "rent": 7000,
+    "size": 160,
+    "totalBedroom": 2,
+    "totalBathroom": 2,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
   },
   {
-    "requestDate": "05 Mar, 2024",
-    "blockName": "A",
-    "blockNo": "3A",
-    "ApartmentNo": "203-B",
-    "status": "Pending",
-    "rent": 5100
+    "apartmentImages": [
+      "https://images.pexels.com/photos/1668860/pexels-photo-1668860.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://i.ibb.co/Ss3SW02/building.jpg"
+    ],
+    "location": "Uttara",
+    "apartmentName": "Skyline Towers House",
+    "blockName": "E",
+    "floorNo": "5E",
+    "apartmentNo": "501-E",
+    "rent": 8000,
+    "size": 170,
+    "totalBedroom": 3,
+    "totalBathroom": 2,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
   },
   {
-    "requestDate": "15 Feb, 2024",
-    "blockName": "C",
-    "blockNo": "6C",
-    "ApartmentNo": "307-C",
-    "status": "Rejected",
-    "rent": 5500
+    "apartmentImages": [
+      "https://i.ibb.co/jyK6PL1/master-bedroom.jpg",
+      "https://i.ibb.co/jL2bJzL/guest-room.jpg"
+    ],
+    "location": "Mohakhali",
+    "apartmentName": "Golden Heights House",
+    "blockName": "F",
+    "floorNo": "4F",
+    "apartmentNo": "602-F",
+    "rent": 6500,
+    "size": 190,
+    "totalBedroom": 3,
+    "totalBathroom": 2,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
+  },
+  {
+    "apartmentImages": [
+      "https://i.ibb.co/FYNHtSP/large-bathroom.jpg",
+      "https://i.ibb.co/fCx85v9/big-kirchen.jpg"
+    ],
+    "location": "Baridhara",
+    "apartmentName": "Palm Residences House",
+    "blockName": "G",
+    "floorNo": "3G",
+    "apartmentNo": "701-G",
+    "rent": 7200,
+    "size": 180,
+    "totalBedroom": 4,
+    "totalBathroom": 3,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
+  },
+  {
+    "apartmentImages": [
+      "https://i.ibb.co/9wTBKvZ/dinning-space.jpg",
+      "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    ],
+    "location": "Banani",
+    "apartmentName": "Diamond Residency House",
+    "blockName": "H",
+    "floorNo": "2H",
+    "apartmentNo": "802-H",
+    "rent": 5800,
+    "size": 150,
+    "totalBedroom": 2,
+    "totalBathroom": 1,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
+  },
+  {
+    "apartmentImages": [
+      "https://images.pexels.com/photos/129494/pexels-photo-129494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    ],
+    "location": "Dhanmondi",
+    "apartmentName": "Maple Grove House",
+    "blockName": "I",
+    "floorNo": "1I",
+    "apartmentNo": "902-I",
+    "rent": 6000,
+    "size": 160,
+    "totalBedroom": 3,
+    "totalBathroom": 2,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
+  },
+  {
+    "apartmentImages": [
+      "https://images.pexels.com/photos/813692/pexels-photo-813692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    ],
+    "location": "Uttara",
+    "apartmentName": "Park View Residency House",
+    "blockName": "J",
+    "floorNo": "5J",
+    "apartmentNo": "1001-J",
+    "rent": 7500,
+    "size": 170,
+    "totalBedroom": 2,
+    "totalBathroom": 1,
+    "details": "Modern and spacious apartment with open-concept living areas, offering a perfect blend of comfort and style. Enjoy panoramic views of the cityscape from your private balcony."
   }
 ]

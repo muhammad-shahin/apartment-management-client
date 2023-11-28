@@ -20,7 +20,7 @@ const sidebarData = [
   },
   {
     name: 'My Profile',
-    link: '/dashboard/profile',
+    link: '/dashboard',
     icon: <BsPersonFill className='lg:text-[26px] text-[20px]' />,
     access: ['user', 'member'],
   },

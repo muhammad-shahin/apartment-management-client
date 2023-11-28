@@ -11,12 +11,12 @@ const CreateToken = (id) => {
       localStorage.setItem('access-token', token);
     })
     .catch((error) => {
-      console.log(error.response);
+      console.log(error);
       Swal.fire({
         position: 'center',
         icon: 'error',
         title: 'Failed To Generate Token',
-        text: `Failed To Generate Token. Please Try Again. Error Message: ${error.response.data.message}`,
+        text: `Failed To Generate Token. Please Try Again. Error Message: ${error}`,
         showConfirmButton: false,
         timer: 1500,
       });

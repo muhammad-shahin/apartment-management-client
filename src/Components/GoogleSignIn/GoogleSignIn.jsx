@@ -20,10 +20,11 @@ const GoogleSignIn = () => {
           userName: user?.displayName,
           userEmail: user?.email,
           userId: user?.uid,
+          userRole: 'user',
         };
-        const id = { userId: user.uid };
+        const id = { userId: user?.uid };
         CreateToken(id);
-        RegisterUserInDatabase(userData);
+        // RegisterUserInDatabase(userData);
         Swal.fire({
           position: 'center',
           icon: 'success',
