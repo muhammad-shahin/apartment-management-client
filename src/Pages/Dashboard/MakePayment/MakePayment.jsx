@@ -10,10 +10,16 @@ import SecondaryButton from '../../../Shared/SecondaryButton';
 import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
 import notAvailableAnim from '../../../assets/Animation/notAvailable.json';
 import Lottie from 'lottie-react';
+import {
+  getAllApartmentNo,
+  getApartmentByNo,
+} from '../../../Services/getApartmentByNo';
+import { useState } from 'react';
 
 const MakePayment = () => {
   PageTitle('Payment || Linden Apartment Management');
   const secureAxios = useAxios();
+  const [selectedApartment, setSelectedApartment] = useState('');
   const {
     isLoading,
     isPending,
@@ -82,6 +88,14 @@ const MakePayment = () => {
     );
   }
 
+  //   handle apartment selection
+  const handleApartmentSelection = (e) => {
+    const selected = e.target.value;
+    setSelectedApartment(getApartmentByNo(requestedApartmentsData, selected));
+  };
+  console.log(selectedApartment);
+
+  //   const selectedApartment = getApartmentByNo(requestedApartmentsData, )
   return (
     <div className='container mx-auto min-h-screen'>
       <Heading
@@ -93,9 +107,10 @@ const MakePayment = () => {
           <SelectOptions
             name='selectApartment'
             label='Select Apartment (if you have multiple apartments)'
-            defaultOption={'Select Payment Month'}
+            defaultOption={'Select Apartment By Apartment No.'}
             isRequired={true}
-            optionsData={months}
+            optionsData={getAllApartmentNo(requestedApartmentsData)}
+            handleChange={handleApartmentSelection}
           />
           <div className='flex justify-center items-center lg:flex-row flex-col gap-8'>
             <SelectOptions

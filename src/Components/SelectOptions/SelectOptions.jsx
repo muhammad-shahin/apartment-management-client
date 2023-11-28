@@ -36,7 +36,12 @@ const SelectOptions = ({
             setOpen(false);
           }}
         >
-          <option value={defaultValue}>{defaultOption}</option>
+          <option
+            value=''
+            disabled={open}
+          >
+            {defaultOption}
+          </option>
           {optionsData?.map((district, index) => (
             <option
               key={index}
