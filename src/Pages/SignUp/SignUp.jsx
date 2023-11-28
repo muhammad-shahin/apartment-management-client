@@ -46,8 +46,9 @@ const SignUp = () => {
           const user = userCredential.user;
           const userData = {
             userName: user?.displayName,
-            userEmail: user?.email,
+            userEmail: user?.email || 'anonymoususer@gmail.com',
             userId: user?.uid,
+            userRole: 'user',
           };
           const id = { userId: user.uid };
           updateProfile(auth.currentUser, {

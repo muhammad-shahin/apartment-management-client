@@ -18,13 +18,13 @@ const GoogleSignIn = () => {
         const user = result.user;
         const userData = {
           userName: user?.displayName,
-          userEmail: user?.email,
+          userEmail: user?.email || 'anonymoususer@gmail.com',
           userId: user?.uid,
           userRole: 'user',
         };
         const id = { userId: user?.uid };
         CreateToken(id);
-        // RegisterUserInDatabase(userData);
+        RegisterUserInDatabase(userData);
         Swal.fire({
           position: 'center',
           icon: 'success',

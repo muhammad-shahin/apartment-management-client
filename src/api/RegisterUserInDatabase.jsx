@@ -4,10 +4,10 @@ const RegisterUserInDatabase = (userData) => {
   publicAxios
     .post('/users', userData)
     .then((res) => {
-      console.log('Rigiter user in Database success :', res.data);
+      console.log('Register user in Database success :', res.data);
     })
     .catch((error) => {
-      console.log('Rigiter user in Database error :', error);
+      console.log('Register user in Database error :', error);
     });
 };
 
