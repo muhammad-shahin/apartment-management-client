@@ -90,7 +90,7 @@ const Profile = () => {
               ? user.photoURL
               : 'https://wallpapers-clan.com/wp-content/uploads/2022/12/anonymous-pfp-1.jpg'
           }
-          className='lg:w-[150px] lg:h-[150px] w-[100px] h-[100px] object-cover rounded-full cursor-pointer absolute top-[-80px] lg:translate-x-[80px] translate-x-[55px]'
+          className='lg:w-[150px] lg:h-[150px] w-[100px] h-[100px] object-cover rounded-full cursor-pointer absolute top-[-80px] left-[50%] lg:translate-x-[-50%]'
           loading='lazy'
         />
         <p className='font-bold text-sm lg:text-2xl mt-2 lg:pt-[80px] pt-[30px]'>

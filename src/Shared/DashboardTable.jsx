@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-import apartmentData from '../../public/apartmentData.json';
-import TableActionButtons from './TableActionButtons';
 
 const DashboardTable = ({ children, tableHead }) => {
   return (
@@ -19,7 +17,24 @@ const DashboardTable = ({ children, tableHead }) => {
           </tr>
         </thead>
 
-        <tbody className='text-center font-QuickSand'>{children}</tbody>
+        <tbody className='text-center font-QuickSand'>
+          {children ? (
+            children
+          ) : (
+            <>
+              <tr className='border border-primary-700'>
+                {tableHead.map((data, index) => (
+                  <td
+                    key={'noData' + index}
+                    className='border border-primary-700 p-2'
+                  >
+                    N/A
+                  </td>
+                ))}
+              </tr>
+            </>
+          )}
+        </tbody>
       </table>
     </div>
   );
