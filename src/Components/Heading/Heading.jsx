@@ -7,7 +7,7 @@ const Heading = ({ title, subTitle, titleColor, className }) => {
   useScroll(headingRef, 'fade-up');
   return (
     <div
-      className='py-10 lg:pb-20 text-black-50 dark:text-white-50 leading-none space-y-2 fade-up'
+      className='py-10 lg:pb-10 text-black-50 dark:text-white-50 leading-none space-y-2 fade-up'
       style={{ animationDuration: '0.7s' }}
       ref={headingRef}
     >

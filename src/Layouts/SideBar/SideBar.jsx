@@ -28,8 +28,8 @@ const SideBar = () => {
         isSticky === false && scrollPosition === 0
           ? 'top-[0]'
           : isSticky
-          ? 'top-[103px]'
-          : 'top-[-103px]'
+          ? 'lg:top-[103px] top-[75px]'
+          : 'lg:top-[-103px] top-[-75px]'
       } duration-300`}
     >
       <div
@@ -60,7 +60,7 @@ const SideBar = () => {
                 >
                   <div
                     className={`duration-300 ${
-                      collapseSidebar ? 'px-5' : 'pl-2'
+                      collapseSidebar ? 'lg:px-5' : 'px-2 w-fit'
                     } py-2 hover:bg-primary-50 hover:text-primary-500 rounded flex justify-start items-center gap-3  lg:text-[1.5rem] text-sm cursor-pointer w-[90%] mx-auto mt-6 ${
                       currentSelected === index
                         ? 'bg-primary-50 text-primary-500'
