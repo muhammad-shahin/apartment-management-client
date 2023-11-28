@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import DashboardTable from '../../../Shared/DashboardTable';
 import PageTitle from '../../../Components/PageTitle/PageTitle';
@@ -13,6 +13,7 @@ const Profile = () => {
   PageTitle('Profile | Linden Apartment Management ');
   const secureAxios = useAxios();
   const { user } = useContext(AuthContext);
+  let emptyTable = false;
   const userObjectId = localStorage.getItem('registeredUser');
   const recentReqTableHeadData = [
     '#',
@@ -68,6 +69,11 @@ const Profile = () => {
       </div>
     );
   }
+
+  // handle no data found
+  if (!requestedApartmentsData || requestedApartmentsData?.length === 0) {
+    emptyTable = true;
+  }
   return (
     <div className='bg-primary-50 lg:min-h-[88vh] min-h-[100vh] leading-none px-[5%] lg:px-0 w-full mx-auto'>
       {/* cover image */}
@@ -120,7 +126,10 @@ const Profile = () => {
         <p className='text-xl lg:text-4xl text-center uppercase text-primary-700'>
           Recent renting request
         </p>
-        <DashboardTable tableHead={recentReqTableHeadData}>
+        <DashboardTable
+          emptyTable={emptyTable}
+          tableHead={recentReqTableHeadData}
+        >
           {requestedApartmentsData.map((requested, index) => (
             <tr
               key={requested?.apartment?.blockName + index}

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const DashboardTable = ({ children, tableHead }) => {
+const DashboardTable = ({ children, tableHead, emptyTable }) => {
   return (
     <div className='py-6 overflow-auto'>
       <table className='w-full mx-auto min-w-[60vw]'>
@@ -18,21 +18,18 @@ const DashboardTable = ({ children, tableHead }) => {
         </thead>
 
         <tbody className='text-center font-QuickSand'>
-          {children ? (
-            children
-          ) : (
-            <>
-              <tr className='border border-primary-700'>
-                {tableHead.map((data, index) => (
-                  <td
-                    key={'noData' + index}
-                    className='border border-primary-700 p-2'
-                  >
-                    N/A
-                  </td>
-                ))}
-              </tr>
-            </>
+          {children && children}
+          {emptyTable && (
+            <tr className='border border-primary-700'>
+              {tableHead.map((data, index) => (
+                <td
+                  key={'noData' + index}
+                  className='border border-primary-700 p-2'
+                >
+                  N/A
+                </td>
+              ))}
+            </tr>
           )}
         </tbody>
       </table>
@@ -43,6 +40,7 @@ const DashboardTable = ({ children, tableHead }) => {
 DashboardTable.propTypes = {
   tableHead: PropTypes.array,
   children: PropTypes.node,
+  emptyTable: PropTypes.bool,
 };
 
 export default DashboardTable;
