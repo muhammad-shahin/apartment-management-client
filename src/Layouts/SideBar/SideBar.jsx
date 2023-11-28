@@ -3,11 +3,11 @@ import { IoIosArrowForward } from 'react-icons/io';
 import sidebarData from '../../assets/data/sidebarData';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useRegisteredUser from '../../Hooks/useRegisteredUser';
 
 const SideBar = () => {
   const [collapseSidebar, setCollapseSidebar] = useState(true);
   const { isSticky } = useContext(AuthContext);
-  const role = 'user';
   const [scrollPosition, setScrollPosition] = useState(0);
   const [currentSelected, setCurrentSelected] = useState(0);
 
@@ -21,6 +21,8 @@ const SideBar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  // const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
+  const registeredUser = useRegisteredUser();
 
   return (
     <div
@@ -53,7 +55,7 @@ const SideBar = () => {
 
           {sidebarData.map(
             (data, index) =>
-              data.access.includes(role) && (
+              data.access.includes(registeredUser?.userRole) && (
                 <Link
                   to={data.link}
                   key={'sidebarData' + index}
@@ -74,7 +76,8 @@ const SideBar = () => {
                         collapseSidebar ? 'lg:block hidden' : 'lg:hidden block'
                       }`}
                     >
-                      {data.name === 'My Profile' && role === 'admin'
+                      {data.name === 'My Profile' &&
+                      registeredUser?.userRole === 'admin'
                         ? 'Admin Profile'
                         : data.name}
                     </p>

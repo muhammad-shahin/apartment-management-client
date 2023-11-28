@@ -2,6 +2,7 @@ import Root from '../Layouts/Root/Root';
 import Apartments from '../Pages/Apartments/Apartments';
 import Announcements from '../Pages/Dashboard/Announcements/Announcements';
 import Dashboard from '../Pages/Dashboard/Dashboard';
+import MakePayment from '../Pages/Dashboard/MakePayment/MakePayment';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
@@ -45,6 +46,10 @@ const routes = [
           {
             path: '/dashboard/announcements',
             element: <Announcements />,
+          },
+          {
+            path: '/dashboard/payment',
+            element: <MakePayment />,
           },
         ],
       },

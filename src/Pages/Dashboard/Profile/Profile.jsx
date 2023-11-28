@@ -8,13 +8,15 @@ import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
 import TableActionButtons from '../../../Shared/TableActionButtons';
+import useRegisteredUser from '../../../Hooks/useRegisteredUser';
 
 const Profile = () => {
   PageTitle('Profile | Linden Apartment Management ');
   const secureAxios = useAxios();
   const { user } = useContext(AuthContext);
   let emptyTable = false;
-  const userObjectId = localStorage.getItem('registeredUser');
+  // const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
+  const registeredUser = useRegisteredUser();
   const recentReqTableHeadData = [
     '#',
     'Request Date',
@@ -24,6 +26,9 @@ const Profile = () => {
     'Status',
     'Action',
   ];
+
+  // check _id is available
+  const shouldFetchData = registeredUser?._id ? true : false;
 
   // get requested apartment data
   const {
@@ -36,9 +41,12 @@ const Profile = () => {
   } = useQuery({
     queryKey: ['getRequestedApartments'],
     queryFn: async () => {
-      const res = await secureAxios.get(`/booked-apartments/${userObjectId}`);
+      const res = await secureAxios.get(
+        `/booked-apartments/${registeredUser?._id}`
+      );
       return res.data;
     },
+    enabled: shouldFetchData,
   });
 
   // handle error

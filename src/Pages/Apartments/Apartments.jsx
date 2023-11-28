@@ -100,11 +100,11 @@ const Apartments = () => {
   };
 
   // handle agreement button click
-  const userObjectId = localStorage.getItem('registeredUser');
+  const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
   const handleApartmentAgreement = (apartmentObjectId) => {
-    if (user && userObjectId) {
+    if (user && registeredUser) {
       const newAgreement = {
-        user: userObjectId,
+        user: registeredUser._id,
         apartment: apartmentObjectId,
         bookingDate: new Date().toLocaleDateString('en-US', {
           day: 'numeric',

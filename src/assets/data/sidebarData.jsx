@@ -16,13 +16,13 @@ const sidebarData = [
     name: 'Dashboard',
     link: '/dashboard',
     icon: <RxDashboard className='lg:text-[26px] text-[20px]' />,
-    access: ['user', 'member'],
+    access: ['user', 'member', 'admin'],
   },
   {
     name: 'My Profile',
     link: '/dashboard/profile',
     icon: <BsPersonFill className='lg:text-[26px] text-[20px]' />,
-    access: ['user', 'member'],
+    access: ['user', 'member', 'admin'],
   },
   {
     name: 'Manage Members',
