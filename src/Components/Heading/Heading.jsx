@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import useScroll from '../../Hooks/useScroll';
 
-const Heading = ({ title, subTitle, titleColor }) => {
+const Heading = ({ title, subTitle, titleColor, className }) => {
   const headingRef = useRef(null);
   useScroll(headingRef, 'fade-up');
   return (
@@ -12,11 +12,7 @@ const Heading = ({ title, subTitle, titleColor }) => {
       ref={headingRef}
     >
       <h1
-        className={`lg:text-[3.5rem] md:text-[3rem] text-[2rem] uppercase text-center font-medium   dark:text-white-50 ${
-          titleColor
-            ? 'text-blue-400 before:bg-blue-400 after:bg-blue-400'
-            : ' text-black-50'
-        }`}
+        className={`lg:text-[3.5rem] md:text-[3rem] text-[2rem] uppercase text-center font-medium   dark:text-white-50 ${className}`}
       >
         {title}
       </h1>
@@ -31,6 +27,7 @@ Heading.propTypes = {
   title: PropTypes.string,
   subTitle: PropTypes.string,
   titleColor: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default Heading;

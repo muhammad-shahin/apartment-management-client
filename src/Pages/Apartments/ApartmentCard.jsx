@@ -7,12 +7,25 @@ import bedroom from '../../assets/icons/bedroom.svg';
 import bathroom from '../../assets/icons/bathroom.svg';
 import SecondaryButton from '../../Shared/SecondaryButton';
 const ApartmentCard = ({ cardData }) => {
+  const {
+    apartmentImages,
+    location,
+    apartmentName,
+    blockName,
+    floorNo,
+    apartmentNo,
+    rent,
+    size,
+    totalBedroom,
+    totalBathroom,
+    details,
+  } = cardData;
   return (
     <div className='p-4 border border-primary-500 rounded-lg dark:bg-primary-500 dark:text-white-50'>
       <div>
         <img
-          src='https://newhome.qodeinteractive.com/wp-content/uploads/2023/03/main-home-property-460x300.jpg'
-          className='rounded-md object-cover max-h-[300px] w-full'
+          src={apartmentImages[0]}
+          className='rounded-md object-cover h-[200px] lg:h-[300px] w-full'
           loading='lazy'
         />
       </div>
@@ -21,16 +34,15 @@ const ApartmentCard = ({ cardData }) => {
       <div className='flex lg:justify-start justify-center items-center gap-1 pt-2 pb-1'>
         <CiLocationOn className='text-gray-400 dark:text-black-50 lg:text-[22px]' />
         <p className='font-QuickSand font-medium text-sm lg:text-lg'>
-          Apartment - Gulshan Ave
+          Apartment - {location}
         </p>
       </div>
 
       {/* apartment title & desc */}
-      <div className='md:text-left text-center'>
-        <p className='text-xl lg:text-5xl'>South Sun House</p>
+      <div className='md:text-left text-center space-y-6 mt-3'>
+        <p className='text-xl lg:text-5xl lg:min-h-[100px]'>{apartmentName}</p>
         <p className='font-QuickSand font-medium text-sm lg:text-lg'>
-          Lorem ipsum dolor sit amet, wisi nemore fastidii at vis, eos equidem
-          admodum
+          {details.slice(0, 100)}
         </p>
       </div>
 
@@ -39,19 +51,19 @@ const ApartmentCard = ({ cardData }) => {
         <div className='flex justify-start items-center gap-1 pt-2 pb-1 uppercase'>
           <MdApartment className='text-gray-400 dark:text-black-50 text-[18px]' />
           <p className='font-QuickSand font-medium text-sm lg:text-base'>
-            Block Name - C
+            Block - {blockName}
           </p>
         </div>
         <div className='flex justify-start items-center gap-1 pt-2 pb-1 uppercase'>
           <MdFollowTheSigns className='text-gray-400 dark:text-black-50 text-[18px]' />
           <p className='font-QuickSand font-medium text-sm lg:text-base'>
-            BLOCK No - 13c
+            Floor - {floorNo}
           </p>
         </div>
         <div className='flex justify-start items-center gap-1 pt-2 pb-1 uppercase'>
           <AiOutlineApartment className='text-gray-400 dark:text-black-50 text-[18px]' />
           <p className='font-QuickSand font-medium text-sm lg:text-base'>
-            Apt. no - 125A
+            Apt. no - {apartmentNo}
           </p>
         </div>
       </div>
@@ -61,7 +73,7 @@ const ApartmentCard = ({ cardData }) => {
       {/* price & apartment features */}
       <div className='flex lg:justify-between justify-center items-center flex-wrap py-6 lg:gap-0 gap-4'>
         <p className='text-xl lg:text-2xl font-QuickSand font-semibold'>
-          6,500$
+          {rent}$
         </p>
         <div className='flex lg:justify-between justify-center items-center gap-4'>
           <div className='flex justify-start items-center gap-1'>
@@ -71,7 +83,7 @@ const ApartmentCard = ({ cardData }) => {
               className='w-[24px]'
             />
             <p className='font-QuickSand font-medium text-sm lg:text-lg'>
-              290m<sup>2</sup>
+              {size}m<sup>2</sup>
             </p>
           </div>
           <div className='flex justify-start items-center gap-1'>
@@ -81,7 +93,7 @@ const ApartmentCard = ({ cardData }) => {
               className='w-[24px]'
             />
             <p className='font-QuickSand font-medium text-sm lg:text-lg'>
-              290m<sup>2</sup>
+              {totalBedroom}
             </p>
           </div>
           <div className='flex justify-start items-center gap-1'>
@@ -91,7 +103,7 @@ const ApartmentCard = ({ cardData }) => {
               className='w-[24px]'
             />
             <p className='font-QuickSand font-medium text-sm lg:text-lg'>
-              290m<sup>2</sup>
+              {totalBathroom}
             </p>
           </div>
         </div>
