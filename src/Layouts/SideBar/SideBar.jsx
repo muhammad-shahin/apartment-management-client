@@ -70,7 +70,7 @@ const SideBar = () => {
                 >
                   <div
                     className={`duration-300 ${
-                      collapseSidebar ? 'lg:px-5' : 'px-2 w-fit'
+                      collapseSidebar ? 'lg:px-5' : 'px-2 lg:w-fit'
                     } py-2 hover:bg-primary-50 hover:text-primary-500 rounded flex justify-start items-center gap-3  lg:text-[1.5rem] text-sm cursor-pointer w-[90%] mx-auto mt-6 ${
                       currentSelected === index
                         ? 'bg-primary-50 text-primary-500'

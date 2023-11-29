@@ -2,21 +2,16 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import DashboardTable from '../../../Shared/DashboardTable';
 import PageTitle from '../../../Components/PageTitle/PageTitle';
-import useAxios from '../../../Hooks/useAxios';
 import Lottie from 'lottie-react';
-import { useQuery } from '@tanstack/react-query';
+import useBookedApartment from '../../../Hooks/useBookedApartment';
 import Swal from 'sweetalert2';
 import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
 import TableActionButtons from '../../../Shared/TableActionButtons';
-import useRegisteredUser from '../../../Hooks/useRegisteredUser';
 
 const Profile = () => {
   PageTitle('Profile | Linden Apartment Management ');
-  const secureAxios = useAxios();
   const { user } = useContext(AuthContext);
   let emptyTable = false;
-  // const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
-  const registeredUser = useRegisteredUser();
   const recentReqTableHeadData = [
     '#',
     'Request Date',
@@ -26,28 +21,14 @@ const Profile = () => {
     'Status',
     'Action',
   ];
-
-  // check _id is available
-  const shouldFetchData = registeredUser?._id ? true : false;
-
-  // get requested apartment data
   const {
-    data: requestedApartmentsData = [],
     isLoading,
     isPending,
     isError,
     error,
     refetch,
-  } = useQuery({
-    queryKey: ['getRequestedApartments'],
-    queryFn: async () => {
-      const res = await secureAxios.get(
-        `/booked-apartments/${registeredUser?._id}`
-      );
-      return res.data;
-    },
-    enabled: shouldFetchData,
-  });
+    requestedApartmentsData,
+  } = useBookedApartment();
 
   // handle error
   if (isError) {

@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 
 const DashboardTable = ({ children, tableHead, emptyTable }) => {
   return (
-    <div className='py-6 overflow-auto'>
+    <div
+      className='py-6 overflow-auto fade-up'
+      style={{ animationDuration: '0.9s' }}
+    >
       <table className='w-full mx-auto min-w-[60vw]'>
         <thead>
           <tr className='bg-primary-500 text-white-50 text-2xl lg:text-3xl'>

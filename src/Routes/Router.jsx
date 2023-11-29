@@ -4,6 +4,7 @@ import Announcements from '../Pages/Dashboard/Announcements/Announcements';
 import Checkout from '../Pages/Dashboard/Checkout/Checkout';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import MakePayment from '../Pages/Dashboard/MakePayment/MakePayment';
+import PaymentHistory from '../Pages/Dashboard/PaymentHistory/PaymentHistory';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
@@ -55,6 +56,10 @@ const routes = [
           {
             path: '/dashboard/checkout',
             element: <Checkout />,
+          },
+          {
+            path: '/dashboard/payment-history',
+            element: <PaymentHistory />,
           },
         ],
       },
