@@ -138,14 +138,14 @@ const Navbar = () => {
           </div> */}
         </div>
         {/* Profile Icon */}
-        <div
-          id='profile-icon'
-          className='flex justify-center items-center gap-6 group rounded-full lg:border border-primary-300 lg:pl-5 lg:pr-1 lg:py-1'
-          onClick={() => {
-            setShowProfile(!showProfile);
-          }}
-        >
-          {user && (
+        {user && (
+          <div
+            id='profile-icon'
+            className='flex justify-center items-center gap-6 group rounded-full lg:border border-primary-300 lg:pl-5 lg:pr-1 lg:py-1'
+            onClick={() => {
+              setShowProfile(!showProfile);
+            }}
+          >
             <div className='flex justify-center items-center lg:gap-3'>
               <p
                 className={`font-bold text-lg uppercase hidden lg:block ${
@@ -164,23 +164,17 @@ const Navbar = () => {
                 loading='lazy'
               />
             </div>
-          )}
-          {user?.photoURL === null && (
-            <VscAccount
-              className={`text-[32px] text-sky-500 cursor-pointer rounded-full ${
-                showProfile && 'bg-blue-500 text-white-50'
-              }`}
-            />
-          )}
-          <div
-            className={`absolute lg:top-[100px] top-[72px] right-0 origin-top-right ${
-              showProfile ? 'scale-[1]' : 'scale-0'
-            } duration-200 w-full md:w-auto`}
-            onMouseLeave={() => setShowProfile(!showProfile)}
-          >
-            <UserProfile />
+
+            <div
+              className={`absolute lg:top-[100px] top-[72px] right-0 origin-top-right ${
+                showProfile ? 'scale-[1]' : 'scale-0'
+              } duration-200 w-full md:w-auto`}
+              onMouseLeave={() => setShowProfile(!showProfile)}
+            >
+              <UserProfile />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* hamburger menu */}
         <div className='lg:hidden'>

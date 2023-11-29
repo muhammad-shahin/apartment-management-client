@@ -1,6 +1,7 @@
 import Root from '../Layouts/Root/Root';
 import Apartments from '../Pages/Apartments/Apartments';
 import Announcements from '../Pages/Dashboard/Announcements/Announcements';
+import Checkout from '../Pages/Dashboard/Checkout/Checkout';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import MakePayment from '../Pages/Dashboard/MakePayment/MakePayment';
 import Profile from '../Pages/Dashboard/Profile/Profile';
@@ -50,6 +51,10 @@ const routes = [
           {
             path: '/dashboard/payment',
             element: <MakePayment />,
+          },
+          {
+            path: '/dashboard/checkout',
+            element: <Checkout />,
           },
         ],
       },

@@ -3,7 +3,6 @@ import Heading from '../../../Components/Heading/Heading';
 import Input from '../../../Components/Input/Input';
 import PageTitle from '../../../Components/PageTitle/PageTitle';
 import SelectOptions from '../../../Components/SelectOptions/SelectOptions';
-import useAxios from '../../../Hooks/useAxios';
 import useBookedApartment from '../../../Hooks/useBookedApartment';
 import useRegisteredUser from '../../../Hooks/useRegisteredUser';
 import SecondaryButton from '../../../Shared/SecondaryButton';
@@ -15,11 +14,13 @@ import {
   getApartmentByNo,
 } from '../../../Services/getApartmentByNo';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MakePayment = () => {
   PageTitle('Payment || Linden Apartment Management');
-  const secureAxios = useAxios();
-  const [selectedApartment, setSelectedApartment] = useState('');
+  const navigate = useNavigate();
+  const [selectedApartment, setSelectedApartment] = useState({});
+  const registeredUser = useRegisteredUser();
   const {
     isLoading,
     isPending,
@@ -28,7 +29,6 @@ const MakePayment = () => {
     refetch,
     requestedApartmentsData,
   } = useBookedApartment();
-  const registeredUser = useRegisteredUser();
   const months = [
     'January',
     'February',
@@ -95,7 +95,31 @@ const MakePayment = () => {
   };
   console.log(selectedApartment);
 
-  //   const selectedApartment = getApartmentByNo(requestedApartmentsData, )
+  //   handle form submit
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const paymentOfMonth = form.paymentOfMonth.value;
+    const paymentInitiate = {
+      apartmentInfo: {
+        rent: selectedApartment.apartment?.rent,
+        floorNo: selectedApartment.apartment?.floorNo,
+        apartmentNo: selectedApartment.apartment?.apartmentNo,
+        blockName: selectedApartment.apartment?.blockName,
+      },
+      user: {
+        ...registeredUser,
+      },
+      otherPaymentInfo: {},
+      paymentOfMonth,
+    };
+    localStorage.setItem('paymentInitiate', JSON.stringify(paymentInitiate));
+    console.log(paymentInitiate);
+    form.reset();
+    setSelectedApartment({});
+    navigate('/dashboard/checkout');
+  };
+
   return (
     <div className='container mx-auto min-h-screen'>
       <Heading
@@ -103,7 +127,10 @@ const MakePayment = () => {
         className='text-primary-700'
       />
       <div className='bg-white-50 lg:max-w-[50vw] mx-auto px-5 py-20 rounded '>
-        <form className='max-w-3xl mx-auto space-y-8'>
+        <form
+          className='max-w-3xl mx-auto space-y-8'
+          onSubmit={handleFormSubmit}
+        >
           <SelectOptions
             name='selectApartment'
             label='Select Apartment (if you have multiple apartments)'
@@ -114,7 +141,7 @@ const MakePayment = () => {
           />
           <div className='flex justify-center items-center lg:flex-row flex-col gap-8'>
             <SelectOptions
-              name='selectMonth'
+              name='paymentOfMonth'
               label='Select Month'
               defaultOption={'Select Payment Month'}
               isRequired={true}
@@ -139,7 +166,11 @@ const MakePayment = () => {
               labelText='Block Name'
               className='outline-none text-gray-500'
               readOnly={true}
-              defaultValue={'blockName'}
+              defaultValue={
+                selectedApartment
+                  ? selectedApartment.apartment?.blockName
+                  : 'Select Apartment'
+              }
             />
             <Input
               type='text'
@@ -148,7 +179,11 @@ const MakePayment = () => {
               labelText='Apartment No'
               className='outline-none text-gray-500'
               readOnly={true}
-              defaultValue={'Apartment No'}
+              defaultValue={
+                selectedApartment
+                  ? selectedApartment.apartment?.apartmentNo
+                  : 'Select Apartment'
+              }
             />
           </div>
           <div className='flex justify-center items-center lg:flex-row flex-col gap-8'>
@@ -159,7 +194,11 @@ const MakePayment = () => {
               labelText='Floor No'
               className='outline-none text-gray-500'
               readOnly={true}
-              defaultValue={'Floor No'}
+              defaultValue={
+                selectedApartment
+                  ? selectedApartment.apartment?.floorNo
+                  : 'Select Apartment'
+              }
             />
             <Input
               type='text'
@@ -168,7 +207,11 @@ const MakePayment = () => {
               labelText='Apartment Rent'
               className='outline-none text-gray-500'
               readOnly={true}
-              defaultValue={'Apartment Rent'}
+              defaultValue={
+                selectedApartment
+                  ? selectedApartment.apartment?.rent
+                  : 'Select Apartment'
+              }
             />
           </div>
           <SecondaryButton
