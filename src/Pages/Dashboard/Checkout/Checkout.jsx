@@ -8,6 +8,8 @@ import { useState } from 'react';
 import useAxios from '../../../Hooks/useAxios';
 import { QueryClient } from '@tanstack/react-query';
 import PageTitle from '../../../Components/PageTitle/PageTitle';
+import Lottie from 'lottie-react';
+import loadingAnim from '../../../assets/Animation/loader.json';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
 const Checkout = () => {
@@ -28,6 +30,7 @@ const Checkout = () => {
   );
   const [couponErrMsg, setCouponErrMsg] = useState(null);
   const [couponSuccessMessage, setCouponSuccessMessage] = useState(null);
+  const [loader, setLoader] = useState(false);
   const handleBillingInfoChange = (e) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
@@ -42,11 +45,13 @@ const Checkout = () => {
     return res.data;
   };
   const handleApplyCoupon = async () => {
+    setLoader(true);
     const data = await queryClient.fetchQuery({
       queryKey: ['getCouponData'],
       queryFn: getCoupon,
     });
     if (data.success && data.coupon) {
+      setLoader(false);
       // calculate the coupon discount
       const totalRent = paymentInitiate.apartmentInfo.rent;
       const discountPercent = data.coupon.discount;
@@ -56,6 +61,7 @@ const Checkout = () => {
       setSubTotalRent(subTotal.toFixed(2));
       setCouponSuccessMessage('Coupon Applied');
     } else {
+      setLoader(false);
       data.message === 'Coupon Expired'
         ? setCouponErrMsg('Coupon Expired')
         : setCouponErrMsg('Coupon Not Valid');
@@ -141,17 +147,26 @@ const Checkout = () => {
                   <p className='text-[18px] font-medium'>${subTotalRent}</p>
                 </div>
                 <hr className='w-full h-[2px] bg-gray-300' />
-                <div className='relative h-fit'>
+                <div className='relative h- overflow-hidden rounded'>
                   <Input
                     placeholder='Have Coupon?'
                     onChange={(e) => setCouponCode(e.target.value)}
                     errorMessage={couponErrMsg}
                     successMessage={couponSuccessMessage}
+                    className=''
                   />
                   <button
-                    className='absolute top-[0px] right-0 w-[80px]  bg-primary-700 rounded-r text-white-50 hover:bg-primary-400 hover:text-primary-700 duration-300 px-5 py-2 text-[18px] font-medium border-2 border-transparent-50 text-center'
+                    className={`absolute top-[0px] right-0 w-px]  bg-primary-700 rounded-r text-white-50 hover:bg-primary-400 hover:text-primary-700 duration-300 px-5 py-2 text-[18px] font-medium border-2 border-transparent-50 text-center disabled:cursor-wait disabled:bg-gray-400 flex justify-center items-center gap-2 ${'loader ? '}`}
                     onClick={handleApplyCoupon}
+                    disabled={loader}
                   >
+                    {loader && (
+                      <Lottie
+                        loop
+                        animationData={loadingAnim}
+                        className='w-[40px] h-[30px]'
+                      />
+                    )}
                     Apply
                   </button>
                 </div>

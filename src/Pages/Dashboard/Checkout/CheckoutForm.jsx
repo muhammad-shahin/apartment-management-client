@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import SecondaryButton from '../../../Shared/SecondaryButton';
 import { useNavigate } from 'react-router-dom';
+import loadingAnim from '../../../assets/Animation/loader.json';
+import Lottie from 'lottie-react';
 
 const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
   const stripe = useStripe();
@@ -14,6 +16,7 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
   const secureAxios = useAxios();
   const [errorMessage, setErrorMessage] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     secureAxios
@@ -30,6 +33,7 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    setLoader(true);
     if (!stripe || !elements) {
       return;
     }
@@ -45,9 +49,11 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
     });
 
     if (error) {
+      setLoader(false);
       console.log('Stripe Payment Error : ', error);
       setErrorMessage(error.message);
     } else {
+      setLoader(false);
       console.log('Stripe Payment Intent Success : ', paymentMethod);
       setErrorMessage('');
     }
@@ -85,7 +91,8 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
                 showConfirmButton: false,
                 timer: 2500,
               });
-              navigate('/dashboard/payment-history')
+              setLoader(false);
+              navigate('/dashboard/payment-history');
             }
           })
           .catch((err) => {
@@ -98,9 +105,9 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
               timer: 2500,
             });
           });
-        console.log(paymentInitiate);
       }
     } else if (result.error) {
+      setLoader(false);
       setErrorMessage(result.error.message);
     }
 
@@ -111,8 +118,10 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
       result.error?.type === 'card_error' ||
       error?.type === 'validation_error'
     ) {
+      setLoader(false);
       setErrorMessage(error.message);
     } else {
+      setLoader(false);
       setErrorMessage('An unexpected error occurred.');
     }
   };
@@ -143,9 +152,18 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
         <div className='w-fit mx-auto mt-6'>
           <SecondaryButton
             type='submit'
-            disabled={!stripe}
+            disabled={!stripe || loader}
             text='Pay'
-            className='rounded-full py-1 min-w-[250px]'
+            className={`rounded-full py-1 min-w-[250px] ${loader}`}
+            icon={
+              loader && (
+                <Lottie
+                  loop
+                  animationData={loadingAnim}
+                  className='w-[40px] h-[30px]'
+                />
+              )
+            }
           >
             Pay
           </SecondaryButton>

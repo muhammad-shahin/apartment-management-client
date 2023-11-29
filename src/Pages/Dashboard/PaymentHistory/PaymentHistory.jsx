@@ -3,7 +3,6 @@ import Heading from '../../../Components/Heading/Heading';
 import PageTitle from '../../../Components/PageTitle/PageTitle';
 import usePaymentHistory from '../../../Hooks/usePaymentHistory';
 import DashboardTable from '../../../Shared/DashboardTable';
-import TableActionButtons from '../../../Shared/TableActionButtons';
 import Lottie from 'lottie-react';
 import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
 

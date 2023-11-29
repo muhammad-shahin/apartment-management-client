@@ -10,6 +10,7 @@ import Error from '../Pages/Error/Error';
 import Home from '../Pages/Home/Home';
 import Login from '../Pages/Login/Login';
 import SignUp from '../Pages/SignUp/SignUp';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 const routes = [
   {
@@ -35,31 +36,59 @@ const routes = [
       },
       {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
         children: [
           {
             path: '/dashboard',
-            element: <Profile />,
+            element: (
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            ),
           },
           {
             path: '/dashboard/profile',
-            element: <Profile />,
+            element: (
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            ),
           },
           {
             path: '/dashboard/announcements',
-            element: <Announcements />,
+            element: (
+              <PrivateRoute>
+                <Announcements />
+              </PrivateRoute>
+            ),
           },
           {
             path: '/dashboard/payment',
-            element: <MakePayment />,
+            element: (
+              <PrivateRoute>
+                <MakePayment />
+              </PrivateRoute>
+            ),
           },
           {
             path: '/dashboard/checkout',
-            element: <Checkout />,
+            element: (
+              <PrivateRoute>
+                <Checkout />
+              </PrivateRoute>
+            ),
           },
           {
             path: '/dashboard/payment-history',
-            element: <PaymentHistory />,
+            element: (
+              <PrivateRoute>
+                <PaymentHistory />
+              </PrivateRoute>
+            ),
           },
         ],
       },

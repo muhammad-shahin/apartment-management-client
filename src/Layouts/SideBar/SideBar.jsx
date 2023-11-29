@@ -10,14 +10,14 @@ const SideBar = () => {
   const { isSticky } = useContext(AuthContext);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [currentSelected, setCurrentSelected] = useState(0);
-
+  const path = window.location.pathname;
   useEffect(() => {
     sidebarData.map((data, index) => {
       if (data.link == window.location.pathname) {
         setCurrentSelected(index);
       }
     });
-  }, []);
+  }, [path]);
 
   useEffect(() => {
     const handleScroll = () => {
