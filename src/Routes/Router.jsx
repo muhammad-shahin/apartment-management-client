@@ -4,6 +4,7 @@ import Announcements from '../Pages/Dashboard/Announcements/Announcements';
 import Checkout from '../Pages/Dashboard/Checkout/Checkout';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import MakePayment from '../Pages/Dashboard/MakePayment/MakePayment';
+import ManageMember from '../Pages/Dashboard/ManageMember/ManageMember';
 import PaymentHistory from '../Pages/Dashboard/PaymentHistory/PaymentHistory';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import Error from '../Pages/Error/Error';
@@ -87,6 +88,14 @@ const routes = [
             element: (
               <PrivateRoute>
                 <PaymentHistory />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: '/dashboard/manage-members',
+            element: (
+              <PrivateRoute>
+                <ManageMember />
               </PrivateRoute>
             ),
           },

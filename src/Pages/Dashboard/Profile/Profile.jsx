@@ -7,9 +7,12 @@ import useBookedApartment from '../../../Hooks/useBookedApartment';
 import Swal from 'sweetalert2';
 import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
 import TableActionButtons from '../../../Shared/TableActionButtons';
+import useRegisteredUser from '../../../Hooks/useRegisteredUser';
+import { FcCancel } from 'react-icons/fc';
 
 const Profile = () => {
   PageTitle('Profile | Linden Apartment Management ');
+  const registeredUser = useRegisteredUser();
   const { user } = useContext(AuthContext);
   let emptyTable = false;
   const recentReqTableHeadData = [
@@ -21,6 +24,10 @@ const Profile = () => {
     'Status',
     'Action',
   ];
+  if (registeredUser?.userRole !== 'user') {
+    const toIndex = recentReqTableHeadData.length - 1;
+    recentReqTableHeadData.splice(toIndex, 0, 'Accepted Date');
+  }
   const {
     isLoading,
     isPending,
@@ -63,6 +70,8 @@ const Profile = () => {
   if (!requestedApartmentsData || requestedApartmentsData?.length === 0) {
     emptyTable = true;
   }
+
+  // handle cancel
   return (
     <div className='bg-primary-50 lg:min-h-[88vh] min-h-[100vh] leading-none px-[5%] lg:px-0 w-full mx-auto'>
       {/* cover image */}
@@ -140,8 +149,20 @@ const Profile = () => {
               <td className='border border-primary-700 p-2'>
                 {requested.bookingStatus}
               </td>
+              {registeredUser?.userRole !== 'user' && (
+                <td className='border border-primary-700 p-2'>
+                  {requested.acceptedDate}
+                </td>
+              )}
               <td className='border border-primary-700 p-2'>
-                <TableActionButtons remove='Remove' />
+                <TableActionButtons>
+                  <button
+                    className='bg-blue-400 rounded-full p-2 hover:bg-primary-600 hover:text-white-50 duration-300'
+                    title='Cancel Request'
+                  >
+                    <FcCancel className='text-[22px] text-white' />
+                  </button>
+                </TableActionButtons>
               </td>
             </tr>
           ))}

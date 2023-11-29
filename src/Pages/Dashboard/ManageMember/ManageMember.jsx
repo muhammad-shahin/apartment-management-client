@@ -1,29 +1,31 @@
 import Swal from 'sweetalert2';
 import Heading from '../../../Components/Heading/Heading';
 import PageTitle from '../../../Components/PageTitle/PageTitle';
-import usePaymentHistory from '../../../Hooks/usePaymentHistory';
 import DashboardTable from '../../../Shared/DashboardTable';
 import Lottie from 'lottie-react';
 import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
+import useManageMember from '../../../Hooks/useManageMember';
+import TableActionButtons from '../../../Shared/TableActionButtons';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
-const PaymentHistory = () => {
-  PageTitle('Payment History | Linden Apartment Management');
+const ManageMember = () => {
+  PageTitle('Manage Members | Linden Apartment Management');
   let emptyTable = false;
   const paymentHistoryTableHead = [
     '#',
-    'Payment Date',
-    'Payment Of Month',
-    'Apartment No',
-    'Paid Amount',
-    'Payment Id',
-    'Payment Method',
+    'User Name',
+    'User Email',
+    'User Role',
+    'Auth UID',
+    'Account Created',
+    'Action',
   ];
-  const { isLoading, isPending, isError, error, refetch, paymentHistoryData } =
-    usePaymentHistory();
+  const { isLoading, isPending, isError, error, refetch, allMembersData } =
+    useManageMember();
 
   // handle error
   if (isError) {
-    console.log('Failed to Load your payment history data : ', error);
+    console.log('Failed to Load your Manage All Members data : ', error);
     Swal.fire({
       title: 'Failed To Fetch Data! Please Try Again :)',
       confirmButtonText: 'Try Again',
@@ -51,7 +53,7 @@ const PaymentHistory = () => {
   }
 
   // handle no data found
-  if (!paymentHistoryData || paymentHistoryData?.length === 0) {
+  if (!allMembersData || allMembersData?.length === 0) {
     emptyTable = true;
   }
   return (
@@ -59,36 +61,38 @@ const PaymentHistory = () => {
       {/* recent apartment renting request */}
       <div className='container mx-auto'>
         <Heading
-          title='Payment History'
+          title='Manage All Members'
           className='text-primary-700'
         />
         <DashboardTable
           emptyTable={emptyTable}
           tableHead={paymentHistoryTableHead}
         >
-          {paymentHistoryData?.map((history, index) => (
+          {allMembersData?.map((user, index) => (
             <tr
-              key={history?.otherPaymentInfo?.paymentId}
+              key={user?._id}
               className='border border-primary-700'
             >
               <td className='border border-primary-700 p-2'>{index + 1}</td>
               <td className='border border-primary-700 p-2'>
-                {history?.paymentDate}
+                {user?.userName}
               </td>
               <td className='border border-primary-700 p-2'>
-                {history?.paymentOfMonth}
+                {user?.userEmail}
               </td>
               <td className='border border-primary-700 p-2'>
-                {history?.apartmentInfo.apartmentNo}
+                {user?.userRole}
               </td>
+              <td className='border border-primary-700 p-2'>{user?.userId}</td>
               <td className='border border-primary-700 p-2'>
-                {history?.otherPaymentInfo?.amount}
-              </td>
-              <td className='border border-primary-700 p-2'>
-                {history?.otherPaymentInfo?.paymentId}
+                {user?.userCreated ? user?.userCreated : 'N/A'}
               </td>
               <td className='border border-primary-700 p-2 uppercase'>
-                {history?.otherPaymentInfo?.method}
+                <TableActionButtons remove='remove'>
+                  <button className='bg-blue-400 rounded-full p-2 hover:bg-primary-600 hover:text-white-50 duration-300'>
+                    <RiDeleteBin6Line className='text-[22px] text-white' />
+                  </button>
+                </TableActionButtons>
               </td>
             </tr>
           ))}
@@ -98,4 +102,4 @@ const PaymentHistory = () => {
   );
 };
 
-export default PaymentHistory;
+export default ManageMember;

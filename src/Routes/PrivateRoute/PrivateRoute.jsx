@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Lottie from 'lottie-react';
+import loadingAnimation from '../../assets/Animation/loadingAnimation.json';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
@@ -12,8 +14,14 @@ const PrivateRoute = ({ children }) => {
     return children;
   } else if (loading) {
     return (
-      <div>
-        <h1 className='text-7xl text-center'>Loading....</h1>
+      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4'>
+        <h1 className='lg:text-5xl text-2xl text-center gradient-text py-3'>
+          Loading Please Wait
+        </h1>
+        <Lottie
+          loop
+          animationData={loadingAnimation}
+        />
       </div>
     );
   } else {

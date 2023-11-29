@@ -34,7 +34,7 @@ const TableActionButtons = ({
       )}
       {remove && (
         <button
-          className='bg-blue-400 rounded-full p-2 hover:bg-primary-600 hover:text-white-50 duration-300'
+          className='bg-blue-400 rounded-full p-2 hover:bg-red-600 hover:text-white-50 duration-300'
           onClick={handleRemove}
           title={remove}
         >
