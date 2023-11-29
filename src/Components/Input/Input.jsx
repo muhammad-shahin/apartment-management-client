@@ -10,7 +10,7 @@ const Input = ({
   successMessage,
   labelText,
   onBlur,
-  required = true,
+  required,
   defaultValue,
   className,
   readOnly,
@@ -20,7 +20,9 @@ const Input = ({
     <div className='w-[100%] relative font-QuickSand'>
       <label className='text-[14px] lg:text-lg font-medium'>
         {labelText}{' '}
-        {labelText && <span className='text-red-600 text-[18px]'>*</span>}{' '}
+        {labelText && required && (
+          <span className='text-red-600 text-[18px]'>*</span>
+        )}{' '}
       </label>
       <input
         className={`w-[100%] border-2 border-gray-200 px-5 py-2 text-[18px] font-medium text-[#000] placeholder:text-[#959292]  rounded outline-2 outline-blue-300 ${className}`}

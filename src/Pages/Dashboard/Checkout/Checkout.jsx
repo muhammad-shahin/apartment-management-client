@@ -7,9 +7,11 @@ import Input from '../../../Components/Input/Input';
 import { useState } from 'react';
 import useAxios from '../../../Hooks/useAxios';
 import { QueryClient } from '@tanstack/react-query';
+import PageTitle from '../../../Components/PageTitle/PageTitle';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISH_KEY);
 const Checkout = () => {
+  PageTitle('Checkout | Linden Apartment Management');
   const secureAxios = useAxios();
   const queryClient = new QueryClient();
   const paymentInitiate = JSON.parse(localStorage.getItem('paymentInitiate'));
@@ -39,7 +41,6 @@ const Checkout = () => {
     const res = await secureAxios.get(`/coupon/${couponCode}`);
     return res.data;
   };
-
   const handleApplyCoupon = async () => {
     const data = await queryClient.fetchQuery({
       queryKey: ['getCouponData'],
@@ -93,7 +94,7 @@ const Checkout = () => {
             type='tel'
             name='billingPhone'
             placeholder='+8801857771268'
-            required={true}
+            required={false}
             labelText='Your Phone'
             className='outline-none text-gray-500'
           />
@@ -101,7 +102,7 @@ const Checkout = () => {
             type='address'
             name='billingAddress'
             placeholder='10/2 South Auchpara'
-            required={true}
+            required={false}
             labelText='Your Address'
             className='outline-none text-gray-500'
           />

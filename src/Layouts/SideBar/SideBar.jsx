@@ -12,6 +12,14 @@ const SideBar = () => {
   const [currentSelected, setCurrentSelected] = useState(0);
 
   useEffect(() => {
+    sidebarData.map((data, index) => {
+      if (data.link == window.location.pathname) {
+        setCurrentSelected(index);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const currentPosition = window.scrollY;
       setScrollPosition(currentPosition);

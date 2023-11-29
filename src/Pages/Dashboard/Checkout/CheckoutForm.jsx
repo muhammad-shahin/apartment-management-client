@@ -10,6 +10,7 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
+  const paymentInitiate = JSON.parse(localStorage.getItem('paymentInitiate'));
   const secureAxios = useAxios();
   const [errorMessage, setErrorMessage] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
@@ -24,7 +25,7 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
       .catch((err) => {
         console.log('Payment Initiated Failed: ', err);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subTotalPrice]);
 
   const handleFormSubmit = async (event) => {
@@ -47,7 +48,7 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
       console.log('Stripe Payment Error : ', error);
       setErrorMessage(error.message);
     } else {
-      console.log('Stripe Payment Success : ', paymentMethod);
+      console.log('Stripe Payment Intent Success : ', paymentMethod);
       setErrorMessage('');
     }
 
@@ -65,14 +66,39 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
 
     if (result.paymentIntent) {
       if (result.paymentIntent.status === 'succeeded') {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Payment Completed Successfully',
-          showConfirmButton: false,
-          timer: 2500,
-        });
-        // navigate('/dashboard/payment-history')
+        const paymentIntent = result.paymentIntent;
+        paymentInitiate.otherPaymentInfo = {
+          amount: paymentIntent.amount / 100,
+          paymentId: paymentIntent.id,
+          currency: paymentIntent.currency,
+          method: paymentIntent.payment_method_types[0],
+        };
+        secureAxios
+          .post('/payment', paymentInitiate)
+          .then((res) => {
+            if (res.data.success && res.data.insertedId) {
+              console.log(res.data.insertedId);
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Payment Completed Successfully',
+                showConfirmButton: false,
+                timer: 2500,
+              });
+              navigate('/dashboard/payment-history')
+            }
+          })
+          .catch((err) => {
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Payment Failed! Please Try Again',
+              text: `${err}`,
+              showConfirmButton: false,
+              timer: 2500,
+            });
+          });
+        console.log(paymentInitiate);
       }
     } else if (result.error) {
       setErrorMessage(result.error.message);
