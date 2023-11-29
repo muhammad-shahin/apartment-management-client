@@ -4,22 +4,28 @@ import useAxios from '../../../Hooks/useAxios';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import SecondaryButton from '../../../Shared/SecondaryButton';
+import { useNavigate } from 'react-router-dom';
 
-const CheckoutForm = ({ billingInfo }) => {
+const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
   const stripe = useStripe();
   const elements = useElements();
-
+  const navigate = useNavigate();
   const secureAxios = useAxios();
   const [errorMessage, setErrorMessage] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
     secureAxios
-      .post('/create-payment-intent', { price: '6500' })
+      .post('/create-payment-intent', { price: subTotalPrice })
       .then((res) => {
+        console.log('Payment Initiated : ', res.data);
         setClientSecret(res?.data?.clientSecret);
+      })
+      .catch((err) => {
+        console.log('Payment Initiated Failed: ', err);
       });
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [subTotalPrice]);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -46,34 +52,37 @@ const CheckoutForm = ({ billingInfo }) => {
     }
 
     // confirm payment
-    const { paymentIntent, error: confirmError } = await stripe
-      .confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: card,
-          billing_details: {
-            name: billingInfo?.billingName || 'anonymous',
-            email: billingInfo?.billingEmail !== '' || 'anonymous@email.com',
-            phone: billingInfo?.billingPhone || 'anonymous',
-          },
+    const result = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: card,
+        billing_details: {
+          name: billingInfo?.billingName || 'anonymous',
+          email: billingInfo?.billingEmail !== '' || 'anonymous@email.com',
+          phone: billingInfo?.billingPhone || 'anonymous',
         },
-      })
-      .then((result) => {
-        console.log('Payment Success or Error Info: ', result);
-        if (result.paymentIntent?.status === 'succeeded') {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Payment Completed Successfully',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
-    if (paymentIntent) {
-      console.log('Payment Intent: ', paymentIntent);
+      },
+    });
+
+    if (result.paymentIntent) {
+      if (result.paymentIntent.status === 'succeeded') {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Payment Completed Successfully',
+          showConfirmButton: false,
+          timer: 2500,
+        });
+        // navigate('/dashboard/payment-history')
+      }
+    } else if (result.error) {
+      setErrorMessage(result.error.message);
+    }
+
+    if (result?.paymentIntent) {
+      console.log('Payment Intent: ', result?.paymentIntent);
     }
     if (
-      confirmError?.type === 'card_error' ||
+      result.error?.type === 'card_error' ||
       error?.type === 'validation_error'
     ) {
       setErrorMessage(error.message);
@@ -121,5 +130,6 @@ const CheckoutForm = ({ billingInfo }) => {
 };
 CheckoutForm.propTypes = {
   billingInfo: PropTypes.object,
+  subTotalPrice: PropTypes.number,
 };
 export default CheckoutForm;

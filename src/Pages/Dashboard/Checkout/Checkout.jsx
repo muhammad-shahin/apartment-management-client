@@ -20,6 +20,12 @@ const Checkout = () => {
     billingAddress: '',
   });
   const [couponCode, setCouponCode] = useState(null);
+  const [couponDiscount, setCouponDiscount] = useState(0.0);
+  const [subTotalRent, setSubTotalRent] = useState(
+    paymentInitiate.apartmentInfo.rent
+  );
+  const [couponErrMsg, setCouponErrMsg] = useState(null);
+  const [couponSuccessMessage, setCouponSuccessMessage] = useState(null);
   const handleBillingInfoChange = (e) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
@@ -34,24 +40,33 @@ const Checkout = () => {
     return res.data;
   };
 
-  const couponFetch = async () => {
+  const handleApplyCoupon = async () => {
     const data = await queryClient.fetchQuery({
       queryKey: ['getCouponData'],
       queryFn: getCoupon,
     });
-    console.log(data);
+    if (data.success && data.coupon) {
+      // calculate the coupon discount
+      const totalRent = paymentInitiate.apartmentInfo.rent;
+      const discountPercent = data.coupon.discount;
+      const discountRentAmount = (totalRent * discountPercent) / 100;
+      setCouponDiscount(discountRentAmount.toFixed(2));
+      const subTotal = totalRent - discountRentAmount;
+      setSubTotalRent(subTotal.toFixed(2));
+      setCouponSuccessMessage('Coupon Applied');
+    } else {
+      data.message === 'Coupon Expired'
+        ? setCouponErrMsg('Coupon Expired')
+        : setCouponErrMsg('Coupon Not Valid');
+    }
   };
-
-  //   handle handle Coupon apply
-  //   const handleCoupon = () => {};
-  //   console.log(couponData);
   return (
-    <div className='w-full min-h-[88vh] container mx-auto'>
+    <div className='w-full min-h-[88vh] container mx-auto pb-10'>
       <Heading
         title='Checkout'
         subTitle='Complete Your Payment'
       />
-      <div className='flex justify-center items-center w-full gap-16 font-QuickSand bg-white-50 py-20'>
+      <div className='flex justify-center items-center w-full gap-16 font-QuickSand bg-white-50 py-20 max-w-[60vw] mx-auto rounded-md shadow-lg'>
         <form className='max-w-sm space-y-6'>
           <p className='lg:text-4xl text-lg uppercase font-medium'>
             Billing Info
@@ -117,17 +132,24 @@ const Checkout = () => {
                 </div>
                 <div className='flex justify-between items-center'>
                   <p className='text-[18px] font-medium'>Coupon Discount : </p>
-                  <p className='text-[18px] font-medium'>${0.0}</p>
+                  <p className='text-[18px] font-medium'>-${couponDiscount}</p>
+                </div>
+                <hr className='w-full h-[2px] bg-gray-300' />
+                <div className='flex justify-between items-center'>
+                  <p className='text-[18px] font-medium'>Sub Total : </p>
+                  <p className='text-[18px] font-medium'>${subTotalRent}</p>
                 </div>
                 <hr className='w-full h-[2px] bg-gray-300' />
                 <div className='relative h-fit'>
                   <Input
                     placeholder='Have Coupon?'
                     onChange={(e) => setCouponCode(e.target.value)}
+                    errorMessage={couponErrMsg}
+                    successMessage={couponSuccessMessage}
                   />
                   <button
-                    className='absolute top-0 right-0 w-[80px] h-full bg-primary-700 rounded-r-md text-white-50 hover:bg-primary-400 hover:text-primary-700 duration-300'
-                    onClick={couponFetch}
+                    className='absolute top-[0px] right-0 w-[80px]  bg-primary-700 rounded-r text-white-50 hover:bg-primary-400 hover:text-primary-700 duration-300 px-5 py-2 text-[18px] font-medium border-2 border-transparent-50 text-center'
+                    onClick={handleApplyCoupon}
                   >
                     Apply
                   </button>
@@ -135,7 +157,10 @@ const Checkout = () => {
                 <hr className='w-full h-[2px] bg-gray-300' />
               </div>
               <Elements stripe={stripePromise}>
-                <CheckoutForm billingInfo={billingInfo} />
+                <CheckoutForm
+                  billingInfo={billingInfo}
+                  subTotalPrice={parseInt(subTotalRent)}
+                />
               </Elements>
             </div>
           </div>

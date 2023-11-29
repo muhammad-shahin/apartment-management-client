@@ -93,7 +93,6 @@ const MakePayment = () => {
     const selected = e.target.value;
     setSelectedApartment(getApartmentByNo(requestedApartmentsData, selected));
   };
-  console.log(selectedApartment);
 
   //   handle form submit
   const handleFormSubmit = (e) => {
@@ -114,7 +113,6 @@ const MakePayment = () => {
       paymentOfMonth,
     };
     localStorage.setItem('paymentInitiate', JSON.stringify(paymentInitiate));
-    console.log(paymentInitiate);
     form.reset();
     setSelectedApartment({});
     navigate('/dashboard/checkout');

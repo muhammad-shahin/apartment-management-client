@@ -7,6 +7,7 @@ const Input = ({
   placeholder,
   onChange,
   errorMessage,
+  successMessage,
   labelText,
   onBlur,
   required = true,
@@ -46,6 +47,9 @@ const Input = ({
       {errorMessage && (
         <p className='text-[14px] text-red-500'>{errorMessage}</p>
       )}
+      {successMessage && (
+        <p className='text-[14px] text-green-500'>{successMessage}</p>
+      )}
     </div>
   );
 };
@@ -55,6 +59,7 @@ Input.propTypes = {
   type: PropTypes.string,
   placeholder: PropTypes.string,
   errorMessage: PropTypes.string,
+  successMessage: PropTypes.string,
   labelText: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
