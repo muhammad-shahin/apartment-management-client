@@ -3,6 +3,7 @@ import Apartments from '../Pages/Apartments/Apartments';
 import Announcements from '../Pages/Dashboard/Announcements/Announcements';
 import Checkout from '../Pages/Dashboard/Checkout/Checkout';
 import Dashboard from '../Pages/Dashboard/Dashboard';
+import MakeAnnouncement from '../Pages/Dashboard/MakeAnnouncement/MakeAnnouncement';
 import MakePayment from '../Pages/Dashboard/MakePayment/MakePayment';
 import ManageMember from '../Pages/Dashboard/ManageMember/ManageMember';
 import PaymentHistory from '../Pages/Dashboard/PaymentHistory/PaymentHistory';
@@ -96,6 +97,14 @@ const routes = [
             element: (
               <PrivateRoute>
                 <ManageMember />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: '/dashboard/make-announcement',
+            element: (
+              <PrivateRoute>
+                <MakeAnnouncement />
               </PrivateRoute>
             ),
           },

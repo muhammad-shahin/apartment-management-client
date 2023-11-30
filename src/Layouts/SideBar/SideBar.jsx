@@ -6,7 +6,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useRegisteredUser from '../../Hooks/useRegisteredUser';
 
 const SideBar = () => {
-  const [collapseSidebar, setCollapseSidebar] = useState(true);
+  const [collapseSidebar, setCollapseSidebar] = useState(false);
   const { isSticky } = useContext(AuthContext);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [currentSelected, setCurrentSelected] = useState(0);

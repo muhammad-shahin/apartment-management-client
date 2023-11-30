@@ -39,6 +39,7 @@ const SelectOptions = ({
           <option
             value=''
             disabled={open}
+            defaultValue={defaultValue}
           >
             {defaultOption}
           </option>

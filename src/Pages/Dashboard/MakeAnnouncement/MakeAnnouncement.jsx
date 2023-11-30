@@ -9,8 +9,8 @@ import Lottie from 'lottie-react';
 import { IoTimeOutline } from 'react-icons/io5';
 import { SlCalender } from 'react-icons/sl';
 
-const Announcements = () => {
-  PageTitle('Announcements || Linden Apartment Management');
+const MakeAnnouncement = () => {
+  PageTitle('Make Announcement || Linden Apartment Management');
   const secureAxios = useAxios();
 
   // get requested apartment data
@@ -75,18 +75,18 @@ const Announcements = () => {
   return (
     <div className='container mx-auto'>
       <Heading
-        title='All Announcements'
+        title='All MakeAnnouncement'
         className='text-primary-700'
       />
       <div className='space-y-8 pb-10'>
         {allAnnouncementData?.map((announcement) => (
           <div
             key={announcement._id}
-            className='text-center bg-primary-500 text-white-50 py-5 lg:max-w-[60vw] mx-auto fade-up lg:px-0 px-[5%]'
+            className='text-center bg-primary-500 text-white-50 py-5 lg:max-w-[60vw] mx-auto fade-up'
             style={{ animationDuration: '0.5s' }}
           >
             <h3
-              className='lg:text-[2.5rem] md:text-[2rem] text-[1.5rem] font-medium  dark:text-white-50 fade-up'
+              className='g:text-[2.5rem] md:text-[2rem] text-[2rem] font-medium  dark:text-white-50 fade-up'
               style={{ animationDuration: '0.7s' }}
             >
               {announcement.announcementTitle}
@@ -111,7 +111,7 @@ const Announcements = () => {
             </div>
             <hr className='my-4' />
             <p
-              className='font-QuickSand font-medium text-base lg:text-2xl max-w-5xl mx-auto lg:leading-[60px] lg:pt-3 lg:pb-6 fade-up text-left lg:text-center'
+              className='font-QuickSand font-medium text-xl lg:text-2xl max-w-5xl mx-auto leading-[150px] pt-3 pb-6 fade-up'
               style={{ animationDuration: '0.9s' }}
             >
               {announcement.announcementDescription}
@@ -123,4 +123,4 @@ const Announcements = () => {
   );
 };
 
-export default Announcements;
+export default MakeAnnouncement;

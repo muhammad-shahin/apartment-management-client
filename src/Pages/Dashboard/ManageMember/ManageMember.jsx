@@ -9,7 +9,6 @@ import TableActionButtons from '../../../Shared/TableActionButtons';
 import { IoPersonRemove, IoPersonAdd } from 'react-icons/io5';
 import useAxios from '../../../Hooks/useAxios';
 import SelectOptions from '../../../Components/SelectOptions/SelectOptions';
-import { useState } from 'react';
 
 const ManageMember = () => {
   PageTitle('Manage Members | Linden Apartment Management');
