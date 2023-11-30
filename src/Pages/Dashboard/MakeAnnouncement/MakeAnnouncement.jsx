@@ -2,122 +2,82 @@ import Swal from 'sweetalert2';
 import Heading from '../../../Components/Heading/Heading';
 import PageTitle from '../../../Components/PageTitle/PageTitle';
 import useAxios from '../../../Hooks/useAxios';
-import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
-import notAvailableAnim from '../../../assets/Animation/notAvailable.json';
-import { useQuery } from '@tanstack/react-query';
-import Lottie from 'lottie-react';
-import { IoTimeOutline } from 'react-icons/io5';
-import { SlCalender } from 'react-icons/sl';
+import Input from '../../../Components/Input/Input';
+import TextBox from '../../../Components/TextBox/TextBox';
+import PrimaryButton from '../../../Shared/PrimaryButton';
 
 const MakeAnnouncement = () => {
   PageTitle('Make Announcement || Linden Apartment Management');
   const secureAxios = useAxios();
 
-  // get requested apartment data
-  const {
-    data: allAnnouncementData = [],
-    isLoading,
-    isPending,
-    isError,
-    error,
-    refetch,
-  } = useQuery({
-    queryKey: ['getAllAnnouncement'],
-    queryFn: async () => {
-      const res = await secureAxios.get(`/announcement`);
-      return res.data;
-    },
-  });
 
-  // handle error
-  if (isError) {
-    console.log('Failed to Load your announcement data : ', error);
-    Swal.fire({
-      title: 'Failed To Fetch Data! Please Try Again :)',
-      confirmButtonText: 'Try Again',
-      icon: 'error',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        refetch();
+
+  const handleSubmitAnnouncement = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const desc = form.description.value;
+    const announcement = {
+      announcementTitle: title,
+      announcementDescription: desc,
+    };
+    console.log(announcement);
+    secureAxios.put('/announcement', announcement).then((res) => {
+      console.log('Announcement Updated : ', res.data);
+      if (res.data?.success) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'New Announcement Published Successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        form.reset();
       }
     });
-  }
-
-  // handle loading
-  if (isLoading || isPending) {
-    return (
-      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4'>
-        <h1 className='lg:text-5xl text-2xl text-center gradient-text py-3'>
-          Loading Please Wait
-        </h1>
-        <Lottie
-          loop
-          animationData={loadingAnimation}
-        />
-      </div>
-    );
-  }
-
-  // handle no data found
-  if (!allAnnouncementData || allAnnouncementData?.length === 0) {
-    return (
-      <div className='w-full min-h-[90vh] flex flex-col justify-center items-center gap-4 px-[5%]'>
-        <h1 className='text-5xl text-center gradient-text'>
-          No Apartment Data Available
-        </h1>
-        <Lottie
-          loop
-          animationData={notAvailableAnim}
-        />
-      </div>
-    );
-  }
+  };
   return (
     <div className='container mx-auto'>
       <Heading
-        title='All MakeAnnouncement'
+        title='Make Announcement'
         className='text-primary-700'
       />
       <div className='space-y-8 pb-10'>
-        {allAnnouncementData?.map((announcement) => (
-          <div
-            key={announcement._id}
-            className='text-center bg-primary-500 text-white-50 py-5 lg:max-w-[60vw] mx-auto fade-up'
-            style={{ animationDuration: '0.5s' }}
+        <div
+          key={'announcement._id'}
+          className='text-center bg-primary-500 text-white-50 py-5 lg:max-w-[60vw] mx-auto fade-up lg:px-0 px-[5%]'
+          style={{ animationDuration: '0.5s' }}
+        >
+          <h3
+            className='g:text-[2.5rem] md:text-[2rem] text-[2rem] font-medium  dark:text-white-50 fade-up'
+            style={{ animationDuration: '0.7s' }}
           >
-            <h3
-              className='g:text-[2.5rem] md:text-[2rem] text-[2rem] font-medium  dark:text-white-50 fade-up'
-              style={{ animationDuration: '0.7s' }}
-            >
-              {announcement.announcementTitle}
-            </h3>
-            {/* date & time */}
-            <div
-              className='flex justify-center items-center gap-4 fade-up'
-              style={{ animationDuration: '0.8s' }}
-            >
-              <div className='flex justify-center items-center gap-2 pt-2 pb-1 uppercase'>
-                <SlCalender className='dark:text-black-50 text-[18px] opacity-80' />
-                <p className='font-QuickSand font-medium text-sm lg:text-base'>
-                  {announcement.announcementDate}
-                </p>
-              </div>
-              <div className='flex justify-center items-center gap-2 pt-2 pb-1 uppercase'>
-                <IoTimeOutline className='dark:text-black-50 text-[18px] opacity-80' />
-                <p className='font-QuickSand font-medium text-sm lg:text-base'>
-                  {announcement.announcementTime}
-                </p>
-              </div>
-            </div>
-            <hr className='my-4' />
-            <p
-              className='font-QuickSand font-medium text-xl lg:text-2xl max-w-5xl mx-auto leading-[150px] pt-3 pb-6 fade-up'
-              style={{ animationDuration: '0.9s' }}
-            >
-              {announcement.announcementDescription}
-            </p>
-          </div>
-        ))}
+            {'Make A New Announcement'}
+          </h3>
+          <hr className='my-4' />
+          <form
+            onSubmit={handleSubmitAnnouncement}
+            className='max-w-lg mx-auto space-y-6 pt-5 pb-10 '
+          >
+            <Input
+              labelText='Announcement Title'
+              placeholder='Write Announcement Title'
+              required={true}
+              name='title'
+            />
+            <TextBox
+              label='Announcement Description'
+              placeholder='Write Announcement Description...'
+              isRequired
+              name='description'
+            />
+            <PrimaryButton
+              text='Submit'
+              className='w-full'
+              type='submit'
+            />
+          </form>
+        </div>
       </div>
     </div>
   );
