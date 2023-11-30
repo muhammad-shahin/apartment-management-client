@@ -10,8 +10,6 @@ const MakeAnnouncement = () => {
   PageTitle('Make Announcement || Linden Apartment Management');
   const secureAxios = useAxios();
 
-
-
   const handleSubmitAnnouncement = (e) => {
     e.preventDefault();
     const form = e.target;

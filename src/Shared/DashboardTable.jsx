@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 
-const DashboardTable = ({ children, tableHead, emptyTable }) => {
+const DashboardTable = ({ children, tableHead, emptyTable, className }) => {
   return (
     <div
       className='py-6 overflow-auto fade-up'
       style={{ animationDuration: '0.9s' }}
     >
-      <table className='w-full mx-auto min-w-[60vw]'>
+      <table className={`w-full mx-auto min-w-[60vw] ${className}`}>
         <thead>
           <tr className='bg-primary-500 text-white-50 text-2xl lg:text-3xl'>
             {tableHead.map((rowName, index) => (
@@ -44,6 +44,7 @@ DashboardTable.propTypes = {
   tableHead: PropTypes.array,
   children: PropTypes.node,
   emptyTable: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 export default DashboardTable;

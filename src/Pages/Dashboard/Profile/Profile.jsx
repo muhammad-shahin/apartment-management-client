@@ -122,7 +122,7 @@ const Profile = () => {
       {/* recent apartment renting request */}
       <div className='container mx-auto'>
         <p className='text-xl lg:text-4xl text-center uppercase text-primary-700'>
-          Recent renting request
+          Your Recent Agreement
         </p>
         <DashboardTable
           emptyTable={emptyTable}

@@ -1,5 +1,6 @@
 import Root from '../Layouts/Root/Root';
 import Apartments from '../Pages/Apartments/Apartments';
+import AgreementRequest from '../Pages/Dashboard/AgreementRequest/AgreementRequest';
 import Announcements from '../Pages/Dashboard/Announcements/Announcements';
 import Checkout from '../Pages/Dashboard/Checkout/Checkout';
 import Dashboard from '../Pages/Dashboard/Dashboard';
@@ -105,6 +106,14 @@ const routes = [
             element: (
               <PrivateRoute>
                 <MakeAnnouncement />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: '/dashboard/agreement-requests',
+            element: (
+              <PrivateRoute>
+                <AgreementRequest />
               </PrivateRoute>
             ),
           },
