@@ -6,6 +6,7 @@ import Checkout from '../Pages/Dashboard/Checkout/Checkout';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import MakeAnnouncement from '../Pages/Dashboard/MakeAnnouncement/MakeAnnouncement';
 import MakePayment from '../Pages/Dashboard/MakePayment/MakePayment';
+import ManageCoupons from '../Pages/Dashboard/ManageCoupons/ManageCoupons';
 import ManageMember from '../Pages/Dashboard/ManageMember/ManageMember';
 import PaymentHistory from '../Pages/Dashboard/PaymentHistory/PaymentHistory';
 import Profile from '../Pages/Dashboard/Profile/Profile';
@@ -114,6 +115,14 @@ const routes = [
             element: (
               <PrivateRoute>
                 <AgreementRequest />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: '/dashboard/manage-coupons',
+            element: (
+              <PrivateRoute>
+                <ManageCoupons />
               </PrivateRoute>
             ),
           },

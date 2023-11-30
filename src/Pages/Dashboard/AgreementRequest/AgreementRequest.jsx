@@ -178,6 +178,7 @@ const AgreementRequest = () => {
           ))}
         </DashboardTable>
       </div>
+
       {/* accepted renting request */}
       <div className='container mx-auto'>
         <Heading

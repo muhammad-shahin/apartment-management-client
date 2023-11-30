@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AboutBuilding from '../../Components/AboutBuilding/AboutBuilding';
 import ApartmentFeatures from '../../Components/ApartmentFeatures/ApartmentFeatures';
 import ApartmentLocations from '../../Components/ApartmentLocations/ApartmentLocations';
-import Coupon from '../../Components/Coupon/Coupon';
+import CouponLogo from '../../Components/CouponLogo/CouponLogo';
 import FloorPlan from '../../Components/FloorPlan/FloorPlan';
 import NewBanner from '../../Components/NewBanner/NewBanner';
 import PageTitle from '../../Components/PageTitle/PageTitle';
@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 const Home = () => {
   PageTitle('Home - Apartment Management Web Application');
   const [openCoupon, setOpenCoupon] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [couponCodes, setCouponCodes] = useState({
     couponName: 'SHA23',
     couponCode: 'SHA23',
@@ -41,7 +42,7 @@ const Home = () => {
         onMouseEnter={() => setOpenCoupon(!openCoupon)}
         onClick={() => setOpenCoupon(!openCoupon)}
       >
-        <Coupon />
+        <CouponLogo />
       </div>
       <div className='min-h-[100vh]'>
         <NewBanner />
@@ -74,7 +75,7 @@ const Home = () => {
         CustomModalStatus={openCoupon}
         title='Free Coupons!'
         message='Claim Your Free Coupons Now!'
-        customIcon={<Coupon />}
+        customIcon={<CouponLogo />}
       >
         <div className='text-center pb-5 text-gray-400'>
           <p className='uppercase font-QuickSand '>
