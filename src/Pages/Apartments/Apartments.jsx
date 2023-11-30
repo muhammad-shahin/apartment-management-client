@@ -100,44 +100,67 @@ const Apartments = () => {
   };
 
   // handle agreement button click
-  const registeredUser =
-    JSON.parse(localStorage.getItem('registeredUser'));
-  const handleApartmentAgreement = (apartmentObjectId) => {
+  const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
+  const handleApartmentAgreement = (apartmentObjectId, bookingStatus) => {
     if (user && registeredUser) {
-      const newAgreement = {
-        user: registeredUser._id,
-        apartment: apartmentObjectId,
-        bookingDate: new Date().toLocaleDateString('en-US', {
-          day: 'numeric',
-          month: 'short',
-          year: 'numeric',
-        }),
-        acceptedDate: 'Pending',
-        bookingStatus: 'Pending',
-      };
-      secureAxios.post('/booked-apartments', newAgreement).then((res) => {
-        if (res?.data?.success) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Agreement Request Send Successfully',
-            text: 'Agreement Request Send Successfully. View your agreement request status navigate to dashboard.',
-            showConfirmButton: true,
-            confirmButtonText: 'Go Dashboard',
-          }).then((result) => {
-            if (result.isConfirmed) {
-              navigate('/dashboard/profile');
-            }
-          });
-        } else {
-          Swal.fire({
-            title:
-              'Failed To Send Agreement Request! Please Try Again Later :)',
-            confirmButtonText: 'OKAY',
-            icon: 'error',
-          });
-        }
-      });
+      if (bookingStatus === 'Available') {
+        const newAgreement = {
+          user: registeredUser._id,
+          apartment: apartmentObjectId,
+          bookingDate: new Date().toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+          }),
+          acceptedDate: 'Pending',
+          bookingStatus: 'Pending',
+        };
+        secureAxios.post('/booked-apartments', newAgreement).then((res) => {
+          if (res?.data?.success) {
+            // Update Apartment Status
+            secureAxios
+              .put('/apartments', {
+                apartmentObjectId,
+                updatedStatus: 'Booked',
+              })
+              .then((res) => {
+                refetch();
+                console.log('Updated Apartment Status :', res.data?.success);
+              })
+              .catch((err) => {
+                console.log('Updated Apartment Status error  : ', err);
+              });
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Agreement Request Send Successfully',
+              text: 'Agreement Request Send Successfully. View your agreement request status navigate to dashboard.',
+              showConfirmButton: true,
+              confirmButtonText: 'Go Dashboard',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                navigate('/dashboard/profile');
+              }
+            });
+          } else {
+            Swal.fire({
+              title:
+                'Failed To Send Agreement Request! Please Try Again Later :)',
+              confirmButtonText: 'OKAY',
+              icon: 'error',
+            });
+          }
+        });
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title:
+            'This Apartment Is Already Booked! Try Booking Other Apartment',
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      }
     } else {
       Swal.fire({
         position: 'center',

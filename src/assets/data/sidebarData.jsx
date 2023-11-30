@@ -48,12 +48,12 @@ const sidebarData = [
     icon: <RiCoupon2Line className='lg:text-[26px] text-[20px]' />,
     access: ['admin'],
   },
-  {
-    name: 'My Agreements',
-    link: '/dashboard/my-agreements',
-    icon: <FaHandshake className='lg:text-[26px] text-[20px]' />,
-    access: ['user', 'member', 'admin'],
-  },
+  // {
+  //   name: 'My Agreements',
+  //   link: '/dashboard/my-agreements',
+  //   icon: <FaHandshake className='lg:text-[26px] text-[20px]' />,
+  //   access: ['user', 'member', 'admin'],
+  // },
   {
     name: 'Announcements',
     link: '/dashboard/announcements',

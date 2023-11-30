@@ -19,6 +19,7 @@ const ApartmentCard = ({ cardData, handleAgreement }) => {
     totalBedroom,
     totalBathroom,
     details,
+    bookingStatus,
     _id,
   } = cardData;
 
@@ -116,7 +117,7 @@ const ApartmentCard = ({ cardData, handleAgreement }) => {
         <SecondaryButton
           text='Agreement'
           className='rounded-full lg:py-[6px]'
-          handleClick={() => handleAgreement(_id)}
+          handleClick={() => handleAgreement(_id, bookingStatus)}
         />
         <SecondaryButton
           text='View Details'

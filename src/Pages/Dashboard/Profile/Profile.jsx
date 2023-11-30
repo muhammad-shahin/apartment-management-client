@@ -9,6 +9,7 @@ import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
 import TableActionButtons from '../../../Shared/TableActionButtons';
 import useRegisteredUser from '../../../Hooks/useRegisteredUser';
 import { FcCancel } from 'react-icons/fc';
+import AdminStatistics from './AdminStatistics';
 
 const Profile = () => {
   PageTitle('Profile | Linden Apartment Management ');
@@ -118,6 +119,11 @@ const Profile = () => {
         </p>
       </div>
       <hr className='my-10' />
+
+      {/* admin statistics */}
+      <div className='w-fit mx-auto relative text-center'>
+        <AdminStatistics />
+      </div>
 
       {/* recent apartment renting request */}
       <div className='container mx-auto'>
