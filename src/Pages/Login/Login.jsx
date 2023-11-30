@@ -50,12 +50,14 @@ const Login = () => {
       type: 'email',
       placeholder: 'Enter Email',
       labelText: 'Your Valid Email',
+      required: true,
     },
     {
       name: 'password',
       type: 'password',
       placeholder: 'Enter Password',
       labelText: 'Password',
+      required: true,
     },
   ];
   return (

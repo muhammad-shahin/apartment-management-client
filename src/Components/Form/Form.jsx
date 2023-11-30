@@ -42,6 +42,7 @@ const Form = ({
                 onBlur={fields.onBlur}
                 errorMessage={fields.errorMessage}
                 labelText={fields.labelText}
+                required={fields.required}
               />
             ))}
 

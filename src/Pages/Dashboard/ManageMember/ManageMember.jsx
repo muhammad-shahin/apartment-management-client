@@ -8,10 +8,13 @@ import useManageMember from '../../../Hooks/useManageMember';
 import TableActionButtons from '../../../Shared/TableActionButtons';
 import { IoPersonRemove, IoPersonAdd } from 'react-icons/io5';
 import useAxios from '../../../Hooks/useAxios';
+import SelectOptions from '../../../Components/SelectOptions/SelectOptions';
+import { useState } from 'react';
 
 const ManageMember = () => {
   PageTitle('Manage Members | Linden Apartment Management');
   const secureAxios = useAxios();
+  // const [userRoles, setUserRoles] = useState(['admin', 'member', 'user']);
   let emptyTable = false;
   const paymentHistoryTableHead = [
     '#',
@@ -60,23 +63,21 @@ const ManageMember = () => {
   }
 
   // handle remove from user
-  const handleRemoveUser = (userId) => {
-    const updatedUserInfo = { userId, newRole: 'member' };
-    console.log(updatedUserInfo);
+  const handleUpdateUserRole = (userId, updatedRole) => {
+    const updatedUserInfo = { userId, newRole: updatedRole };
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: `Are you sure Want to Update this User Role to '${updatedRole}' ?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Update Role',
+      confirmButtonText: 'Yes, Update!',
     }).then((result) => {
       if (result.isConfirmed) {
         secureAxios
           .put('/users', updatedUserInfo)
           .then((res) => {
-            console.log(res.data);
+            console.log(res.data.success);
             refetch();
             Swal.fire({
               position: 'center',
@@ -117,7 +118,19 @@ const ManageMember = () => {
                 {user?.userEmail}
               </td>
               <td className='border border-primary-700 p-2'>
-                {user?.userRole}
+                <form className='h-fit'>
+                  <SelectOptions
+                    key={user?.userRole}
+                    className='outline-primary-600 border-0'
+                    defaultOption={user?.userRole}
+                    optionsData={['admin', 'member', 'user'].filter(
+                      (role) => role !== user?.userRole
+                    )}
+                    handleChange={(e) =>
+                      handleUpdateUserRole(user.userId, e.target.value)
+                    }
+                  />
+                </form>
               </td>
               <td className='border border-primary-700 p-2'>{user?.userId}</td>
               <td className='border border-primary-700 p-2'>
@@ -125,20 +138,24 @@ const ManageMember = () => {
               </td>
               <td className='border border-primary-700 p-2 uppercase'>
                 <TableActionButtons>
-                  <button
-                    className='bg-blue-400 rounded-full p-2 hover:bg-red-600 hover:text-white-50 duration-300'
-                    title='Remove Member'
-                    onClick={() => handleRemoveUser(user.userId)}
-                  >
-                    <IoPersonRemove className='text-[22px] text-white' />
-                  </button>
-                  <button
-                    className='bg-blue-400 rounded-full p-2 hover:bg-primary-600 hover:text-white-50 duration-300'
-                    title='Remove Member'
-                    onClick={() => handleRemoveUser(user.userId)}
-                  >
-                    <IoPersonAdd className='text-[22px] text-white' />
-                  </button>
+                  {user?.userRole === 'member' && (
+                    <button
+                      className='bg-blue-400 rounded-full p-2 hover:bg-red-600 hover:text-white-50 duration-300'
+                      title='Remove From Member'
+                      onClick={() => handleUpdateUserRole(user.userId, 'user')}
+                    >
+                      <IoPersonRemove className='text-[22px] text-white' />
+                    </button>
+                  )}
+                  {user?.userRole !== 'admin' && (
+                    <button
+                      className='bg-blue-400 rounded-full p-2 hover:bg-primary-600 hover:text-white-50 duration-300'
+                      title='Make Admin Member'
+                      onClick={() => handleUpdateUserRole(user.userId, 'admin')}
+                    >
+                      <IoPersonAdd className='text-[22px] text-white' />
+                    </button>
+                  )}
                 </TableActionButtons>
               </td>
             </tr>

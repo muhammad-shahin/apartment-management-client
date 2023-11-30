@@ -39,25 +39,28 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
-    console.log(name, email, password, confirmPassword);
     setShowModal(true);
     if (password === confirmPassword) {
       createUser(email, password)
         .then((userCredential) => {
-          const user = userCredential.user;
-          const userData = {
-            userName: user?.displayName,
-            userEmail: user?.email || 'anonymoususer@gmail.com',
-            userId: user?.uid,
-            userRole: 'user',
-            userCreated: user?.createdAt,
-          };
-          const id = { userId: user.uid };
-          console.log(name);
           updateProfile(auth.currentUser, {
             displayName: name,
           })
             .then(() => {
+              const user = userCredential.user;
+              const id = { userId: user.uid };
+              // format the created at date
+              const date = new Date();
+              console.log(date);
+              const formattedDate = date.toISOString().split('T')[0];
+              console.log(formattedDate);
+              const userData = {
+                userName: user?.displayName || 'Anonymous User',
+                userEmail: user?.email || 'anonymoususer@gmail.com',
+                userId: user?.uid,
+                userRole: 'user',
+                userCreated: formattedDate,
+              };
               CreateToken(id);
               RegisterUserInDatabase(userData);
             })
@@ -95,12 +98,14 @@ const SignUp = () => {
       type: 'text',
       placeholder: 'Enter Full Name',
       labelText: 'Enter Full Name',
+      required: true,
     },
     {
       name: 'email',
       type: 'email',
       placeholder: 'Enter Email',
       labelText: 'Your Valid Email',
+      required: true,
     },
     {
       name: 'password',
@@ -109,14 +114,16 @@ const SignUp = () => {
       onChange: handlePasswordChange,
       errorMessage: passwordErrorMessage,
       labelText: 'Password',
+      required: true,
     },
     {
       name: 'confirmPassword',
       type: 'password',
-      placeholder: 'Enter Confirm Password',
+      placeholder: 'Confirm Password',
       onChange: handlePasswordChange,
       errorMessage: confirmPasswordErrorMessage,
       labelText: 'Confirm Password',
+      required: true,
     },
   ];
   return (
