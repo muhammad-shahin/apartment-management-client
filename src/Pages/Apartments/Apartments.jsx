@@ -100,7 +100,8 @@ const Apartments = () => {
   };
 
   // handle agreement button click
-  const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
+  const registeredUser =
+    JSON.parse(localStorage.getItem('registeredUser'));
   const handleApartmentAgreement = (apartmentObjectId) => {
     if (user && registeredUser) {
       const newAgreement = {

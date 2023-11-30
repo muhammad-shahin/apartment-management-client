@@ -83,6 +83,7 @@ const CheckoutForm = ({ billingInfo, subTotalPrice }) => {
           .post('/payment', paymentInitiate)
           .then((res) => {
             if (res.data.success && res.data.insertedId) {
+              localStorage.removeItem('paymentInitiate');
               console.log(res.data.insertedId);
               Swal.fire({
                 position: 'center',

@@ -9,18 +9,18 @@ const FloorPlan = () => {
   return (
     <div className='container mx-auto px-[5%] xl:px-0'>
       <Heading title='Floor Plan' />
-      <div className='flex xl:justify-between items-center justify-center gap-6 xl:gap-20 flex-col xl:flex-row'>
+      <div className='flex xl:justify-between items-center justify-center gap-6 xl:gap-20 flex-col xl:flex-row lg:py-10'>
         {/* left side content */}
-        <div className='w-full'>
+        <div className='w-full fade-down'>
           <img
             src='https://firstsight.design/linden/demo/wp-content/uploads/2022/10/plan.svg'
             alt='apartment floor plan'
             loading='lazy'
-            className='w-full'
+            className='lg:w-[90%]'
           />
         </div>
         {/* right side content */}
-        <div className='w-full space-y-8'>
+        <div className='w-full space-y-8 fade-up'>
           <h3 className='xl:max-w-[720px] text-center title xl:text-left'>
             Explore Our Thoughtfully Designed Floor Plans
           </h3>

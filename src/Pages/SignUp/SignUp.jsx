@@ -39,6 +39,7 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
+    console.log(name, email, password, confirmPassword);
     setShowModal(true);
     if (password === confirmPassword) {
       createUser(email, password)
@@ -49,8 +50,10 @@ const SignUp = () => {
             userEmail: user?.email || 'anonymoususer@gmail.com',
             userId: user?.uid,
             userRole: 'user',
+            userCreated: user?.createdAt,
           };
           const id = { userId: user.uid };
+          console.log(name);
           updateProfile(auth.currentUser, {
             displayName: name,
           })
@@ -88,8 +91,8 @@ const SignUp = () => {
   };
   const signUpInputFields = [
     {
-      name: 'text',
-      type: 'name',
+      name: 'name',
+      type: 'text',
       placeholder: 'Enter Full Name',
       labelText: 'Enter Full Name',
     },
@@ -116,7 +119,6 @@ const SignUp = () => {
       labelText: 'Confirm Password',
     },
   ];
-  console.log(signUpInputFields);
   return (
     <section className=''>
       <Form

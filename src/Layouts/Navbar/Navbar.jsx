@@ -152,7 +152,7 @@ const Navbar = () => {
                   headerHover ? 'text-black-50' : 'text-white-50'
                 }`}
               >
-                {user?.displayName.split(' ')[0]}
+                {user?.displayName?.split(' ')[0]}
               </p>
               <img
                 src={

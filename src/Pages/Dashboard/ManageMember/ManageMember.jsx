@@ -6,10 +6,12 @@ import Lottie from 'lottie-react';
 import loadingAnimation from '../../../assets/Animation/loadingAnimation.json';
 import useManageMember from '../../../Hooks/useManageMember';
 import TableActionButtons from '../../../Shared/TableActionButtons';
-import { RiDeleteBin6Line } from 'react-icons/ri';
+import { IoPersonRemove, IoPersonAdd } from 'react-icons/io5';
+import useAxios from '../../../Hooks/useAxios';
 
 const ManageMember = () => {
   PageTitle('Manage Members | Linden Apartment Management');
+  const secureAxios = useAxios();
   let emptyTable = false;
   const paymentHistoryTableHead = [
     '#',
@@ -56,6 +58,40 @@ const ManageMember = () => {
   if (!allMembersData || allMembersData?.length === 0) {
     emptyTable = true;
   }
+
+  // handle remove from user
+  const handleRemoveUser = (userId) => {
+    const updatedUserInfo = { userId, newRole: 'member' };
+    console.log(updatedUserInfo);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Update Role',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        secureAxios
+          .put('/users', updatedUserInfo)
+          .then((res) => {
+            console.log(res.data);
+            refetch();
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'User Role Changed Successfully',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch((err) => {
+            console.log('remove user role error', err);
+          });
+      }
+    });
+  };
   return (
     <div className='min-h-[100%]'>
       {/* recent apartment renting request */}
@@ -88,9 +124,20 @@ const ManageMember = () => {
                 {user?.userCreated ? user?.userCreated : 'N/A'}
               </td>
               <td className='border border-primary-700 p-2 uppercase'>
-                <TableActionButtons remove='remove'>
-                  <button className='bg-blue-400 rounded-full p-2 hover:bg-primary-600 hover:text-white-50 duration-300'>
-                    <RiDeleteBin6Line className='text-[22px] text-white' />
+                <TableActionButtons>
+                  <button
+                    className='bg-blue-400 rounded-full p-2 hover:bg-red-600 hover:text-white-50 duration-300'
+                    title='Remove Member'
+                    onClick={() => handleRemoveUser(user.userId)}
+                  >
+                    <IoPersonRemove className='text-[22px] text-white' />
+                  </button>
+                  <button
+                    className='bg-blue-400 rounded-full p-2 hover:bg-primary-600 hover:text-white-50 duration-300'
+                    title='Remove Member'
+                    onClick={() => handleRemoveUser(user.userId)}
+                  >
+                    <IoPersonAdd className='text-[22px] text-white' />
                   </button>
                 </TableActionButtons>
               </td>
