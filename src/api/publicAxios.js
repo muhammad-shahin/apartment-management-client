@@ -3,7 +3,7 @@ import axios from 'axios';
 // const userData = JSON.parse(localStorage.getItem('userData'));
 
 const publicAxios = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://apartment-management-server.vercel.app',
   withCredentials: true,
 });
 

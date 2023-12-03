@@ -12,6 +12,7 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import publicAxios from '../../api/publicAxios';
+import useRegisteredUser from '../../Hooks/useRegisteredUser';
 
 const Apartments = () => {
   PageTitle('All Apartments - Apartment Management Web Application');
@@ -19,6 +20,7 @@ const Apartments = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
+  const registeredUser = useRegisteredUser();
   let totalApartment = 0;
   const {
     data: apartmentsData = [],
@@ -100,12 +102,12 @@ const Apartments = () => {
   };
 
   // handle agreement button click
-  const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
+
   const handleApartmentAgreement = (apartmentObjectId, bookingStatus) => {
-    if (user && registeredUser) {
-      if (bookingStatus === 'Available') {
+    if (user) {
+      if (bookingStatus !== 'Booked') {
         const newAgreement = {
-          user: registeredUser._id,
+          user: registeredUser?._id,
           apartment: apartmentObjectId,
           bookingDate: new Date().toLocaleDateString('en-US', {
             day: 'numeric',
@@ -117,7 +119,6 @@ const Apartments = () => {
         };
         secureAxios.post('/booked-apartments', newAgreement).then((res) => {
           if (res?.data?.success) {
-            // Update Apartment Status
             secureAxios
               .put('/apartments', {
                 apartmentObjectId,

@@ -121,9 +121,11 @@ const Profile = () => {
       <hr className='my-10' />
 
       {/* admin statistics */}
-      <div className='w-fit mx-auto relative text-center'>
-        <AdminStatistics />
-      </div>
+      {registeredUser?.userRole === 'admin' && (
+        <div className='w-fit mx-auto relative text-center'>
+          <AdminStatistics />
+        </div>
+      )}
 
       {/* recent apartment renting request */}
       <div className='container mx-auto'>

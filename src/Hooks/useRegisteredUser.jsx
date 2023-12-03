@@ -13,7 +13,6 @@ const useRegisteredUser = () => {
     queryKey: ['getRegisteredUser', userData],
     queryFn: async () => {
       const res = await secureAxios.get(`/users?uid=${userData?.uid}`);
-
       return res?.data?.registeredUser;
     },
     initialData: null,

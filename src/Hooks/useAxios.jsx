@@ -6,7 +6,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../Configs/firebase.config';
 
 const secureAxios = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://apartment-management-server.vercel.app',
   withCredentials: true,
 });
 
