@@ -16,8 +16,8 @@ const Home = () => {
   const [openCoupon, setOpenCoupon] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [couponCodes, setCouponCodes] = useState({
-    couponName: 'SHA23',
-    couponCode: 'SHA23',
+    couponName: 'NEW30',
+    couponCode: 'NEW30',
   });
 
   const handleCopyCoupon = (code) => {

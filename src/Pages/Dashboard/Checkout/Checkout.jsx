@@ -73,7 +73,7 @@ const Checkout = () => {
         title='Checkout'
         subTitle='Complete Your Payment'
       />
-      <div className='flex justify-center items-center w-full gap-16 font-QuickSand bg-white-50 py-20 max-w-[60vw] mx-auto rounded-md shadow-lg'>
+      <div className='flex justify-center items-center w-full gap-16 font-QuickSand bg-white-50 py-20 max-w-[60vw] mx-auto rounded-md shadow-lg flex-wrap'>
         <form className='max-w-sm space-y-6'>
           <p className='lg:text-4xl text-lg uppercase font-medium'>
             Billing Info
