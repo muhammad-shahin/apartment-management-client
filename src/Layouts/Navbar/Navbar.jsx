@@ -88,7 +88,7 @@ const Navbar = () => {
               setOpen(false);
             }}
           >
-            <NavLink>The Building</NavLink>
+            <NavLink to='sign-up'>The Building</NavLink>
           </li>
           <li
             className=' hover:scale-[1.1] duration-500'
@@ -96,7 +96,7 @@ const Navbar = () => {
               setOpen(false);
             }}
           >
-            <NavLink>Gallery</NavLink>
+            <NavLink to='/login'>Gallery</NavLink>
           </li>
 
           {user ? (
