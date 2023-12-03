@@ -1,6 +1,5 @@
 import './UserProfile.css';
 import { NavLink } from 'react-router-dom';
-import { RiDashboardFill } from 'react-icons/ri';
 import { RxDashboard } from 'react-icons/rx';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -39,13 +38,6 @@ const UserProfile = () => {
 
       {/* Pages */}
       <div className='flex flex-col gap-2 mt-3'>
-        <NavLink
-          className=' font-bold text-[18px] flex justify-center items-center gap-3'
-          to='/addProduct'
-        >
-          <RiDashboardFill />
-          Dashboard
-        </NavLink>
         <NavLink
           className=' font-bold text-[18px] flex justify-center items-center gap-3'
           to='/dashboard'

@@ -5,7 +5,6 @@ import { useContext, useEffect, useState } from 'react';
 import './Navbar.css';
 import UserProfile from '../../Components/UserProfile/UserProfile';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-import { VscAccount } from 'react-icons/vsc';
 import DarkTheme from '../../Components/DarkTheme/DarkTheme';
 
 const Navbar = () => {
@@ -89,7 +88,7 @@ const Navbar = () => {
               setOpen(false);
             }}
           >
-            <NavLink to='/brand/adidas'>The Building</NavLink>
+            <NavLink>The Building</NavLink>
           </li>
           <li
             className=' hover:scale-[1.1] duration-500'
@@ -97,7 +96,7 @@ const Navbar = () => {
               setOpen(false);
             }}
           >
-            <NavLink to='/admin'>Gallery</NavLink>
+            <NavLink>Gallery</NavLink>
           </li>
 
           {user ? (
