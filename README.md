@@ -45,7 +45,4 @@ This project is a full-stack web application built using React for the front end
 
 Contributions are welcome. Feel free to open issues or submit pull requests to improve the functionality or fix bugs.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
