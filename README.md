@@ -1,5 +1,51 @@
-# Linden Property Management - React Web App 👗
+# Apartment Management Website
 
-![Linden Property Management](https://fashion-and-apparel-house.web.app/)
+![Site Showcase](https://i.ibb.co/6vLkKPd/assignment-12-project-showcase.png)
 
-## Under Development
+## Overview
+
+This project is a full-stack web application built using React for the front end, and Node.js, Express.js, and MongoDB for the back end. The application includes features such as Stripe payment integration, responsive design, and Firebase authentication.
+
+### Live Site: [Apartment Management Website](https://linden-apartment-management.web.app/)
+
+## Features
+
+### User Side
+
+- User-specific dashboard
+- Rent request submission
+- Monthly rent payment after request acceptance
+- Payment history tracking
+- Viewing announcements by owner/admin
+- Filtering payment history by month
+
+### Admin Side
+
+- User role management
+- Rent request approval/rejection
+- Viewing all payment history by user
+- Coupon management (addition and removal)
+- Announcement creation
+
+## Technologies Used
+
+- Front End: React
+- Back End: Node.js, Express.js, MongoDB (Mongoose)
+- Authentication: Firebase
+- Payment Integration: Stripe
+
+## Setup
+
+1. Clone the repository: `git clone https://github.com/your-username/your-repo.git`
+2. Install dependencies: `npm install`
+3. Configure environment variables (e.g., Stripe API key, Firebase credentials)
+4. Run the application: `npm start`
+
+## Contributing
+
+Contributions are welcome. Feel free to open issues or submit pull requests to improve the functionality or fix bugs.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
