@@ -1,6 +1,6 @@
 # Apartment Management Website
 
-![Site Showcase](https://i.ibb.co/6vLkKPd/assignment-12-project-showcase.png)
+![Site Showcase](https://i.ibb.co/27khG6L/assignment-11-project-showcase.png)
 
 ## Overview
 
