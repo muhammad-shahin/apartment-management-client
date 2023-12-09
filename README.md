@@ -36,7 +36,7 @@ This project is a full-stack web application built using React for the front end
 
 ## Setup
 
-1. Clone the repository: `git clone https://github.com/your-username/your-repo.git`
+1. Clone the repository: `git clone https://github.com/muhammad-shahin/apartment-management-client`
 2. Install dependencies: `npm install`
 3. Configure environment variables (e.g., Stripe API key, Firebase credentials)
 4. Run the application: `npm start`
