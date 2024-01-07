@@ -81,6 +81,7 @@ const NewBanner = () => {
                 >
                   <PrimaryButton text='Discover More' />
                 </div>
+                {/* slider text content */}
                 <div
                   className={`md:flex justify-between items-center w-full xl:px-[5%] px-[2%] xl:translate-y-[150px] lg:translate-y-[80px] hidden`}
                 >
